@@ -1,0 +1,620 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F300997B23B8159D0000B9E3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F300997A23B8159D0000B9E3 /* Assets.xcassets */; };
+		F300998123B8159D0000B9E3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F300998023B8159D0000B9E3 /* main.m */; };
+		F300998C23B8159D0000B9E3 /* test2Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = F300998B23B8159D0000B9E3 /* test2Tests.m */; };
+		F300999723B8159E0000B9E3 /* test2UITests.m in Sources */ = {isa = PBXBuildFile; fileRef = F300999623B8159E0000B9E3 /* test2UITests.m */; };
+		F30099A623B816AF0000B9E3 /* Receiver.m in Sources */ = {isa = PBXBuildFile; fileRef = F30099A523B816AF0000B9E3 /* Receiver.m */; };
+		F30099B323B870780000B9E3 /* RobotoMono-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F30099B123B86DC20000B9E3 /* RobotoMono-Regular.ttf */; };
+		F30099B423B8707A0000B9E3 /* RobotoMono-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F30099B123B86DC20000B9E3 /* RobotoMono-Regular.ttf */; };
+		F30099B523B8707B0000B9E3 /* RobotoMono-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F30099B123B86DC20000B9E3 /* RobotoMono-Regular.ttf */; };
+		F30099B823B872E50000B9E3 /* TipItem.m in Sources */ = {isa = PBXBuildFile; fileRef = F30099B723B872E50000B9E3 /* TipItem.m */; };
+		F30CBFEB23B963F4008D6B47 /* ExternalTipper.m in Sources */ = {isa = PBXBuildFile; fileRef = F30CBFEA23B963F4008D6B47 /* ExternalTipper.m */; };
+		F30CBFEE23B98977008D6B47 /* TipTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = F30CBFED23B98977008D6B47 /* TipTableController.m */; };
+		F30CBFF123B9A154008D6B47 /* TipTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = F30CBFF023B9A154008D6B47 /* TipTableView.m */; };
+		F30CBFF423B9B91F008D6B47 /* TipItemTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = F30CBFF323B9B91F008D6B47 /* TipItemTextField.m */; };
+		F30CBFFD23B9E71E008D6B47 /* VeritcallyAlignNSTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F30CBFFC23B9E71E008D6B47 /* VeritcallyAlignNSTextFieldCell.m */; };
+		F38236C923BAC24F001299DE /* TipEmptyView.m in Sources */ = {isa = PBXBuildFile; fileRef = F38236C823BAC24F001299DE /* TipEmptyView.m */; };
+		F3E5B64B23BA846A002BEDD6 /* FontAwesome-Solid.otf in Resources */ = {isa = PBXBuildFile; fileRef = F3E5B64A23BA846A002BEDD6 /* FontAwesome-Solid.otf */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F300998823B8159D0000B9E3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F300996C23B8159D0000B9E3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F300997323B8159D0000B9E3;
+			remoteInfo = test2;
+		};
+		F300999323B8159E0000B9E3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F300996C23B8159D0000B9E3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F300997323B8159D0000B9E3;
+			remoteInfo = test2;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		F300997423B8159D0000B9E3 /* Tip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tip.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F300997A23B8159D0000B9E3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F300997F23B8159D0000B9E3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F300998023B8159D0000B9E3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		F300998223B8159D0000B9E3 /* tip.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = tip.entitlements; sourceTree = "<group>"; };
+		F300998723B8159D0000B9E3 /* TipTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TipTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F300998B23B8159D0000B9E3 /* test2Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = test2Tests.m; sourceTree = "<group>"; };
+		F300998D23B8159D0000B9E3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F300999223B8159E0000B9E3 /* TipUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TipUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F300999623B8159E0000B9E3 /* test2UITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = test2UITests.m; sourceTree = "<group>"; };
+		F300999823B8159E0000B9E3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F30099A423B816AF0000B9E3 /* Receiver.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Receiver.h; sourceTree = "<group>"; };
+		F30099A523B816AF0000B9E3 /* Receiver.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Receiver.m; sourceTree = "<group>"; };
+		F30099B123B86DC20000B9E3 /* RobotoMono-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoMono-Regular.ttf"; sourceTree = "<group>"; };
+		F30099B623B872E50000B9E3 /* TipItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TipItem.h; sourceTree = "<group>"; };
+		F30099B723B872E50000B9E3 /* TipItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TipItem.m; sourceTree = "<group>"; };
+		F30CBFD723B92F84008D6B47 /* Tipper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Tipper.h; sourceTree = "<group>"; };
+		F30CBFE923B963F4008D6B47 /* ExternalTipper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExternalTipper.h; sourceTree = "<group>"; };
+		F30CBFEA23B963F4008D6B47 /* ExternalTipper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExternalTipper.m; sourceTree = "<group>"; };
+		F30CBFEC23B98977008D6B47 /* TipTableController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TipTableController.h; sourceTree = "<group>"; };
+		F30CBFED23B98977008D6B47 /* TipTableController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TipTableController.m; sourceTree = "<group>"; };
+		F30CBFEF23B9A154008D6B47 /* TipTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TipTableView.h; sourceTree = "<group>"; };
+		F30CBFF023B9A154008D6B47 /* TipTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TipTableView.m; sourceTree = "<group>"; };
+		F30CBFF223B9B91F008D6B47 /* TipItemTextField.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TipItemTextField.h; sourceTree = "<group>"; };
+		F30CBFF323B9B91F008D6B47 /* TipItemTextField.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TipItemTextField.m; sourceTree = "<group>"; };
+		F30CBFFB23B9E71E008D6B47 /* VeritcallyAlignNSTextFieldCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VeritcallyAlignNSTextFieldCell.h; sourceTree = "<group>"; };
+		F30CBFFC23B9E71E008D6B47 /* VeritcallyAlignNSTextFieldCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VeritcallyAlignNSTextFieldCell.m; sourceTree = "<group>"; };
+		F38236C723BAC24F001299DE /* TipEmptyView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TipEmptyView.h; sourceTree = "<group>"; };
+		F38236C823BAC24F001299DE /* TipEmptyView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TipEmptyView.m; sourceTree = "<group>"; };
+		F3E5B64A23BA846A002BEDD6 /* FontAwesome-Solid.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FontAwesome-Solid.otf"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F300997123B8159D0000B9E3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F300998423B8159D0000B9E3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F300998F23B8159E0000B9E3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F300996B23B8159D0000B9E3 = {
+			isa = PBXGroup;
+			children = (
+				F300997623B8159D0000B9E3 /* Tip */,
+				F300998A23B8159D0000B9E3 /* TipTests */,
+				F300999523B8159E0000B9E3 /* TipUITests */,
+				F300997523B8159D0000B9E3 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F300997523B8159D0000B9E3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F300997423B8159D0000B9E3 /* Tip.app */,
+				F300998723B8159D0000B9E3 /* TipTests.xctest */,
+				F300999223B8159E0000B9E3 /* TipUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F300997623B8159D0000B9E3 /* Tip */ = {
+			isa = PBXGroup;
+			children = (
+				F30099B023B86DBD0000B9E3 /* fonts */,
+				F300997A23B8159D0000B9E3 /* Assets.xcassets */,
+				F300997F23B8159D0000B9E3 /* Info.plist */,
+				F300998023B8159D0000B9E3 /* main.m */,
+				F300998223B8159D0000B9E3 /* tip.entitlements */,
+				F30099A423B816AF0000B9E3 /* Receiver.h */,
+				F30099A523B816AF0000B9E3 /* Receiver.m */,
+				F30099B623B872E50000B9E3 /* TipItem.h */,
+				F30099B723B872E50000B9E3 /* TipItem.m */,
+				F30CBFD723B92F84008D6B47 /* Tipper.h */,
+				F30CBFE923B963F4008D6B47 /* ExternalTipper.h */,
+				F30CBFEA23B963F4008D6B47 /* ExternalTipper.m */,
+				F30CBFEC23B98977008D6B47 /* TipTableController.h */,
+				F30CBFED23B98977008D6B47 /* TipTableController.m */,
+				F30CBFEF23B9A154008D6B47 /* TipTableView.h */,
+				F30CBFF023B9A154008D6B47 /* TipTableView.m */,
+				F30CBFF223B9B91F008D6B47 /* TipItemTextField.h */,
+				F30CBFF323B9B91F008D6B47 /* TipItemTextField.m */,
+				F30CBFFB23B9E71E008D6B47 /* VeritcallyAlignNSTextFieldCell.h */,
+				F30CBFFC23B9E71E008D6B47 /* VeritcallyAlignNSTextFieldCell.m */,
+				F38236C723BAC24F001299DE /* TipEmptyView.h */,
+				F38236C823BAC24F001299DE /* TipEmptyView.m */,
+			);
+			path = Tip;
+			sourceTree = "<group>";
+		};
+		F300998A23B8159D0000B9E3 /* TipTests */ = {
+			isa = PBXGroup;
+			children = (
+				F300998B23B8159D0000B9E3 /* test2Tests.m */,
+				F300998D23B8159D0000B9E3 /* Info.plist */,
+			);
+			path = TipTests;
+			sourceTree = "<group>";
+		};
+		F300999523B8159E0000B9E3 /* TipUITests */ = {
+			isa = PBXGroup;
+			children = (
+				F300999623B8159E0000B9E3 /* test2UITests.m */,
+				F300999823B8159E0000B9E3 /* Info.plist */,
+			);
+			path = TipUITests;
+			sourceTree = "<group>";
+		};
+		F30099B023B86DBD0000B9E3 /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				F3E5B64A23BA846A002BEDD6 /* FontAwesome-Solid.otf */,
+				F30099B123B86DC20000B9E3 /* RobotoMono-Regular.ttf */,
+			);
+			path = fonts;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F300997323B8159D0000B9E3 /* Tip */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F300999B23B8159E0000B9E3 /* Build configuration list for PBXNativeTarget "Tip" */;
+			buildPhases = (
+				F300997023B8159D0000B9E3 /* Sources */,
+				F300997123B8159D0000B9E3 /* Frameworks */,
+				F300997223B8159D0000B9E3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Tip;
+			productName = test2;
+			productReference = F300997423B8159D0000B9E3 /* Tip.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F300998623B8159D0000B9E3 /* TipTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F300999E23B8159E0000B9E3 /* Build configuration list for PBXNativeTarget "TipTests" */;
+			buildPhases = (
+				F300998323B8159D0000B9E3 /* Sources */,
+				F300998423B8159D0000B9E3 /* Frameworks */,
+				F300998523B8159D0000B9E3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F300998923B8159D0000B9E3 /* PBXTargetDependency */,
+			);
+			name = TipTests;
+			productName = test2Tests;
+			productReference = F300998723B8159D0000B9E3 /* TipTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		F300999123B8159E0000B9E3 /* TipUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F30099A123B8159E0000B9E3 /* Build configuration list for PBXNativeTarget "TipUITests" */;
+			buildPhases = (
+				F300998E23B8159E0000B9E3 /* Sources */,
+				F300998F23B8159E0000B9E3 /* Frameworks */,
+				F300999023B8159E0000B9E3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F300999423B8159E0000B9E3 /* PBXTargetDependency */,
+			);
+			name = TipUITests;
+			productName = test2UITests;
+			productReference = F300999223B8159E0000B9E3 /* TipUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F300996C23B8159D0000B9E3 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1120;
+				ORGANIZATIONNAME = "Tanin Na Nakorn";
+				TargetAttributes = {
+					F300997323B8159D0000B9E3 = {
+						CreatedOnToolsVersion = 11.2.1;
+					};
+					F300998623B8159D0000B9E3 = {
+						CreatedOnToolsVersion = 11.2.1;
+						TestTargetID = F300997323B8159D0000B9E3;
+					};
+					F300999123B8159E0000B9E3 = {
+						CreatedOnToolsVersion = 11.2.1;
+						TestTargetID = F300997323B8159D0000B9E3;
+					};
+				};
+			};
+			buildConfigurationList = F300996F23B8159D0000B9E3 /* Build configuration list for PBXProject "Tip" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F300996B23B8159D0000B9E3;
+			productRefGroup = F300997523B8159D0000B9E3 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F300997323B8159D0000B9E3 /* Tip */,
+				F300998623B8159D0000B9E3 /* TipTests */,
+				F300999123B8159E0000B9E3 /* TipUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F300997223B8159D0000B9E3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F300997B23B8159D0000B9E3 /* Assets.xcassets in Resources */,
+				F3E5B64B23BA846A002BEDD6 /* FontAwesome-Solid.otf in Resources */,
+				F30099B323B870780000B9E3 /* RobotoMono-Regular.ttf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F300998523B8159D0000B9E3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F30099B423B8707A0000B9E3 /* RobotoMono-Regular.ttf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F300999023B8159E0000B9E3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F30099B523B8707B0000B9E3 /* RobotoMono-Regular.ttf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F300997023B8159D0000B9E3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F30099B823B872E50000B9E3 /* TipItem.m in Sources */,
+				F30CBFFD23B9E71E008D6B47 /* VeritcallyAlignNSTextFieldCell.m in Sources */,
+				F30CBFEE23B98977008D6B47 /* TipTableController.m in Sources */,
+				F30CBFEB23B963F4008D6B47 /* ExternalTipper.m in Sources */,
+				F30CBFF423B9B91F008D6B47 /* TipItemTextField.m in Sources */,
+				F300998123B8159D0000B9E3 /* main.m in Sources */,
+				F30CBFF123B9A154008D6B47 /* TipTableView.m in Sources */,
+				F30099A623B816AF0000B9E3 /* Receiver.m in Sources */,
+				F38236C923BAC24F001299DE /* TipEmptyView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F300998323B8159D0000B9E3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F300998C23B8159D0000B9E3 /* test2Tests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F300998E23B8159E0000B9E3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F300999723B8159E0000B9E3 /* test2UITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F300998923B8159D0000B9E3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F300997323B8159D0000B9E3 /* Tip */;
+			targetProxy = F300998823B8159D0000B9E3 /* PBXContainerItemProxy */;
+		};
+		F300999423B8159E0000B9E3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F300997323B8159D0000B9E3 /* Tip */;
+			targetProxy = F300999323B8159E0000B9E3 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		F300999923B8159E0000B9E3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		F300999A23B8159E0000B9E3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		F300999C23B8159E0000B9E3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				BUNDLE_DISPLAY_NAME = "Tip debug";
+				CODE_SIGN_ENTITLEMENTS = tip/tip.entitlements;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = S6482XAL5E;
+				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_FILE = tip/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = tanin.tip;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		F300999D23B8159E0000B9E3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				BUNDLE_DISPLAY_NAME = Tip;
+				CODE_SIGN_ENTITLEMENTS = tip/tip.entitlements;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = S6482XAL5E;
+				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_FILE = tip/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = tanin.tip;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		F300999F23B8159E0000B9E3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = test2Tests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				PRODUCT_BUNDLE_IDENTIFIER = tanin.test2Tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Tip.app/Contents/MacOS/Tip";
+			};
+			name = Debug;
+		};
+		F30099A023B8159E0000B9E3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = test2Tests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				PRODUCT_BUNDLE_IDENTIFIER = tanin.test2Tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Tip.app/Contents/MacOS/Tip";
+			};
+			name = Release;
+		};
+		F30099A223B8159E0000B9E3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = test2UITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = tanin.test2UITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = test2;
+			};
+			name = Debug;
+		};
+		F30099A323B8159E0000B9E3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = test2UITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = tanin.test2UITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = test2;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F300996F23B8159D0000B9E3 /* Build configuration list for PBXProject "Tip" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F300999923B8159E0000B9E3 /* Debug */,
+				F300999A23B8159E0000B9E3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F300999B23B8159E0000B9E3 /* Build configuration list for PBXNativeTarget "Tip" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F300999C23B8159E0000B9E3 /* Debug */,
+				F300999D23B8159E0000B9E3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F300999E23B8159E0000B9E3 /* Build configuration list for PBXNativeTarget "TipTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F300999F23B8159E0000B9E3 /* Debug */,
+				F30099A023B8159E0000B9E3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F30099A123B8159E0000B9E3 /* Build configuration list for PBXNativeTarget "TipUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F30099A223B8159E0000B9E3 /* Debug */,
+				F30099A323B8159E0000B9E3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F300996C23B8159D0000B9E3 /* Project object */;
+}
