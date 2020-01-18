@@ -88,9 +88,9 @@
     NSTask *task = [[NSTask alloc] init];
     task.standardOutput = pipe;
 
-    struct passwd *pw = getpwuid(getuid());
-    assert(pw);
-    task.launchPath = [NSString stringWithFormat:@"%@/.tip/provider", [NSString stringWithUTF8String:pw->pw_dir]];
+    NSString *home = NSHomeDirectory();
+    assert(home);
+    task.launchPath = [NSString stringWithFormat:@"%@/.tip/provider", home];
     
     task.arguments = @[input];
     NSLog(@"Run: %@ with args: %@", task.launchPath, task.arguments);
