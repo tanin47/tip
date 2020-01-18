@@ -3,7 +3,7 @@ Tip: Universal tooltip for Mac OS X
 
 Tip provides useful info at your fingertip. You can simply select the text and hit the shortkey to activate the tooltip showing useful info.
 
-Useful info is programmed by you (using any programming language), and it works with every Mac app.
+"Useful info" is programmed by you using any programming language, and it works with every Mac app.
 
 Examples
 ---------
