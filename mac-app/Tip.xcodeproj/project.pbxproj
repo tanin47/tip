@@ -9,11 +9,9 @@
 /* Begin PBXBuildFile section */
 		F300997B23B8159D0000B9E3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F300997A23B8159D0000B9E3 /* Assets.xcassets */; };
 		F300998123B8159D0000B9E3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F300998023B8159D0000B9E3 /* main.m */; };
-		F300998C23B8159D0000B9E3 /* tipTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F300998B23B8159D0000B9E3 /* tipTests.m */; };
 		F300999723B8159E0000B9E3 /* tipUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = F300999623B8159E0000B9E3 /* tipUITests.m */; };
 		F30099A623B816AF0000B9E3 /* Receiver.m in Sources */ = {isa = PBXBuildFile; fileRef = F30099A523B816AF0000B9E3 /* Receiver.m */; };
 		F30099B323B870780000B9E3 /* RobotoMono-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F30099B123B86DC20000B9E3 /* RobotoMono-Regular.ttf */; };
-		F30099B423B8707A0000B9E3 /* RobotoMono-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F30099B123B86DC20000B9E3 /* RobotoMono-Regular.ttf */; };
 		F30099B523B8707B0000B9E3 /* RobotoMono-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F30099B123B86DC20000B9E3 /* RobotoMono-Regular.ttf */; };
 		F30099B823B872E50000B9E3 /* TipItem.m in Sources */ = {isa = PBXBuildFile; fileRef = F30099B723B872E50000B9E3 /* TipItem.m */; };
 		F30CBFEB23B963F4008D6B47 /* ExternalTipper.m in Sources */ = {isa = PBXBuildFile; fileRef = F30CBFEA23B963F4008D6B47 /* ExternalTipper.m */; };
@@ -22,18 +20,12 @@
 		F30CBFF423B9B91F008D6B47 /* TipItemTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = F30CBFF323B9B91F008D6B47 /* TipItemTextField.m */; };
 		F30CBFFD23B9E71E008D6B47 /* VeritcallyAlignNSTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F30CBFFC23B9E71E008D6B47 /* VeritcallyAlignNSTextFieldCell.m */; };
 		F318018423D417F7000E17A5 /* provider.rb in Resources */ = {isa = PBXBuildFile; fileRef = F318018223D415A4000E17A5 /* provider.rb */; };
+		F37DB94123D428C0002D799E /* FontAwesome-Solid.otf in Resources */ = {isa = PBXBuildFile; fileRef = F3E5B64A23BA846A002BEDD6 /* FontAwesome-Solid.otf */; };
 		F38236C923BAC24F001299DE /* TipEmptyView.m in Sources */ = {isa = PBXBuildFile; fileRef = F38236C823BAC24F001299DE /* TipEmptyView.m */; };
 		F3E5B64B23BA846A002BEDD6 /* FontAwesome-Solid.otf in Resources */ = {isa = PBXBuildFile; fileRef = F3E5B64A23BA846A002BEDD6 /* FontAwesome-Solid.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		F300998823B8159D0000B9E3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F300996C23B8159D0000B9E3 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = F300997323B8159D0000B9E3;
-			remoteInfo = test2;
-		};
 		F300999323B8159E0000B9E3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F300996C23B8159D0000B9E3 /* Project object */;
@@ -49,9 +41,6 @@
 		F300997F23B8159D0000B9E3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F300998023B8159D0000B9E3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F300998223B8159D0000B9E3 /* tip.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = tip.entitlements; sourceTree = "<group>"; };
-		F300998723B8159D0000B9E3 /* TipTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TipTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		F300998B23B8159D0000B9E3 /* tipTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = tipTests.m; sourceTree = "<group>"; };
-		F300998D23B8159D0000B9E3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F300999223B8159E0000B9E3 /* TipUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TipUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F300999623B8159E0000B9E3 /* tipUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = tipUITests.m; sourceTree = "<group>"; };
 		F300999823B8159E0000B9E3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -85,13 +74,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F300998423B8159D0000B9E3 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		F300998F23B8159E0000B9E3 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -106,7 +88,6 @@
 			isa = PBXGroup;
 			children = (
 				F300997623B8159D0000B9E3 /* Tip */,
-				F300998A23B8159D0000B9E3 /* TipTests */,
 				F300999523B8159E0000B9E3 /* TipUITests */,
 				F300997523B8159D0000B9E3 /* Products */,
 			);
@@ -116,7 +97,6 @@
 			isa = PBXGroup;
 			children = (
 				F300997423B8159D0000B9E3 /* Tip.app */,
-				F300998723B8159D0000B9E3 /* TipTests.xctest */,
 				F300999223B8159E0000B9E3 /* TipUITests.xctest */,
 			);
 			name = Products;
@@ -149,15 +129,6 @@
 				F38236C823BAC24F001299DE /* TipEmptyView.m */,
 			);
 			path = Tip;
-			sourceTree = "<group>";
-		};
-		F300998A23B8159D0000B9E3 /* TipTests */ = {
-			isa = PBXGroup;
-			children = (
-				F300998B23B8159D0000B9E3 /* tipTests.m */,
-				F300998D23B8159D0000B9E3 /* Info.plist */,
-			);
-			path = TipTests;
 			sourceTree = "<group>";
 		};
 		F300999523B8159E0000B9E3 /* TipUITests */ = {
@@ -199,24 +170,6 @@
 			productReference = F300997423B8159D0000B9E3 /* Tip.app */;
 			productType = "com.apple.product-type.application";
 		};
-		F300998623B8159D0000B9E3 /* TipTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = F300999E23B8159E0000B9E3 /* Build configuration list for PBXNativeTarget "TipTests" */;
-			buildPhases = (
-				F300998323B8159D0000B9E3 /* Sources */,
-				F300998423B8159D0000B9E3 /* Frameworks */,
-				F300998523B8159D0000B9E3 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				F300998923B8159D0000B9E3 /* PBXTargetDependency */,
-			);
-			name = TipTests;
-			productName = test2Tests;
-			productReference = F300998723B8159D0000B9E3 /* TipTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 		F300999123B8159E0000B9E3 /* TipUITests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = F30099A123B8159E0000B9E3 /* Build configuration list for PBXNativeTarget "TipUITests" */;
@@ -247,10 +200,6 @@
 					F300997323B8159D0000B9E3 = {
 						CreatedOnToolsVersion = 11.2.1;
 					};
-					F300998623B8159D0000B9E3 = {
-						CreatedOnToolsVersion = 11.2.1;
-						TestTargetID = F300997323B8159D0000B9E3;
-					};
 					F300999123B8159E0000B9E3 = {
 						CreatedOnToolsVersion = 11.2.1;
 						TestTargetID = F300997323B8159D0000B9E3;
@@ -271,7 +220,6 @@
 			projectRoot = "";
 			targets = (
 				F300997323B8159D0000B9E3 /* Tip */,
-				F300998623B8159D0000B9E3 /* TipTests */,
 				F300999123B8159E0000B9E3 /* TipUITests */,
 			);
 		};
@@ -288,18 +236,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F300998523B8159D0000B9E3 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				F30099B423B8707A0000B9E3 /* RobotoMono-Regular.ttf in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		F300999023B8159E0000B9E3 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F37DB94123D428C0002D799E /* FontAwesome-Solid.otf in Resources */,
 				F318018423D417F7000E17A5 /* provider.rb in Resources */,
 				F30099B523B8707B0000B9E3 /* RobotoMono-Regular.ttf in Resources */,
 			);
@@ -324,14 +265,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F300998323B8159D0000B9E3 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				F300998C23B8159D0000B9E3 /* tipTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		F300998E23B8159E0000B9E3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -343,11 +276,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		F300998923B8159D0000B9E3 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = F300997323B8159D0000B9E3 /* Tip */;
-			targetProxy = F300998823B8159D0000B9E3 /* PBXContainerItemProxy */;
-		};
 		F300999423B8159E0000B9E3 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = F300997323B8159D0000B9E3 /* Tip */;
@@ -507,44 +435,6 @@
 			};
 			name = Release;
 		};
-		F300999F23B8159E0000B9E3 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = TipTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/../Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
-				PRODUCT_BUNDLE_IDENTIFIER = tanin.tip.tipTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Tip.app/Contents/MacOS/Tip";
-			};
-			name = Debug;
-		};
-		F30099A023B8159E0000B9E3 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = TipTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/../Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
-				PRODUCT_BUNDLE_IDENTIFIER = tanin.tip.tipTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Tip.app/Contents/MacOS/Tip";
-			};
-			name = Release;
-		};
 		F30099A223B8159E0000B9E3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -600,15 +490,6 @@
 			buildConfigurations = (
 				F300999C23B8159E0000B9E3 /* Debug */,
 				F300999D23B8159E0000B9E3 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		F300999E23B8159E0000B9E3 /* Build configuration list for PBXNativeTarget "TipTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				F300999F23B8159E0000B9E3 /* Debug */,
-				F30099A023B8159E0000B9E3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
