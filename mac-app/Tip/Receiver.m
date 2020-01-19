@@ -14,6 +14,14 @@
 
 @implementation Receiver
 
+- (id)initWithTipper:(ExternalTipper *)tipper_ {
+    self = [super init];
+    if (self) {
+        self.tipper = tipper_;
+    }
+    return self;
+}
+
 - (NSString*) readInput:(NSPasteboard*)pboard
                userData:(NSString *)userData
                   error:(NSString **)error {
@@ -28,17 +36,16 @@
     return [pboard stringForType:NSPasteboardTypeString];
 }
 
-- (void)openTips:(NSPasteboard *)pboard
-        userData:(NSString *)userData
-           error:(NSString **)error {
+- (void)openTips:(nonnull NSPasteboard *)pboard
+        userData:(nonnull NSString *)userData
+           error:(NSString *_Nullable*_Nonnull)error {
     NSString *input = [self readInput:pboard userData:userData error:error];
     
     if (!input) {
         return;
     }
     
-    ExternalTipper *tipper = [ExternalTipper new];
-    [self showPopover:[tipper makeTip:input]];
+    [self showPopover:[self.tipper makeTip:input]];
 }
 
 - (void)showPopover: (NSArray<TipItem *> *) items {
