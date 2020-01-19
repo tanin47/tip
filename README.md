@@ -1,6 +1,8 @@
 Tip: Universal tooltip for Mac OS X
 ===================================================
 
+[![Gitter chat](https://badges.gitter.im/gitterHQ/gitter.png)](https://gitter.im/tanin-tip/community#)
+
 Tip provides useful info at your fingertip. You can simply select the text and hit the shortkey to activate the tooltip showing useful info.
 
 "Useful info" is programmed by you using your fav programming language, and it works with every Mac app.

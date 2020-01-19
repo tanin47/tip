@@ -13,6 +13,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ExternalTipper : NSObject<Tipper>
 
+@property NSString* provider;
+
+-(id)initWithProvider:(NSString *)provider_;
+
 @end
 
 NS_ASSUME_NONNULL_END

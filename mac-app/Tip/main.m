@@ -16,24 +16,22 @@ int main(int argc, const char * argv[]) {
     }
     
     NSApplication* app = NSApplication.sharedApplication;
+    
+    NSUserDefaults *args = [NSUserDefaults standardUserDefaults];
+    NSString* providerPath = [args stringForKey:@"provider"];
+    
+    if (!providerPath) {
+        NSString *home = NSHomeDirectory();
+        assert(home);
+        providerPath = [NSString stringWithFormat:@"%@/.tip/provider", home];
+    }
  
-    Receiver *receiver = [[Receiver alloc] init];
+    ExternalTipper *tipper = [[ExternalTipper alloc] initWithProvider:providerPath];
+    Receiver *receiver = [[Receiver alloc] initWithTipper:tipper];
     receiver.controller = [[TipTableController alloc] init];
     [NSApp setServicesProvider:receiver];
 
-//     TipItem *item1 = [[TipItem alloc] init];
-//     item1.type = TipItemTypeText;
-//     item1.value = @"[first] 29 Dec 2019 06:34:03.000 PST (-0800)";
-//
-//    TipItem *item2 = [[TipItem alloc] init];
-//    item2.type = TipItemTypeUrl;
-//    item2.value = @"http://google.com";
-//
-//    [receiver showPopover:[NSArray arrayWithObjects:item1, item2, nil]];
-//    [receiver showPopover:[NSArray arrayWithObjects:nil]];
-    
     NSStatusBar* statusBar = NSStatusBar.systemStatusBar;
-    
     NSStatusItem *statusItem = [statusBar statusItemWithLength:25];
     
     statusItem.button.cell.font = [NSFont fontWithName:@"Font Awesome 5 Free" size:14];
@@ -42,7 +40,15 @@ int main(int argc, const char * argv[]) {
     
     statusItem.menu = [[NSMenu alloc] initWithTitle:@"Tip"];
     [statusItem.menu addItemWithTitle:@"Quit" action:@selector(terminate:) keyEquivalent:@""];
-
+    
+    NSString* testInput = [args stringForKey:@"test"];
+    if (testInput) {
+        NSPasteboard* pboard = [NSPasteboard pasteboardWithUniqueName];
+        [pboard setString:testInput forType:NSPasteboardTypeString];
+        NSString *error = nil;
+        [receiver openTips:pboard userData:@"" error:&error];
+    }
+    
     [app run];
 }
 

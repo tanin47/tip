@@ -8,14 +8,20 @@
 
 #import <Foundation/Foundation.h>
 #import "TipTableController.h"
+#import "ExternalTipper.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface Receiver : NSObject
 
 @property TipTableController* controller;
+@property ExternalTipper* tipper;
 
+- (id)initWithTipper:(ExternalTipper *)tipper_;
 - (void)showPopover: (NSArray<TipItem *> *) text;
+- (void)openTips:(nonnull NSPasteboard *)pboard
+        userData:(nonnull NSString *)userData
+           error:(NSString * _Nullable * _Nonnull)error;
 
 @end
 

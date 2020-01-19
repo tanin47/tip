@@ -8,11 +8,11 @@
 
 #import <XCTest/XCTest.h>
 
-@interface test2UITests : XCTestCase
+@interface tipUITests : XCTestCase
 
 @end
 
-@implementation test2UITests
+@implementation tipUITests
 
 - (void)setUp {
     // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -27,13 +27,23 @@
     // Put teardown code here. This method is called after the invocation of each test method in the class.
 }
 
-- (void)testExample {
+- (void)testClickingOnText {
+    NSPasteboard *pboard = [NSPasteboard generalPasteboard];
+    [pboard setString:@"" forType:NSPasteboardTypeString];
+    
     // UI tests must launch the application that they test.
     XCUIApplication *app = [[XCUIApplication alloc] init];
+    
+    NSBundle *bundle = [NSBundle bundleForClass:[self class]];
+    NSString *path = [bundle pathForResource:@"provider" ofType:@"rb"];
+    app.launchArguments = @[@"-test", @"Test Input", @"-provider", path];
     [app launch];
-
-    // Use recording to get started writing UI tests.
-    // Use XCTAssert and related functions to verify your tests produce the correct results.
+    
+    [app.popovers.element.tableRows.firstMatch.cells.firstMatch click];
+    
+    XCTAssert([@"Return Test Input" isEqualToString:[pboard stringForType:NSPasteboardTypeString]]);
+    
+    [app terminate];
 }
 
 - (void)testLaunchPerformance {

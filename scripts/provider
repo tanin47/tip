@@ -103,7 +103,6 @@ def get_time(input)
   ]
 end
 
-
 if __FILE__ == $0
   main(ARGV[0])
 end

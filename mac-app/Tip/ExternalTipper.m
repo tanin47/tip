@@ -15,6 +15,15 @@
 
 @implementation ExternalTipper
 
+-(id)initWithProvider:(NSString *)provider_ 
+{
+     self = [super init];
+     if (self) {
+         self.provider = provider_;
+     }
+     return self;
+}
+
 - (NSArray<TipItem *> *) makeTip: (NSString*) input {
     NSData* output = [self execute:input];
     return [self convert:output];
@@ -88,9 +97,7 @@
     NSTask *task = [[NSTask alloc] init];
     task.standardOutput = pipe;
 
-    NSString *home = NSHomeDirectory();
-    assert(home);
-    task.launchPath = [NSString stringWithFormat:@"%@/.tip/provider", home];
+    task.launchPath = self.provider;
     
     task.arguments = @[input];
     NSLog(@"Run: %@ with args: %@", task.launchPath, task.arguments);
