@@ -22,9 +22,9 @@
 }
 
 - (void)handleAppleEvent:(NSAppleEventDescriptor *)event withReplyEvent:(NSAppleEventDescriptor *)replyEvent {
-    NSPasteboard* pboard = [NSPasteboard generalPasteboard];
-    [pboard declareTypes:[NSArray arrayWithObject:NSPasteboardTypeString] owner:nil];
-    [pboard setString:[event paramDescriptorForKeyword:keyDirectObject].stringValue forType:NSPasteboardTypeString];
+    NSPasteboard* clipboard = [NSPasteboard generalPasteboard];
+    [clipboard clearContents];
+    [clipboard setString:[event paramDescriptorForKeyword:keyDirectObject].stringValue forType:NSPasteboardTypeString];
 }
 
 @end

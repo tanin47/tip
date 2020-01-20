@@ -12,6 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 typedef enum TipItemType : NSUInteger {
     TipItemTypeText,
+    TipItemTypeRewrite,
     TipItemTypeUrl
 } TipItemType;
 

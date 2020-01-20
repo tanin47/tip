@@ -18,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property ExternalTipper* tipper;
 
 - (id)initWithTipper:(ExternalTipper *)tipper_;
-- (void)showPopover: (NSString*) input;
+- (void)showPopover: (nonnull NSPasteboard*) pboard;
 - (void)openTips:(nonnull NSPasteboard *)pboard
         userData:(nonnull NSString *)userData
            error:(NSString * _Nullable * _Nonnull)error;

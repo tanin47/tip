@@ -120,8 +120,15 @@
     
     
     if (item.type == TipItemTypeUrl) {
+        NSLog(@"Action: open URL %@", item.value);
         [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:item.value]];
+    } else if (item.type == TipItemTypeRewrite) {
+        NSLog(@"Action: rewrite to %@", item.value);
+        [self.pboard clearContents];
+        [self.pboard setString:item.value forType:NSPasteboardTypeString];
+        [self.popover close];
     } else {
+        NSLog(@"Action: copy text %@", item.value);
         NSTextField* iconText = ((NSView*)[rowView viewAtColumn:0]).subviews.firstObject;
         
         [NSAnimationContext runAnimationGroup:^(NSAnimationContext *context) {
@@ -133,9 +140,9 @@
             iconText.stringValue = @"\uf46c";
         }];
         
-        NSPasteboard *pasteboard = [NSPasteboard generalPasteboard];
-        [pasteboard clearContents];
-        [pasteboard setString:item.value forType:NSPasteboardTypeString];
+        NSPasteboard *clipboard = [NSPasteboard generalPasteboard];
+        [clipboard clearContents];
+        [clipboard setString:item.value forType:NSPasteboardTypeString];
     }
 }
 
@@ -180,6 +187,8 @@
         NSTextField* iconText = icon.subviews.firstObject;
         if (item.type == TipItemTypeUrl) {
             iconText.stringValue = @"\uf35d";
+        } else if (item.type == TipItemTypeRewrite) {
+            iconText.stringValue = @"\uf044";
         } else {
             iconText.stringValue = @"\uf0c5";
         }

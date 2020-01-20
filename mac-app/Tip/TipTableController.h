@@ -17,6 +17,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic) NSArray<TipItem*>* items;
 @property (nonatomic) bool showError;
+@property (nullable) NSPasteboard* pboard;
+@property (nullable) NSPopover* popover;
 @property TipNoticeView* errorView;
 @property TipNoticeView* emptyView;
 @property TipTableView* table;

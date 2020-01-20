@@ -78,6 +78,8 @@
             item.type = TipItemTypeUrl;
         } else if ([type isEqualToString:@"text"]) {
             item.type = TipItemTypeText;
+        } else if ([type isEqualToString:@"rewrite"]) {
+            item.type = TipItemTypeRewrite;
         } else {
             NSLog(@"Malformed JSON: %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
             @throw exception;
