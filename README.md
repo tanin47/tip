@@ -70,3 +70,28 @@ The command-line tool processes the input, decides which info to show, and print
 
 Tip processes the JSON and renders the tooltip at the mouse location.
 
+
+Develop a provider
+-------------------
+
+1. Make an executable binary at `~/.tip/provder` and `chmod 755 ~/.tip/provider`.
+2. Test the provider manually first by executing `~/.tip/provider [some-input]` to see if it returns a valid JSON.
+
+The JSON must be an array that looks like below:
+
+```
+[
+  {"type": "text", "value": "Some text"},
+  {"type": "url", "label": "Go to JIRA", "value": "https://your-jira-url/JIRA-0001"},
+]
+```
+
+For text, it must contains `"type": "text"` and the field `value`.
+
+For URL, it must contains `"type": "url"` and the fields `label` and `value`.
+
+If the tooltip doesn't work correctly, please see log messages in Console.app.
+
+Happy programming!
+
+
