@@ -74,7 +74,7 @@ Tip processes the JSON and renders the tooltip at the mouse location.
 Develop a provider
 -------------------
 
-1. Make an executable binary at `~/.tip/provder` and `chmod 755 ~/.tip/provider`.
+1. Make an executable binary at `~/.tip/provider` and `chmod 755 ~/.tip/provider`.
 2. Test the provider manually first by executing `~/.tip/provider [some-input]` to see if it returns a valid JSON.
 
 The JSON must be an array that looks like below:
