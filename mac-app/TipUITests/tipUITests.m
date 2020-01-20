@@ -14,6 +14,9 @@
 
 @implementation tipUITests
 
+NSPasteboard* pboard;
+XCUIApplication* app;
+
 - (void)setUp {
     // Put setup code here. This method is called before the invocation of each test method in the class.
 
@@ -21,29 +24,31 @@
     self.continueAfterFailure = NO;
 
     // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
-}
-
-- (void)tearDown {
-    // Put teardown code here. This method is called after the invocation of each test method in the class.
-}
-
-- (void)testClickingOnText {
-    NSPasteboard *pboard = [NSPasteboard generalPasteboard];
+    pboard = [NSPasteboard generalPasteboard];
     [pboard setString:@"" forType:NSPasteboardTypeString];
     
-    // UI tests must launch the application that they test.
-    XCUIApplication *app = [[XCUIApplication alloc] init];
+    app = [[XCUIApplication alloc] init];
     
     NSBundle *bundle = [NSBundle bundleForClass:[self class]];
     NSString *path = [bundle pathForResource:@"provider" ofType:@"rb"];
-    app.launchArguments = @[@"-test", @"Test Input", @"-provider", path];
+    app.launchArguments = @[@"-test", @"TestInput", @"-provider", path];
     [app launch];
-    
-    [app.popovers.element.tableRows.firstMatch.cells.firstMatch click];
-    
-    XCTAssert([@"Return Test Input" isEqualToString:[pboard stringForType:NSPasteboardTypeString]]);
-    
+}
+
+- (void)tearDown {
     [app terminate];
+}
+
+- (void)testClickingOnText {
+    [app.popovers.element.tableRows.firstMatch.cells.firstMatch click];
+    XCTAssert([@"Return TestInput" isEqualToString:[pboard stringForType:NSPasteboardTypeString]]);
+}
+
+
+- (void)testClickingOnUrl {
+    [[app.popovers.element.tableRows elementBoundByIndex:1].cells.firstMatch click];
+    [NSThread sleepForTimeInterval:0.1f];
+    XCTAssert([@"tanintip://TestInput" isEqualToString:[pboard stringForType:NSPasteboardTypeString]]);
 }
 
 - (void)testLaunchPerformance {

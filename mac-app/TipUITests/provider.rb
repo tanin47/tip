@@ -11,7 +11,7 @@ def main(input)
    {
        type: 'url',
        label: "Go to #{input}",
-       value: 'https://tanin.nanakorn.com'
+       value: "tanintip://#{input}"
    }
   ].to_json
 end

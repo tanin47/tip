@@ -17,7 +17,7 @@
                BlueprintIdentifier = "F300997323B8159D0000B9E3"
                BuildableName = "Tip.app"
                BlueprintName = "Tip"
-               ReferencedContainer = "container:tip.xcodeproj">
+               ReferencedContainer = "container:Tip.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -47,7 +47,7 @@
             BlueprintIdentifier = "F300997323B8159D0000B9E3"
             BuildableName = "Tip.app"
             BlueprintName = "Tip"
-            ReferencedContainer = "container:tip.xcodeproj">
+            ReferencedContainer = "container:Tip.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -64,7 +64,7 @@
             BlueprintIdentifier = "F300997323B8159D0000B9E3"
             BuildableName = "Tip.app"
             BlueprintName = "Tip"
-            ReferencedContainer = "container:tip.xcodeproj">
+            ReferencedContainer = "container:Tip.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

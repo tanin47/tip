@@ -10,6 +10,10 @@
 #import "Receiver.h"
 #import "ExternalTipper.h"
 
+#ifdef DEBUG
+#import "ForTest.h"
+#endif
+
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
         // Setup code that might create autoreleased objects goes here.
@@ -49,8 +53,15 @@ int main(int argc, const char * argv[]) {
         [receiver openTips:pboard userData:@"" error:&error];
     }
     
+#ifdef DEBUG
+    NSLog(@"DEBUG MODE: Register ForTest as a URL handler for tanintip://");
+    ForTest* forTest = [[ForTest alloc] init];
+    [forTest registerUrlSchemeForTest];
+#endif
+    
     [app run];
 }
+
 
 void terminate() {
     [NSApp terminate:nil];
