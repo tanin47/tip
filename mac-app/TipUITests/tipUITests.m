@@ -29,8 +29,11 @@ XCUIApplication* app;
     
     app = [[XCUIApplication alloc] init];
     
+}
+
+- (void) launchWithProvider:(NSString *)provider {
     NSBundle *bundle = [NSBundle bundleForClass:[self class]];
-    NSString *path = [bundle pathForResource:@"provider" ofType:@"rb"];
+    NSString *path = [bundle pathForResource:provider ofType:@"rb"];
     app.launchArguments = @[@"-test", @"TestInput", @"-provider", path];
     [app launch];
 }
@@ -40,15 +43,26 @@ XCUIApplication* app;
 }
 
 - (void)testClickingOnText {
+    [self launchWithProvider:@"provider"];
     [app.popovers.element.tableRows.firstMatch.cells.firstMatch click];
     XCTAssert([@"Return TestInput" isEqualToString:[pboard stringForType:NSPasteboardTypeString]]);
 }
 
-
 - (void)testClickingOnUrl {
+    [self launchWithProvider:@"provider"];
     [[app.popovers.element.tableRows elementBoundByIndex:1].cells.firstMatch click];
     [NSThread sleepForTimeInterval:0.1f];
     XCTAssert([@"tanintip://TestInput" isEqualToString:[pboard stringForType:NSPasteboardTypeString]]);
+}
+
+- (void)testEmpty {
+    [self launchWithProvider:@"empty_provider"];
+    XCTAssert([@"No tips. Consider adding some." isEqualToString:[[app.popovers childrenMatchingType:XCUIElementTypeAny] elementBoundByIndex:1].firstMatch.value]);
+}
+
+- (void)testError {
+    [self launchWithProvider:@"error_provider"];
+    XCTAssert([@"Error occurred. See Console.app." isEqualToString:[[app.popovers childrenMatchingType:XCUIElementTypeAny] elementBoundByIndex:1].firstMatch.value]);
 }
 
 - (void)testLaunchPerformance {

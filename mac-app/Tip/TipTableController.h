@@ -9,14 +9,16 @@
 #import <Cocoa/Cocoa.h>
 #import "TipItem.h"
 #import "TipTableView.h"
-#import "TipEmptyView.h"
+#import "TipNoticeView.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface TipTableController : NSViewController<NSTableViewDataSource, NSTableViewDelegate>
 
 @property (nonatomic) NSArray<TipItem*>* items;
-@property TipEmptyView* emptyView;
+@property (nonatomic) bool showError;
+@property TipNoticeView* errorView;
+@property TipNoticeView* emptyView;
 @property TipTableView* table;
 @property NSTableColumn* iconColumn;
 @property NSTableColumn* textColumn;

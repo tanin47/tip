@@ -11,6 +11,7 @@
 #import "TipItemTextField.h"
 #import "VeritcallyAlignNSTextFieldCell.h"
 #include <stdlib.h>
+#import "TipNoticeView.h"
 
 @implementation TipTableController
 
@@ -18,9 +19,19 @@
     if (self = [super init]) {
         self.view = [[NSView alloc] init];
         
-        _emptyView = [[TipEmptyView alloc] initWithFrame:CGRectMake(0, 0, 150, 40)];
+        _emptyView = [[TipNoticeView alloc] initWithFrame:CGRectMake(0, 0, 260, 40)
+                                                     icon:@"\uf59a"
+                                                  message:@"No tips. Consider adding some."
+                                                    color:NSColor.systemGrayColor];
         _emptyView.hidden = YES;
         [self.view addSubview:_emptyView];
+        
+        _errorView = [[TipNoticeView alloc] initWithFrame:CGRectMake(0, 0, 270, 40)
+                                                     icon:@"\uf06a"
+                                                  message:@"Error occurred. See Console.app."
+                                                    color:NSColor.systemPinkColor];
+        _errorView.hidden = YES;
+        [self.view addSubview:_errorView];
         
         _table = [[TipTableView alloc] initWithFrame:CGRectMake(0, 0, 10, 10)];
         _table.focusRingType = NSFocusRingTypeNone;
@@ -56,18 +67,32 @@
     }
 }
 
+- (void) setShowError:(bool)showError {
+    _showError = showError;
+    _items = nil;
+    [self update];
+}
+
 - (void)setItems:(NSArray<TipItem *> *)items {
     _items = items;
+    _showError = NO;
     [self update];
     [_table reloadData];
 }
 
 - (void)update {
-    if (_items.count == 0) {
+    if (_showError) {
+        _errorView.hidden = NO;
+        _emptyView.hidden = YES;
+        _table.hidden = YES;
+        self.preferredContentSize = _errorView.frame.size;
+    } else if (_items.count == 0) {
+        _errorView.hidden = YES;
         _emptyView.hidden = NO;
         _table.hidden = YES;
         self.preferredContentSize = _emptyView.frame.size;
     } else {
+        _errorView.hidden = YES;
         _emptyView.hidden = YES;
         _table.hidden = NO;
         

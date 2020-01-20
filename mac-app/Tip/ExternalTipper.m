@@ -36,21 +36,29 @@
                options:0
                error:&error];
     
+    NSException* exception = [NSException
+                               exceptionWithName:@"MalformedJsonException"
+                               reason:@"JSON is malformed"
+                               userInfo:[NSDictionary
+                                            dictionaryWithObject:[[NSString alloc] initWithData:data                                encoding:NSUTF8StringEncoding]
+                                                            forKey:@"json"]
+                              ];
+    
     if (error) {
         NSLog(@"Malformed JSON: %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
-        return [NSArray new];
+        @throw exception;
     }
     
     if (![json isKindOfClass:[NSArray class]]) {
         NSLog(@"Malformed JSON: %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
-        return [NSArray new];
+        @throw exception;
     }
     
     NSMutableArray<TipItem*>* items = [NSMutableArray new];
     for (id maybeDict in (NSArray *)json) {
         if (![maybeDict isKindOfClass:[NSDictionary class]]) {
             NSLog(@"Malformed JSON: %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
-            return [NSArray new];
+            @throw exception;
         }
         
         NSDictionary* dict = (NSDictionary*)maybeDict;
@@ -61,7 +69,7 @@
         
         if (type == nil || value == nil) {
             NSLog(@"Malformed JSON: %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
-            return [NSArray new];
+            @throw exception;
         }
         
         TipItem *item = [TipItem new];
@@ -72,7 +80,7 @@
             item.type = TipItemTypeText;
         } else {
             NSLog(@"Malformed JSON: %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
-            return [NSArray new];
+            @throw exception;
         }
         item.value = value;
         if (item.type == TipItemTypeText) {
@@ -80,7 +88,7 @@
         } else {
             if (label == nil) {
                 NSLog(@"Malformed JSON: %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
-                return [NSArray new];
+                @throw exception;
             }
             item.label = label;
         }
@@ -107,6 +115,7 @@
     
     NSData *output = [file readDataToEndOfFile];
     [file closeFile];
+    NSLog(@"Output: %@", [[NSString alloc] initWithData:output encoding:NSUTF8StringEncoding]);
     
     return output;
 }

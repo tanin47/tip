@@ -22,7 +22,9 @@
 		F318018423D417F7000E17A5 /* provider.rb in Resources */ = {isa = PBXBuildFile; fileRef = F318018223D415A4000E17A5 /* provider.rb */; };
 		F37DB94123D428C0002D799E /* FontAwesome-Solid.otf in Resources */ = {isa = PBXBuildFile; fileRef = F3E5B64A23BA846A002BEDD6 /* FontAwesome-Solid.otf */; };
 		F37DB94723D548E7002D799E /* ForTest.m in Sources */ = {isa = PBXBuildFile; fileRef = F37DB94623D548E7002D799E /* ForTest.m */; };
-		F38236C923BAC24F001299DE /* TipEmptyView.m in Sources */ = {isa = PBXBuildFile; fileRef = F38236C823BAC24F001299DE /* TipEmptyView.m */; };
+		F3A35D2D23D6301200982791 /* error_provider.rb in Resources */ = {isa = PBXBuildFile; fileRef = F3A35D2C23D6301200982791 /* error_provider.rb */; };
+		F3A35D3023D6344000982791 /* TipNoticeView.m in Sources */ = {isa = PBXBuildFile; fileRef = F3A35D2F23D6344000982791 /* TipNoticeView.m */; };
+		F3A35D3223D636ED00982791 /* empty_provider.rb in Resources */ = {isa = PBXBuildFile; fileRef = F3A35D3123D636EC00982791 /* empty_provider.rb */; };
 		F3E5B64B23BA846A002BEDD6 /* FontAwesome-Solid.otf in Resources */ = {isa = PBXBuildFile; fileRef = F3E5B64A23BA846A002BEDD6 /* FontAwesome-Solid.otf */; };
 /* End PBXBuildFile section */
 
@@ -64,8 +66,10 @@
 		F37DB94523D548E7002D799E /* ForTest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ForTest.h; sourceTree = "<group>"; };
 		F37DB94623D548E7002D799E /* ForTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ForTest.m; sourceTree = "<group>"; };
 		F37DB94823D54CA9002D799E /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F38236C723BAC24F001299DE /* TipEmptyView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TipEmptyView.h; sourceTree = "<group>"; };
-		F38236C823BAC24F001299DE /* TipEmptyView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TipEmptyView.m; sourceTree = "<group>"; };
+		F3A35D2C23D6301200982791 /* error_provider.rb */ = {isa = PBXFileReference; lastKnownFileType = text.script.ruby; path = error_provider.rb; sourceTree = "<group>"; };
+		F3A35D2E23D6344000982791 /* TipNoticeView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TipNoticeView.h; sourceTree = "<group>"; };
+		F3A35D2F23D6344000982791 /* TipNoticeView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TipNoticeView.m; sourceTree = "<group>"; };
+		F3A35D3123D636EC00982791 /* empty_provider.rb */ = {isa = PBXFileReference; lastKnownFileType = text.script.ruby; path = empty_provider.rb; sourceTree = "<group>"; };
 		F3E5B64A23BA846A002BEDD6 /* FontAwesome-Solid.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FontAwesome-Solid.otf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -128,10 +132,10 @@
 				F30CBFF323B9B91F008D6B47 /* TipItemTextField.m */,
 				F30CBFFB23B9E71E008D6B47 /* VeritcallyAlignNSTextFieldCell.h */,
 				F30CBFFC23B9E71E008D6B47 /* VeritcallyAlignNSTextFieldCell.m */,
-				F38236C723BAC24F001299DE /* TipEmptyView.h */,
-				F38236C823BAC24F001299DE /* TipEmptyView.m */,
 				F37DB94523D548E7002D799E /* ForTest.h */,
 				F37DB94623D548E7002D799E /* ForTest.m */,
+				F3A35D2E23D6344000982791 /* TipNoticeView.h */,
+				F3A35D2F23D6344000982791 /* TipNoticeView.m */,
 			);
 			path = Tip;
 			sourceTree = "<group>";
@@ -142,6 +146,8 @@
 				F37DB94823D54CA9002D799E /* Info.plist */,
 				F300999623B8159E0000B9E3 /* tipUITests.m */,
 				F318018223D415A4000E17A5 /* provider.rb */,
+				F3A35D2C23D6301200982791 /* error_provider.rb */,
+				F3A35D3123D636EC00982791 /* empty_provider.rb */,
 			);
 			path = TipUITests;
 			sourceTree = "<group>";
@@ -246,8 +252,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				F37DB94123D428C0002D799E /* FontAwesome-Solid.otf in Resources */,
+				F3A35D3223D636ED00982791 /* empty_provider.rb in Resources */,
 				F318018423D417F7000E17A5 /* provider.rb in Resources */,
 				F30099B523B8707B0000B9E3 /* RobotoMono-Regular.ttf in Resources */,
+				F3A35D2D23D6301200982791 /* error_provider.rb in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -265,8 +273,8 @@
 				F30CBFF423B9B91F008D6B47 /* TipItemTextField.m in Sources */,
 				F300998123B8159D0000B9E3 /* main.m in Sources */,
 				F30CBFF123B9A154008D6B47 /* TipTableView.m in Sources */,
+				F3A35D3023D6344000982791 /* TipNoticeView.m in Sources */,
 				F30099A623B816AF0000B9E3 /* Receiver.m in Sources */,
-				F38236C923BAC24F001299DE /* TipEmptyView.m in Sources */,
 				F37DB94723D548E7002D799E /* ForTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
