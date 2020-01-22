@@ -46,6 +46,16 @@ def get_time(input)
   ]
 end
 
+def get_definition(input)
+  input = input.strip
+  return [] unless /^[a-zA-Z]+$/.match(input)
+  [{
+       type: 'url',
+       label: 'Open Dictionary',
+       value: "https://www.dictionary.com/browse/#{input}"
+  }]
+end
+
 if __FILE__ == $0
   main(ARGV[0])
 end
