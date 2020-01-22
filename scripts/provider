@@ -7,7 +7,6 @@ def main(input)
   items = []
   items += get_time(input)
   items += get_jira_url(input)
-  items += get_code_url_from_stacktrace_line(input)
 
   puts items.compact.to_json
 end
@@ -22,62 +21,6 @@ def get_jira_url(input)
        label: 'Open JIRA',
        value: "https://youtrack.jetbrains.com/issue/#{input}"
    }]
-end
-
-HOME = File.expand_path('~')
-REPOS = [
-    {
-        local_path: "#{HOME}/go/src/github.com/tanin47/git-notes",
-        github_repo: 'tanin47/git-notes'
-    }
-]
-
-def get_code_url_from_stacktrace_line(input)
-  input = input.strip
-
-  path, line = parse_error_stacktrace_line(input)
-
-  return [] unless path
-
-  REPOS.each do |repo|
-    path.gsub!(/\A\/?#{repo}r\//, '')
-  end
-  intellij_line_param, github_line_param = if line
-    ["&line=#{line}", "#L#{line}"]
-  else
-    ["", ""]
-  end
-
-  home = File.expand_path('~')
-  REPOS.map do |repo|
-    get_all_matching_file_paths(repo[:local_path], path).take(2).map do |file_path|
-      [
-          {
-              type: 'url',
-              label: "Open #{repo[:github_repo]}/#{file_path} in IntelliJ",
-              value: "idea://open?file=#{repo[:local_path]}/#{file_path}#{intellij_line_param}"
-          },
-          {
-              type: 'url',
-              label: "Open #{repo[:github_repo]}/#{file_path} on Github",
-              value: "https://github.com/#{repo[:github_repo]}/tree/master/#{file_path}#{github_line_param}"
-          }
-      ]
-    end.flatten
-  end.flatten
-end
-
-def get_all_matching_file_paths(repo, path)
-  Dir.chdir(repo) do
-    `git ls-files *#{path}*`.split("\n").map { |m| m.strip }
-  end
-end
-
-def parse_error_stacktrace_line(input)
-  # Example: some_folder/some_path.go:42
-  return nil unless /\A\/?[a-zA-Z0-9_\-\.]+(\/[a-zA-Z0-9_\-\.]+)*\/?(:[0-9]+)?+\z/.match(input)
-
-  input.split(':')
 end
 
 TIME_FORMAT = '%-d %b %Y %H:%M:%S.%3N'
