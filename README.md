@@ -44,7 +44,7 @@ Installation
 
 1. Download the latest version of `Tip.app` from [the release page](https://github.com/tanin47/tip/releases)
 2. Download and copy `scripts/provider` to `~/.tip/provider`. Run `chmod 755 ~/.tip/provider`. 
-  * Or you can simply run: `curl -o ~/.tip/ --create-dirs  https://raw.githubusercontent.com/tanin47/tip/master/scripts/provider`
+    * Or you can simply run: `curl -o ~/.tip/ --create-dirs  https://raw.githubusercontent.com/tanin47/tip/master/scripts/provider && chmod 755 ~/.tip/provider`
 3. Go to System Preferences > Keyboard > Shortcuts > Services and set the short key for "Tip: open tips". (I set my touch bar to always show function keys and use Cmd + F3)
 
 The sample script is in Ruby, so you need Ruby to run it. Otherwise, you can simply make your own provider as well.
