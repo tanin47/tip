@@ -7,6 +7,7 @@ def main(input)
   items = []
   items += get_time(input)
   items += get_jira_url(input)
+  items += get_definition(input)
 
   puts items.compact.to_json
 end
@@ -44,6 +45,16 @@ def get_time(input)
       value: "#{time.localtime.strftime(TIME_FORMAT)} #{Time.now.zone} (#{Time.now.strftime('%z')})"
     }
   ]
+end
+
+def get_definition(input)
+  input = input.strip
+  return [] unless /^[a-zA-Z]+$/.match(input)
+  [{
+       type: 'url',
+       label: 'Open Dictionary',
+       value: "https://www.dictionary.com/browse/#{input}"
+  }]
 end
 
 if __FILE__ == $0
