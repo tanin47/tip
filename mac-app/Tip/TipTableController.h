@@ -16,9 +16,8 @@ NS_ASSUME_NONNULL_BEGIN
 @interface TipTableController : NSViewController<NSTableViewDataSource, NSTableViewDelegate>
 
 @property (nonatomic) NSArray<TipItem*>* items;
-@property (nonatomic) bool showError;
-@property TipNoticeView* errorView;
-@property TipNoticeView* emptyView;
+@property (nonatomic) NSException* error;
+@property TipNoticeView* noticeView;
 @property TipTableView* table;
 @property NSTableColumn* iconColumn;
 @property NSTableColumn* textColumn;

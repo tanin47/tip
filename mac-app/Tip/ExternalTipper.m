@@ -17,11 +17,11 @@
 
 -(id)initWithProvider:(NSString *)provider_ 
 {
-     self = [super init];
-     if (self) {
-         self.provider = provider_;
-     }
-     return self;
+    self = [super init];
+    if (self) {
+        self.provider = provider_;
+    }
+    return self;
 }
 
 - (NSArray<TipItem *> *) makeTip: (NSString*) input {
@@ -37,11 +37,11 @@
                error:&error];
     
     NSException* exception = [NSException
-                               exceptionWithName:@"MalformedJsonException"
-                               reason:@"JSON is malformed"
-                               userInfo:[NSDictionary
-                                            dictionaryWithObject:[[NSString alloc] initWithData:data                                encoding:NSUTF8StringEncoding]
-                                                            forKey:@"json"]
+                              exceptionWithName:@"MalformedJsonException"
+                              reason:@"JSON is malformed"
+                              userInfo:[NSDictionary
+                                        dictionaryWithObject:[[NSString alloc] initWithData:data                                encoding:NSUTF8StringEncoding]
+                                        forKey:@"json"]
                               ];
     
     if (error) {
@@ -99,13 +99,33 @@
 }
 
 - (NSData*) execute: (NSString*) input {
-    NSPipe *pipe = [NSPipe pipe];
-    NSFileHandle *file = pipe.fileHandleForReading;
+    NSPipe* outputPipe = [NSPipe pipe];
+    NSPipe* errorPipe = [NSPipe pipe];
     
     NSTask *task = [[NSTask alloc] init];
-    task.standardOutput = pipe;
-
+    task.standardOutput = outputPipe;
+    task.standardError = errorPipe;
+    
     task.launchPath = self.provider;
+    
+    if (![self fileExists:task.launchPath]) {
+        @throw [NSException
+                exceptionWithName:@"ProviderNotExistException"
+                reason:[NSString stringWithFormat:@"%@ doesn't exist.", task.launchPath]
+                userInfo:[NSDictionary
+                          dictionaryWithObject:task.launchPath
+                          forKey:@"provider"]
+                ];
+    }
+    
+    if (![self hasExecutablePermission:task.launchPath]) {
+        @throw [NSException
+                exceptionWithName:@"ProviderNotExecutableException"
+                reason:[NSString stringWithFormat:@"%@ isn't executable.", task.launchPath]
+                userInfo:[NSDictionary
+                          dictionaryWithObject:task.launchPath
+                          forKey:@"provider"]];
+    }
     
     task.arguments = @[input];
     NSLog(@"Run: %@ with args: %@", task.launchPath, task.arguments);
@@ -113,11 +133,35 @@
     [task launch];
     [task waitUntilExit];
     
-    NSData *output = [file readDataToEndOfFile];
-    [file closeFile];
-    NSLog(@"Output: %@", [[NSString alloc] initWithData:output encoding:NSUTF8StringEncoding]);
+    NSData *stdout = [outputPipe.fileHandleForReading readDataToEndOfFile];
+    [outputPipe.fileHandleForReading closeFile];
+    NSLog(@"Stdout: %@", [[NSString alloc] initWithData:stdout encoding:NSUTF8StringEncoding]);
     
-    return output;
+    NSData *stderr = [errorPipe.fileHandleForReading readDataToEndOfFile];
+    [errorPipe.fileHandleForReading closeFile];
+    NSLog(@"StdErr: %@", [[NSString alloc] initWithData:stderr encoding:NSUTF8StringEncoding]);
+    
+    if ([task terminationStatus] != 0) {
+        @throw [NSException
+                exceptionWithName:@"ProviderErrorException"
+                reason:[[NSString alloc] initWithData:stderr encoding:NSUTF8StringEncoding]
+                userInfo:[NSDictionary
+                          dictionaryWithObject:task.launchPath
+                          forKey:@"provider"]];
+    }
+    
+    return stdout;
 }
 
+- (BOOL) fileExists:(NSString*) path {
+    return [[NSFileManager defaultManager] fileExistsAtPath:path];
+}
+
+
+- (BOOL) hasExecutablePermission:(NSString*) path {
+    NSUInteger permissions = [[[NSFileManager defaultManager] attributesOfItemAtPath:path error:nil] filePosixPermissions];
+    
+    return (permissions & 0111) > 0;
+   
+}
 @end

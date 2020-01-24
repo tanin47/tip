@@ -27,7 +27,7 @@ int main(int argc, const char * argv[]) {
     if (!providerPath) {
         NSString *home = NSHomeDirectory();
         assert(home);
-        providerPath = [NSString stringWithFormat:@"%@/.tip/provider", home];
+        providerPath = [NSString stringWithFormat:@"%@/Library/tanin.tip/provider", home];
     }
  
     ExternalTipper *tipper = [[ExternalTipper alloc] initWithProvider:providerPath];

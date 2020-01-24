@@ -10,9 +10,21 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+typedef NS_ENUM(NSInteger, TipNoticeViewAction) {
+    TipNoticeViewActionNone,
+    TipNoticeViewActionOpenConsole,
+    TipNoticeViewActionOpenProviderInstruction
+};
+
 @interface TipNoticeView : NSView
 
-- (instancetype)initWithFrame:(NSRect)frameRect icon:(NSString*)icon message:(NSString*) message color:(NSColor*)color;
+- (instancetype)initWithFrame:(NSRect)frame;
+- (void) updateWithMessage:(NSString*) message icon:(UniChar)icon color:(NSColor*)color action:(TipNoticeViewAction)action;
+
+@property NSTextField* textField;
+@property NSTextField* iconField;
+
+@property TipNoticeViewAction action;
 
 @end
 
