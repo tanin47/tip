@@ -7,6 +7,10 @@ Tip provides useful info at your fingertip. You can simply select the text and h
 
 "Useful info" is programmed by you using your fav programming language, and it works with every Mac app.
 
+Tip reduces hand movement, reduces the risk of Repetitive Strain Injury (RSI), and enables you to work faster.
+
+Save yourself from the injury. Try it today!
+
 
 Examples
 ---------
