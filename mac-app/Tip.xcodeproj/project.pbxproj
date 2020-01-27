@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F300997B23B8159D0000B9E3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F300997A23B8159D0000B9E3 /* Assets.xcassets */; };
 		F300998123B8159D0000B9E3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F300998023B8159D0000B9E3 /* main.m */; };
 		F300999723B8159E0000B9E3 /* tipUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = F300999623B8159E0000B9E3 /* tipUITests.m */; };
 		F30099A623B816AF0000B9E3 /* Receiver.m in Sources */ = {isa = PBXBuildFile; fileRef = F30099A523B816AF0000B9E3 /* Receiver.m */; };
@@ -22,6 +21,7 @@
 		F318018423D417F7000E17A5 /* good_provider.rb in Resources */ = {isa = PBXBuildFile; fileRef = F318018223D415A4000E17A5 /* good_provider.rb */; };
 		F33EDCFB23DE262600114AFB /* unexecutable_provider.rb in Resources */ = {isa = PBXBuildFile; fileRef = F33EDCFA23DE262600114AFB /* unexecutable_provider.rb */; };
 		F33EDCFD23DE287200114AFB /* error_provider.rb in Resources */ = {isa = PBXBuildFile; fileRef = F33EDCFC23DE287200114AFB /* error_provider.rb */; };
+		F33EDD0223DE99C600114AFB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F33EDD0123DE99C600114AFB /* Assets.xcassets */; };
 		F37DB94123D428C0002D799E /* FontAwesome-Solid.otf in Resources */ = {isa = PBXBuildFile; fileRef = F3E5B64A23BA846A002BEDD6 /* FontAwesome-Solid.otf */; };
 		F37DB94723D548E7002D799E /* ForTest.m in Sources */ = {isa = PBXBuildFile; fileRef = F37DB94623D548E7002D799E /* ForTest.m */; };
 		F3A35D2D23D6301200982791 /* malformed_json_provider.rb in Resources */ = {isa = PBXBuildFile; fileRef = F3A35D2C23D6301200982791 /* malformed_json_provider.rb */; };
@@ -42,7 +42,6 @@
 
 /* Begin PBXFileReference section */
 		F300997423B8159D0000B9E3 /* Tip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tip.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		F300997A23B8159D0000B9E3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F300997F23B8159D0000B9E3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F300998023B8159D0000B9E3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F300998223B8159D0000B9E3 /* tip.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = tip.entitlements; sourceTree = "<group>"; };
@@ -67,6 +66,7 @@
 		F318018223D415A4000E17A5 /* good_provider.rb */ = {isa = PBXFileReference; lastKnownFileType = text.script.ruby; path = good_provider.rb; sourceTree = "<group>"; };
 		F33EDCFA23DE262600114AFB /* unexecutable_provider.rb */ = {isa = PBXFileReference; lastKnownFileType = text.script.ruby; path = unexecutable_provider.rb; sourceTree = "<group>"; };
 		F33EDCFC23DE287200114AFB /* error_provider.rb */ = {isa = PBXFileReference; lastKnownFileType = text.script.ruby; path = error_provider.rb; sourceTree = "<group>"; };
+		F33EDD0123DE99C600114AFB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F37DB94523D548E7002D799E /* ForTest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ForTest.h; sourceTree = "<group>"; };
 		F37DB94623D548E7002D799E /* ForTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ForTest.m; sourceTree = "<group>"; };
 		F37DB94823D54CA9002D799E /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -116,8 +116,8 @@
 		F300997623B8159D0000B9E3 /* Tip */ = {
 			isa = PBXGroup;
 			children = (
+				F33EDD0123DE99C600114AFB /* Assets.xcassets */,
 				F30099B023B86DBD0000B9E3 /* fonts */,
-				F300997A23B8159D0000B9E3 /* Assets.xcassets */,
 				F300997F23B8159D0000B9E3 /* Info.plist */,
 				F30CBFEC23B98977008D6B47 /* TipTableController.h */,
 				F300998023B8159D0000B9E3 /* main.m */,
@@ -247,8 +247,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F300997B23B8159D0000B9E3 /* Assets.xcassets in Resources */,
 				F3E5B64B23BA846A002BEDD6 /* FontAwesome-Solid.otf in Resources */,
+				F33EDD0223DE99C600114AFB /* Assets.xcassets in Resources */,
 				F30099B323B870780000B9E3 /* RobotoMono-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
