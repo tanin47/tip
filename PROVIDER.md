@@ -6,6 +6,7 @@ Make the provider script
 * The provider script is an executable binary at `~/Library/Application\ Scripts/tanin.tip/provider` that prints JSON on stdout
 * The provider script is executed by Tip when activated
 * Don't forget to `chmod 755 ~/Library/Application\ Scripts/tanin.tip/provider`
+* Use hard link, not symbolic link (i.e. `ln -s`), because Tip runs in [App Sandbox](https://developer.apple.com/app-sandboxing/) and can't follow a symbolic link to a file outside the predefined directory, which is `~/Library/Application\ Scripts/tanin.tip/`.
 
 
 Example
