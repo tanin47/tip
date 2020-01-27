@@ -81,3 +81,18 @@ The command-line tool processes the input, decides which info to show, and print
 ```
 
 Tip processes the JSON and renders the tooltip at the mouse location.
+
+
+FAQ
+----
+
+### Why isn't Tip published on App Store?
+
+App Store requires an app to be sandboxed. However, Tip executes `~/Library/tanin.tip/provider` that can essentially do anything; it's your own provider script. Therefore, Tip can't be sandboxed.
+
+As a reminder, please always review a downloaded provider script before using it.
+
+
+### Why is Tip written in Objective-C instead of Swift?
+
+Because I don't know how to write Swift. I'd like to switch to Swift though.
