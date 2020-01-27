@@ -102,51 +102,71 @@
     NSPipe* outputPipe = [NSPipe pipe];
     NSPipe* errorPipe = [NSPipe pipe];
     
-    NSTask *task = [[NSTask alloc] init];
-    task.standardOutput = outputPipe;
-    task.standardError = errorPipe;
-    
-    task.launchPath = self.provider;
-    
-    if (![self fileExists:task.launchPath]) {
+    if (![self fileExists:self.provider]) {
         @throw [NSException
                 exceptionWithName:@"ProviderNotExistException"
-                reason:[NSString stringWithFormat:@"%@ doesn't exist.", task.launchPath]
+                reason:[NSString stringWithFormat:@"%@ doesn't exist.", self.provider]
                 userInfo:[NSDictionary
-                          dictionaryWithObject:task.launchPath
+                          dictionaryWithObject:self.provider
                           forKey:@"provider"]
                 ];
     }
     
-    if (![self hasExecutablePermission:task.launchPath]) {
-        @throw [NSException
-                exceptionWithName:@"ProviderNotExecutableException"
-                reason:[NSString stringWithFormat:@"%@ isn't executable.", task.launchPath]
-                userInfo:[NSDictionary
-                          dictionaryWithObject:task.launchPath
-                          forKey:@"provider"]];
+    if (![self hasExecutablePermission:self.provider]) {
+        @throw [NSException exceptionWithName:@"ProviderNotExecutableException"
+                                       reason:[NSString stringWithFormat:@"%@ isn't executable.", self.provider]
+                                     userInfo:[NSDictionary
+                                               dictionaryWithObject:self.provider
+                                               forKey:@"provider"]];
     }
     
-    task.arguments = @[input];
-    NSLog(@"Run: %@ with args: %@", task.launchPath, task.arguments);
+    NSError* taskError = nil;
+    NSUserUnixTask *task = [[NSUserUnixTask alloc] initWithURL:[NSURL fileURLWithPath: self.provider] error:&taskError];
     
-    [task launch];
-    [task waitUntilExit];
+    task.standardOutput = outputPipe.fileHandleForWriting;
+    task.standardError = errorPipe.fileHandleForWriting;
     
-    NSData *stdout = [outputPipe.fileHandleForReading readDataToEndOfFile];
-    [outputPipe.fileHandleForReading closeFile];
-    NSLog(@"Stdout: %@", [[NSString alloc] initWithData:stdout encoding:NSUTF8StringEncoding]);
+    if (taskError) {
+        @throw [NSException exceptionWithName:@"ProviderInvalidException"
+                                       reason:taskError.localizedFailureReason
+                                     userInfo:[NSDictionary
+                                               dictionaryWithObject:self.provider
+                                               forKey:@"provider"]];
+    }
     
-    NSData *stderr = [errorPipe.fileHandleForReading readDataToEndOfFile];
-    [errorPipe.fileHandleForReading closeFile];
-    NSLog(@"StdErr: %@", [[NSString alloc] initWithData:stderr encoding:NSUTF8StringEncoding]);
+    NSLog(@"Run: %@ with args: %@", task.scriptURL.path, @[input]);
     
-    if ([task terminationStatus] != 0) {
+    __block BOOL completed = NO;
+    __block NSError* error = nil;
+    __block NSData *stdout = nil;
+    __block NSData *stderr = nil;
+    
+    [task
+     executeWithArguments:@[input]
+     completionHandler:^(NSError * _Nullable e) {
+        error = e;
+        
+        stdout = [outputPipe.fileHandleForReading readDataToEndOfFile];
+        [outputPipe.fileHandleForReading closeFile];
+        NSLog(@"Stdout: %@", [[NSString alloc] initWithData:stdout encoding:NSUTF8StringEncoding]);
+        
+        stderr = [errorPipe.fileHandleForReading readDataToEndOfFile];
+        [errorPipe.fileHandleForReading closeFile];
+        NSLog(@"StdErr: %@", [[NSString alloc] initWithData:stderr encoding:NSUTF8StringEncoding]);
+        
+        completed = YES;
+    }];
+    
+    while (!completed) {
+        [NSThread sleepForTimeInterval:0.05f];
+    }
+   
+    if (error) {
         @throw [NSException
                 exceptionWithName:@"ProviderErrorException"
                 reason:[[NSString alloc] initWithData:stderr encoding:NSUTF8StringEncoding]
                 userInfo:[NSDictionary
-                          dictionaryWithObject:task.launchPath
+                          dictionaryWithObject:task.scriptURL.path
                           forKey:@"provider"]];
     }
     
