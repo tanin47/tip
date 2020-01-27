@@ -78,11 +78,7 @@
 #endif
     
     if (self.action == TipNoticeViewActionOpenConsole) {
-        NSTask *task = [[NSTask alloc] init];
-        task.launchPath = @"/usr/bin/open";
-        task.arguments = @[@"/Applications/Utilities/Console.app"];
-        [task launch];
-        [task waitUntilExit];
+        [[NSWorkspace sharedWorkspace] launchApplication:@"Console"];
     } else if (self.action == TipNoticeViewActionOpenProviderInstruction) {
         [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://github.com/tanin47/tip/blob/master/PROVIDER.md"]];
     }

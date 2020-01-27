@@ -25,9 +25,8 @@ int main(int argc, const char * argv[]) {
     NSString* providerPath = [args stringForKey:@"provider"];
     
     if (!providerPath) {
-        NSString *home = NSHomeDirectory();
-        assert(home);
-        providerPath = [NSString stringWithFormat:@"%@/Library/tanin.tip/provider", home];
+        NSURL *scriptsDirectory = [[NSFileManager defaultManager] URLForDirectory:NSApplicationScriptsDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:YES error:nil];
+        providerPath = [NSString stringWithFormat:@"%@/provider", scriptsDirectory.path];
     }
  
     ExternalTipper *tipper = [[ExternalTipper alloc] initWithProvider:providerPath];

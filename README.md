@@ -35,8 +35,8 @@ Installation
 -------------
 
 1. Download the latest version of `Tip.app` from [the release page](https://github.com/tanin47/tip/releases). Move it to `/Application`.
-2. Download and copy `scripts/provider` to `~/Library/tanin.tip/provider`. Run `chmod 755 ~/Library/tanin.tip/provider`. 
-    * Or you can simply run: `curl -o ~/.tip/ --create-dirs  https://raw.githubusercontent.com/tanin47/tip/master/scripts/provider && chmod 755 ~/Library/tanin.tip/provider`
+2. Download and copy `scripts/provider` to `~/Library/Application\ Scripts/tanin.tip/provider`. Run `chmod 755 ~/Library/Application\ Scripts/tanin.tip/provider`. 
+    * Or you can simply run: `curl -o ~/.tip/ --create-dirs  https://raw.githubusercontent.com/tanin47/tip/master/scripts/provider && chmod 755 ~/Library/Application\ Scripts/tanin.tip/provider`
 
 The sample script is in Ruby, so you need Ruby to run it. Otherwise, you can simply make your own provider as well.
 
@@ -69,7 +69,7 @@ Now you'll be able to use the new short key for Tip.
 Technical detail
 -----------------
 
-Tip is a [system-wide service on Mac](https://developer.apple.com/design/human-interface-guidelines/macos/extensions/services/). When user selects text and hits the short key, the selected text is sent to Tip. Then, Tip invokes the command-line tool with the selected text as the first argument, i.e `~/Library/tanin.tip/provider [selected-text]`.
+Tip is a [system-wide service on Mac](https://developer.apple.com/design/human-interface-guidelines/macos/extensions/services/). When user selects text and hits the short key, the selected text is sent to Tip. Then, Tip invokes the command-line tool with the selected text as the first argument, i.e `~/Library/Application\ Scripts/tanin.tip/provider [selected-text]`.
 
 The command-line tool processes the input, decides which info to show, and prints the tip items as JSON that looks like below:
 
@@ -86,9 +86,13 @@ Tip processes the JSON and renders the tooltip at the mouse location.
 FAQ
 ----
 
-### Why isn't Tip published on App Store?
+### Why is the provider script located at `~/Library/Application\ Scripts/tanin.tip/provider`?
 
-App Store requires an app to be sandboxed. However, Tip executes `~/Library/tanin.tip/provider` that can essentially do anything; it's your own provider script. Therefore, Tip can't be sandboxed.
+Tip runs in [App Sandbox](https://developer.apple.com/app-sandboxing/), which protects systems and users by limiting the privileges of an app to its intended functionality. App Sandbox gives our users peace of mind.
+
+With App Sandbox, Tip can only read/write files from [a few predefined directories](https://developer.apple.com/library/archive/documentation/Security/Conceptual/AppSandboxDesignGuide/AppSandboxInDepth/AppSandboxInDepth.html) and, specifically, can *only* execute files (not write) within `~/Library/Application\ Scripts/tanin.tip`.
+
+Therefore, a user needs to explicitly make the provider script at `~/Library/Application\ Scripts/tanin.tip/provider`.
 
 As a reminder, please always review a downloaded provider script before using it.
 

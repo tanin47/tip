@@ -3,15 +3,15 @@ Make the provider script
 
 ### TL;DR 
 
-* The provider script is an executable at `~/Library/tanin.tip/provider` that prints JSON on stdout
+* The provider script is an executable binary at `~/Library/Application\ Scripts/tanin.tip/provider` that prints JSON on stdout
 * The provider script is executed by Tip when activated
-* Don't forget to `chmod 755 ~/Library/tanin.tip/provider`
+* Don't forget to `chmod 755 ~/Library/Application\ Scripts/tanin.tip/provider`
 
 
 Example
 --------
 
-Here's `~/Library/tanin.tip/provider` written in Ruby:
+Here's `~/Library/Application\ Scripts/tanin.tip/provider` written in Ruby:
 
 ```ruby
 #!/usr/bin/env ruby
@@ -59,5 +59,5 @@ Happy programming!
 Debugging Tips
 ---------------
 
-* Try running `~/Library/tanin.tip/provider [some-input]` in Terminal to see if it works correctly
+* Try running `~/Library/Application\ Scripts/tanin.tip/provider [some-input]` in Terminal to see if it works correctly
 * Open Console.app and set filter Process=Tip. The logs from Tip will show up.
