@@ -44,6 +44,11 @@
 			<string>openTips</string>
 			<key>NSPortName</key>
 			<string>tanin.tip</string>
+			<key>NSKeyEquivalent</key>
+			<dict>
+				<key>default</key>
+				<string>&amp;</string>
+			</dict>
 			<key>NSSendTypes</key>
 			<array>
 				<string>NSStringPboardType</string>

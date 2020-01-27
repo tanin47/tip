@@ -18,20 +18,10 @@
 - (instancetype)init {
     if (self = [super init]) {
         self.view = [[NSView alloc] init];
-        
-        _emptyView = [[TipNoticeView alloc] initWithFrame:CGRectMake(0, 0, 260, 40)
-                                                     icon:@"\uf59a"
-                                                  message:@"No tips. Consider adding some."
-                                                    color:NSColor.systemGrayColor];
-        _emptyView.hidden = YES;
-        [self.view addSubview:_emptyView];
-        
-        _errorView = [[TipNoticeView alloc] initWithFrame:CGRectMake(0, 0, 270, 40)
-                                                     icon:@"\uf06a"
-                                                  message:@"Error occurred. See Console.app."
-                                                    color:NSColor.systemPinkColor];
-        _errorView.hidden = YES;
-        [self.view addSubview:_errorView];
+
+        _noticeView = [[TipNoticeView alloc] initWithFrame:CGRectMake(0, 0, 300, 0)];
+        _noticeView.hidden = YES;
+        [self.view addSubview:_noticeView];
         
         _table = [[TipTableView alloc] initWithFrame:CGRectMake(0, 0, 10, 10)];
         _table.focusRingType = NSFocusRingTypeNone;
@@ -67,33 +57,56 @@
     }
 }
 
-- (void) setShowError:(bool)showError {
-    _showError = showError;
+- (void) setError:(NSException*)error {
+    _error = error;
     _items = nil;
     [self update];
 }
 
 - (void)setItems:(NSArray<TipItem *> *)items {
     _items = items;
-    _showError = NO;
+    _error = nil;
     [self update];
     [_table reloadData];
 }
 
 - (void)update {
-    if (_showError) {
-        _errorView.hidden = NO;
-        _emptyView.hidden = YES;
+    if (_error) {
+        _noticeView.hidden = NO;
         _table.hidden = YES;
-        self.preferredContentSize = _errorView.frame.size;
+        
+        NSString *message = nil;
+        TipNoticeViewAction action = TipNoticeViewActionNone;
+        
+        if ([_error.name isEqualToString:@"MalformedJsonException"]) {
+            message = @"Malformed JSON returned from provider. Click to see logs in Console. You'll need to set the filter Process=Tip.";
+            action = TipNoticeViewActionOpenConsole;
+        } else if ([_error.name isEqualToString:@"ProviderNotExistException"]) {
+            message = [NSString stringWithFormat:@"%@ doesn't exist. Please make a provider script. Click to see instruction.", [_error.userInfo objectForKey:@"provider"]];
+            action = TipNoticeViewActionOpenProviderInstruction;
+        } else if ([_error.name isEqualToString:@"ProviderNotExecutableException"]) {
+            message = [NSString stringWithFormat:@"Provider isn't executable. Please chmod 755 %@", [_error.userInfo objectForKey:@"provider"]];
+        } else {
+            message = @"Error occurred. Click to see logs in Console. You'll need to set the filter Process=Tip.";
+            action = TipNoticeViewActionOpenConsole;
+        }
+        
+        [_noticeView updateWithMessage:message
+                                  icon:0xf06a
+                                 color:NSColor.systemPinkColor
+                                action:action];
+        
+        self.preferredContentSize = _noticeView.frame.size;
     } else if (_items.count == 0) {
-        _errorView.hidden = YES;
-        _emptyView.hidden = NO;
+        _noticeView.hidden = NO;
         _table.hidden = YES;
-        self.preferredContentSize = _emptyView.frame.size;
+        [_noticeView updateWithMessage:@"No tips. You can add tips through your provider script. Click to see the instruction."
+                                  icon:0xf59a
+                                 color:NSColor.systemGrayColor
+                                action:TipNoticeViewActionOpenProviderInstruction];
+        self.preferredContentSize = _noticeView.frame.size;
     } else {
-        _errorView.hidden = YES;
-        _emptyView.hidden = YES;
+        _noticeView.hidden = YES;
         _table.hidden = NO;
         
         NSTextField* textField = [self makeTextField];

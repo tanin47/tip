@@ -1,3 +1,3 @@
 #!/usr/bin/env ruby
 
-exit 1
+puts "Error json"

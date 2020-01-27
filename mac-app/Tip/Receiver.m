@@ -64,9 +64,9 @@
         NSArray<TipItem *> * items = [self.tipper makeTip:input];
         _controller.items = items;
     }
-    @catch (NSException *error) {
+    @catch (NSException* error) {
         NSLog(@"Error: %@ %@", error, [error userInfo]);
-        _controller.showError = YES;
+        _controller.error = error;
     }
     NSPopover *entryPopover = [[NSPopover alloc] init];
     entryPopover.contentViewController = _controller;
