@@ -41,8 +41,9 @@ Installation
 1. Download the latest version of `Tip.app` from [the release page](https://github.com/tanin47/tip/releases). Move it to `/Application`.
 2. Download and copy `scripts/provider` to `~/Library/Application\ Scripts/tanin.tip/provider`. Run `chmod 755 ~/Library/Application\ Scripts/tanin.tip/provider`. 
     * Or you can simply run: `curl -o ~/.tip/ --create-dirs  https://raw.githubusercontent.com/tanin47/tip/master/scripts/provider && chmod 755 ~/Library/Application\ Scripts/tanin.tip/provider`
+3. Go to System Preferences > Keyboard > Shortcuts > Services > Scroll down to the "Text" section. You should see "Tip: open tips" under the "Text" section. Please make sure to check it.
 
-The sample script is in Ruby, so you need Ruby to run it. Otherwise, you can simply make your own provider as well.
+The sample provider script is in Ruby, so you need Ruby to run it. Otherwise, you can simply make your own provider as well.
 
 See how to develop the provider [here](PROVIDER.md).
 
