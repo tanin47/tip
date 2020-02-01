@@ -1,13 +1,15 @@
-Tip: Universal tooltip for Mac OS X
-===================================================
+![Universal Tip icon](./app-icon.png)
+
+Universal Tip
+==============
 
 [![Gitter chat](https://badges.gitter.im/gitterHQ/gitter.png)](https://gitter.im/tanin-tip/community#)
 
-Tip provides useful info at your fingertip. You can simply select the text and hit the shortkey to activate the tooltip with useful info.
+Universal Tip provides useful info at your fingertip. You can simply select the text and hit the shortkey to activate the tooltip with useful info.
 
 "Useful info" is programmed by you using your fav programming language, and it works with every Mac app.
 
-Tip reduces hand movement, reduces the risk of Repetitive Strain Injury (RSI), and enables you to work faster.
+Universal Tip reduces hand movement when performing menial tasks, reduces the risk of Repetitive Strain Injury (RSI), and enables you to work faster.
 
 Save yourself from the injury. Try it today!
 
@@ -34,7 +36,6 @@ Examples
 You can make your own info provider. The possibility is endless!
 
 
-
 Installation
 -------------
 
@@ -46,6 +47,18 @@ Installation
 The sample provider script is in Ruby, so you need Ruby to run it. Otherwise, you can simply make your own provider as well.
 
 See how to develop the provider [here](PROVIDER.md).
+
+
+Security
+---------
+
+Tip runs in [App Sandbox](https://developer.apple.com/app-sandboxing/), which protects systems and users by limiting the privileges of the app to its intended functionality. App Sandbox gives our users peace of mind.
+
+With App Sandbox, Tip can only read/write files from [a few predefined directories](https://developer.apple.com/library/archive/documentation/Security/Conceptual/AppSandboxDesignGuide/AppSandboxInDepth/AppSandboxInDepth.html) and, specifically, can *only* execute files (not write) within `~/Library/Application\ Scripts/tanin.tip`.
+
+This is the reason why the provider script is in `~/Library/Application\ Scripts/tanin.tip/provider`.
+
+As a reminder, please always review a downloaded provider script before using it.
 
 
 Usage
@@ -91,17 +104,6 @@ Tip processes the JSON and renders the tooltip at the mouse location.
 
 FAQ
 ----
-
-### Why is the provider script located at `~/Library/Application\ Scripts/tanin.tip/provider`?
-
-Tip runs in [App Sandbox](https://developer.apple.com/app-sandboxing/), which protects systems and users by limiting the privileges of an app to its intended functionality. App Sandbox gives our users peace of mind.
-
-With App Sandbox, Tip can only read/write files from [a few predefined directories](https://developer.apple.com/library/archive/documentation/Security/Conceptual/AppSandboxDesignGuide/AppSandboxInDepth/AppSandboxInDepth.html) and, specifically, can *only* execute files (not write) within `~/Library/Application\ Scripts/tanin.tip`.
-
-Therefore, a user needs to explicitly make the provider script at `~/Library/Application\ Scripts/tanin.tip/provider`.
-
-As a reminder, please always review a downloaded provider script before using it.
-
 
 ### Why is Tip written in Objective-C instead of Swift?
 
