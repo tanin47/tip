@@ -1,6 +1,6 @@
 import XCTest
 
-class TipUITest: XCTestCase {
+final class TipUITest: XCTestCase {
 
   let pasteBoard = NSPasteboard.general
   let app = XCUIApplication()
@@ -11,9 +11,10 @@ class TipUITest: XCTestCase {
   }
 
   override func tearDown() {
+    app.terminate()
   }
 
-  func testGoodProvider() {
+  func testGoodProviderClickingOnText() {
     launch(withName: "good_provider")
     app.popovers.element.tableRows.firstMatch.cells.firstMatch.click()
     XCTAssertEqual("Return TestInput", pasteBoard.string(forType: .string))
@@ -38,8 +39,11 @@ class TipUITest: XCTestCase {
     let file = Bundle(for: type(of: self)).path(forResource: withName, ofType: "rb")
 
     guard let valid = file else {
-      app.launchArguments = ["-test", "TestInput", "-provider", withName]
-      app.launch()
+      if (force) {
+        app.launchArguments = ["-test", "TestInput", "-provider", withName]
+        app.launch()
+      }
+      // fail silently, no-op probably not good for app code, but this is test so ... ¯\_(ツ)_/¯
       return
     }
 

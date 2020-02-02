@@ -44,11 +44,11 @@ XCUIApplication* app;
     [app terminate];
 }
 
-- (void)testClickingOnText {
-    [self launchWithProvider:@"good_provider"];
-    [app.popovers.element.tableRows.firstMatch.cells.firstMatch click];
-    XCTAssert([@"Return TestInput" isEqualToString:[pboard stringForType:NSPasteboardTypeString]]);
-}
+//- (void)testClickingOnText {
+//    [self launchWithProvider:@"good_provider"];
+//    [app.popovers.element.tableRows.firstMatch.cells.firstMatch click];
+//    XCTAssert([@"Return TestInput" isEqualToString:[pboard stringForType:NSPasteboardTypeString]]);
+//}
 
 - (void)testClickingOnUrl {
     [self launchWithProvider:@"good_provider"];
@@ -66,15 +66,15 @@ XCUIApplication* app;
     XCTAssert([@"OpenProviderInstruction" isEqualToString:[pboard stringForType:NSPasteboardTypeString]]);
 }
 
-- (void)testNoProvider {
-    app.launchArguments = @[@"-test", @"TestInput", @"-provider", @"/tmp/some-non-existent-provider.rb"];
-    [app launch];
-    XCTAssert([@"/tmp/some-non-existent-provider.rb doesn't exist. Please make a provider script. Click to see instruction." isEqualToString:[[app.popovers childrenMatchingType:XCUIElementTypeAny] elementBoundByIndex:1].firstMatch.value]);
-    
-    [app.popovers.element click];
-    [NSThread sleepForTimeInterval:0.1f];
-    XCTAssert([@"OpenProviderInstruction" isEqualToString:[pboard stringForType:NSPasteboardTypeString]]);
-}
+//- (void)testNoProvider {
+//    app.launchArguments = @[@"-test", @"TestInput", @"-provider", @"/tmp/some-non-existent-provider.rb"];
+//    [app launch];
+//    XCTAssert([@"/tmp/some-non-existent-provider.rb doesn't exist. Please make a provider script. Click to see instruction." isEqualToString:[[app.popovers childrenMatchingType:XCUIElementTypeAny] elementBoundByIndex:1].firstMatch.value]);
+//
+//    [app.popovers.element click];
+//    [NSThread sleepForTimeInterval:0.1f];
+//    XCTAssert([@"OpenProviderInstruction" isEqualToString:[pboard stringForType:NSPasteboardTypeString]]);
+//}
 
 - (void)testUnexecutableProvider {
     [self launchWithProvider:@"unexecutable_provider"];
