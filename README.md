@@ -41,9 +41,11 @@ Installation
 
 1. Install Tip from [Mac App Store](https://apps.apple.com/us/app/universal-tip/id1495732622)
     * You can also download it from [the release page](https://github.com/tanin47/tip/releases) and move `Tip,app` to under `/Applications`
-2. Download and copy `scripts/provider` to `~/Library/Application\ Scripts/tanin.tip/provider`. Run `chmod 755 ~/Library/Application\ Scripts/tanin.tip/provider`. 
-    * Or you can simply run: `curl -o ~/Library/Application\ Scripts/tanin.tip/ --create-dirs  https://raw.githubusercontent.com/tanin47/tip/master/scripts/provider && chmod 755 ~/Library/Application\ Scripts/tanin.tip/provider`
-3. Go to System Preferences > Keyboard > Shortcuts > Services > Scroll down to the "Text" section. You should see "Tip: open tips" under the "Text" section. Please make sure to check it.
+2. Download and copy `scripts/provider.script` to `~/Library/Application\ Scripts/tanin.tip/provider.script`. Run `chmod 755 ~/Library/Application\ Scripts/tanin.tip/provider.script`. 
+    * Or you can simply run: `curl -o ~/Library/Application\ Scripts/tanin.tip/ --create-dirs  https://raw.githubusercontent.com/tanin47/tip/master/scripts/provider.script && chmod 755 ~/Library/Application\ Scripts/tanin.tip/provider.script`
+3. Go to System Preferences > Keyboard > Shortcuts > Services > Scroll down to the "Text" section. You should see "Tip: open tips" under the "Text" section. 
+    * Please make sure to check it.
+    * You can also set the short key here.
 
 The sample provider script is in Ruby, so you need Ruby to run it. Otherwise, you can simply make your own provider as well.
 
@@ -57,7 +59,7 @@ Tip runs in [App Sandbox](https://developer.apple.com/app-sandboxing/), which pr
 
 With App Sandbox, Tip can only read/write files from [a few predefined directories](https://developer.apple.com/library/archive/documentation/Security/Conceptual/AppSandboxDesignGuide/AppSandboxInDepth/AppSandboxInDepth.html) and, specifically, can *only* execute files (not write) within `~/Library/Application\ Scripts/tanin.tip`.
 
-This is the reason why the provider script is in `~/Library/Application\ Scripts/tanin.tip/provider`.
+This is the reason why the provider script is under `~/Library/Application\ Scripts/tanin.tip/`.
 
 As a reminder, please always review a downloaded provider script before using it.
 
@@ -89,7 +91,7 @@ Now you'll be able to use the new short key for Tip.
 Technical detail
 -----------------
 
-Tip is a [system-wide service on Mac](https://developer.apple.com/design/human-interface-guidelines/macos/extensions/services/). When user selects text and hits the short key, the selected text is sent to Tip. Then, Tip invokes the command-line tool with the selected text as the first argument, i.e `~/Library/Application\ Scripts/tanin.tip/provider [selected-text]`.
+Tip is a [system-wide service on Mac](https://developer.apple.com/design/human-interface-guidelines/macos/extensions/services/). When user selects text and hits the short key, the selected text is sent to Tip. Then, Tip invokes the command-line tool with the selected text as the first argument, i.e `~/Library/Application\ Scripts/tanin.tip/provider.script [selected-text]`.
 
 The command-line tool processes the input, decides which info to show, and prints the tip items as JSON that looks like below:
 

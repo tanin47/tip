@@ -3,19 +3,19 @@ Make the provider script
 
 ### TL;DR 
 
-* The provider script is an executable binary at `~/Library/Application\ Scripts/tanin.tip/provider` that prints JSON on stdout
-  * The directory is `~/Library/Application\ Scripts/tanin.tip`, and the file is `provider`. The file doesn't have extension.
+* The provider script is an executable binary at `~/Library/Application\ Scripts/tanin.tip/provider.script` that prints JSON on stdout
+  * The directory is `~/Library/Application\ Scripts/tanin.tip`, and the file is `provider.script`.
 * The provider script is executed by Tip when activated
-* Don't forget to `chmod 755 ~/Library/Application\ Scripts/tanin.tip/provider`
+* Don't forget to `chmod 755 ~/Library/Application\ Scripts/tanin.tip/provider.script`
 * Use hard link, not symbolic link (i.e. `ln -s`), because Tip runs in [App Sandbox](https://developer.apple.com/app-sandboxing/) and can't follow a symbolic link to a file outside the predefined directory, which is `~/Library/Application\ Scripts/tanin.tip/`.
-* Lastly, don't forget to enable Tip and configure Tip's short key by:
-  * Go to System Preferences > Keyboard > Shortcuts > Services > Scroll down to the "Text" section. You should see "Tip: open tips" under the "Text" section. Please make sure to check it, and you can also change the short key here.
+* Lastly, don't forget to enable Tip:
+  * Go to System Preferences > Keyboard > Shortcuts > Services > Scroll down to the "Text" section. You should see "Tip: open tips" under the "Text" section. Please make sure to check it.
 
 
 Example
 --------
 
-Here's `~/Library/Application\ Scripts/tanin.tip/provider` written in Ruby:
+Here's `~/Library/Application\ Scripts/tanin.tip/provider.script` written in Ruby:
 
 ```ruby
 #!/usr/bin/env ruby
@@ -63,5 +63,5 @@ Happy programming!
 Debugging Tips
 ---------------
 
-* Try running `~/Library/Application\ Scripts/tanin.tip/provider [some-input]` in Terminal to see if it works correctly
+* Try running `~/Library/Application\ Scripts/tanin.tip/provider.script [some-input]` in Terminal to see if it works correctly
 * Open Console.app and set filter Process=Tip. The logs from Tip will show up.
