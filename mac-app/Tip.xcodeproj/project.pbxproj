@@ -29,6 +29,7 @@
 		F3A35D3023D6344000982791 /* TipNoticeView.m in Sources */ = {isa = PBXBuildFile; fileRef = F3A35D2F23D6344000982791 /* TipNoticeView.m */; };
 		F3A35D3223D636ED00982791 /* empty_provider.rb in Resources */ = {isa = PBXBuildFile; fileRef = F3A35D3123D636EC00982791 /* empty_provider.rb */; };
 		F3E5B64B23BA846A002BEDD6 /* FontAwesome-Solid.otf in Resources */ = {isa = PBXBuildFile; fileRef = F3E5B64A23BA846A002BEDD6 /* FontAwesome-Solid.otf */; };
+		FA0E180D23E6AD86006B4DD6 /* TipUITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0E180C23E6AD86006B4DD6 /* TipUITest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +79,8 @@
 		F3A35D2F23D6344000982791 /* TipNoticeView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TipNoticeView.m; sourceTree = "<group>"; };
 		F3A35D3123D636EC00982791 /* empty_provider.rb */ = {isa = PBXFileReference; lastKnownFileType = text.script.ruby; path = empty_provider.rb; sourceTree = "<group>"; };
 		F3E5B64A23BA846A002BEDD6 /* FontAwesome-Solid.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FontAwesome-Solid.otf"; sourceTree = "<group>"; };
+		FA0E180723E6A7D3006B4DD6 /* TipUITests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TipUITests-Bridging-Header.h"; sourceTree = "<group>"; };
+		FA0E180C23E6AD86006B4DD6 /* TipUITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipUITest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,13 +155,15 @@
 		F300999523B8159E0000B9E3 /* TipUITests */ = {
 			isa = PBXGroup;
 			children = (
-				F37DB94823D54CA9002D799E /* Info.plist */,
-				F300999623B8159E0000B9E3 /* tipUITests.m */,
-				F318018223D415A4000E17A5 /* good_provider.rb */,
-				F3A35D2C23D6301200982791 /* malformed_json_provider.rb */,
 				F3A35D3123D636EC00982791 /* empty_provider.rb */,
-				F33EDCFA23DE262600114AFB /* unexecutable_provider.rb */,
 				F33EDCFC23DE287200114AFB /* error_provider.rb */,
+				F318018223D415A4000E17A5 /* good_provider.rb */,
+				F37DB94823D54CA9002D799E /* Info.plist */,
+				F3A35D2C23D6301200982791 /* malformed_json_provider.rb */,
+				FA0E180C23E6AD86006B4DD6 /* TipUITest.swift */,
+				FA0E180723E6A7D3006B4DD6 /* TipUITests-Bridging-Header.h */,
+				F300999623B8159E0000B9E3 /* tipUITests.m */,
+				F33EDCFA23DE262600114AFB /* unexecutable_provider.rb */,
 			);
 			path = TipUITests;
 			sourceTree = "<group>";
@@ -224,6 +229,7 @@
 					};
 					F300999123B8159E0000B9E3 = {
 						CreatedOnToolsVersion = 11.2.1;
+						LastSwiftMigration = 1130;
 						TestTargetID = F300997323B8159D0000B9E3;
 					};
 				};
@@ -298,6 +304,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F300999723B8159E0000B9E3 /* tipUITests.m in Sources */,
+				FA0E180D23E6AD86006B4DD6 /* TipUITest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -470,6 +477,7 @@
 		F30099A223B8159E0000B9E3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -484,6 +492,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = tanin.tip.tipUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "TipUITests/TipUITests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				TEST_TARGET_NAME = Tip;
 			};
 			name = Debug;
@@ -491,6 +502,7 @@
 		F30099A323B8159E0000B9E3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = "";
@@ -504,6 +516,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = tanin.tip.tipUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "TipUITests/TipUITests-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 				TEST_TARGET_NAME = Tip;
 			};
 			name = Release;
