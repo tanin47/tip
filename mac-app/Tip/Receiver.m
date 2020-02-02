@@ -18,8 +18,18 @@
     self = [super init];
     if (self) {
         self.tipper = tipper_;
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(popoverDidClose)
+                                                     name:NSPopoverDidCloseNotification
+                                                   object:nil];
     }
     return self;
+}
+
+- (void) popoverDidClose {
+    [self.window close];
+    self.window = nil;
+    self.popover = nil;
 }
 
 - (NSString*) readInput:(NSPasteboard*)pboard
@@ -53,12 +63,13 @@
     NSPoint mouseLoc = [NSEvent mouseLocation];
     
     NSRect frame = NSMakeRect(mouseLoc.x, mouseLoc.y-10, 1, 1);
-    NSWindow* window  = [[NSWindow alloc] initWithContentRect:frame
+    self.window  = [[NSWindow alloc] initWithContentRect:frame
                                                     styleMask:NSWindowStyleMaskBorderless
                                                       backing:NSBackingStoreBuffered
                                                         defer:NO];
-    [window setBackgroundColor:[NSColor blueColor]];
-    [window makeKeyAndOrderFront:NSApp];
+    [self.window setReleasedWhenClosed:false];
+    [self.window setBackgroundColor:[NSColor colorWithRed:0 green:0 blue:0 alpha:0]];
+    [self.window makeKeyAndOrderFront:NSApp];
     
     @try {
         NSArray<TipItem *> * items = [self.tipper makeTip:input];
@@ -68,13 +79,13 @@
         NSLog(@"Error: %@ %@", error, [error userInfo]);
         _controller.error = error;
     }
-    NSPopover *entryPopover = [[NSPopover alloc] init];
-    entryPopover.contentViewController = _controller;
-    entryPopover.behavior = NSPopoverBehaviorTransient;
-    entryPopover.animates = YES;
+    self.popover = [[NSPopover alloc] init];
+    self.popover.contentViewController = _controller;
+    self.popover.behavior = NSPopoverBehaviorTransient;
+    self.popover.animates = YES;
     
-    [entryPopover showRelativeToRect:window.contentView.bounds
-                              ofView:window.contentView
+    [self.popover showRelativeToRect:self.window.contentView.bounds
+                              ofView:self.window.contentView
                        preferredEdge:NSMinYEdge];
 }
 

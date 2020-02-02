@@ -35,11 +35,6 @@
 }
 
 - (void) applicationDidFinishLaunching:(NSNotification *)notification {
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(terminate)
-                                                 name:NSPopoverDidCloseNotification
-                                               object:nil];
-    
     _statusItem = [NSStatusBar.systemStatusBar statusItemWithLength:25];
            
     _statusItem.button.cell.font = [NSFont fontWithName:@"Font Awesome 5 Free" size:14];
@@ -50,6 +45,8 @@
     _statusItem.menu.delegate = self;
     [_statusItem.menu addItemWithTitle:@"How to setup Tip" action:@selector(openInstallationUrl) keyEquivalent:@""];
     [_statusItem.menu addItemWithTitle:@"Help & Documentation" action:@selector(openGithubProject) keyEquivalent:@""];
+    [_statusItem.menu addItem:NSMenuItem.separatorItem];
+    [_statusItem.menu addItemWithTitle:@"Hide this menu" action:@selector(hide) keyEquivalent:@""];
     [_statusItem.menu addItem:NSMenuItem.separatorItem];
     [_statusItem.menu addItemWithTitle:@"Quit" action:@selector(terminate) keyEquivalent:@""];
     
@@ -67,6 +64,10 @@
     [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://github.com/tanin47/tip#installation"]];
 }
 
+- (void) hide {
+    _statusItem.visible = NO;
+}
+
 - (void)openGithubProject {
     [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://github.com/tanin47/tip"]];
 }
@@ -75,5 +76,13 @@
     [NSApp terminate:nil];
 }
 
+- (void)applicationDidBecomeActive:(NSNotification *)notification {
+    // Tip.app is activated by user double-clicking on the binary.
+    // If it's activated by Mac's service, the tooltip will show.
+    // This means there's a window in orderedWindows.
+    if ([NSApp orderedWindows].count == 0) {
+        _statusItem.visible = YES;
+    }
+}
 
 @end
