@@ -8,6 +8,8 @@ Make the provider script
 * The provider script is executed by Tip when activated
 * Don't forget to `chmod 755 ~/Library/Application\ Scripts/tanin.tip/provider`
 * Use hard link, not symbolic link (i.e. `ln -s`), because Tip runs in [App Sandbox](https://developer.apple.com/app-sandboxing/) and can't follow a symbolic link to a file outside the predefined directory, which is `~/Library/Application\ Scripts/tanin.tip/`.
+* Lastly, don't forget to enable Tip and configure Tip's short key by:
+  * Go to System Preferences > Keyboard > Shortcuts > Services > Scroll down to the "Text" section. You should see "Tip: open tips" under the "Text" section. Please make sure to check it, and you can also change the short key.
 
 
 Example
