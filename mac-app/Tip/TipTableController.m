@@ -19,7 +19,7 @@
     if (self = [super init]) {
         self.view = [[NSView alloc] init];
 
-        _noticeView = [[TipNoticeView alloc] initWithFrame:CGRectMake(0, 0, 300, 0)];
+        _noticeView = [[TipNoticeView alloc] initWithFrame:CGRectMake(0, 0, 350, 0)];
         _noticeView.hidden = YES;
         [self.view addSubview:_noticeView];
         
@@ -93,7 +93,6 @@
         
         [_noticeView updateWithMessage:message
                                   icon:0xf06a
-                                 color:NSColor.systemPinkColor
                                 action:action];
         
         self.preferredContentSize = _noticeView.frame.size;
@@ -102,7 +101,6 @@
         _table.hidden = YES;
         [_noticeView updateWithMessage:@"No tips. You can add tips through your provider script. Click to see the instruction."
                                   icon:0xf59a
-                                 color:NSColor.systemGrayColor
                                 action:TipNoticeViewActionOpenProviderInstruction];
         self.preferredContentSize = _noticeView.frame.size;
     } else {

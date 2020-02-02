@@ -24,7 +24,7 @@
 
         _textField = [[NSTextField alloc] init];
         _textField.cell = [VeritcallyAlignNSTextFieldCell new];
-        _textField.cell.font = [NSFont fontWithName:@"RobotoMono-Regular" size:12];
+        _textField.cell.font = [NSFont fontWithName:@"RobotoMono-Regular" size:13];
         _textField.editable = NO;
         _textField.selectable = NO;
         _textField.bezeled = NO;
@@ -38,15 +38,12 @@
 
 - (void) updateWithMessage:(NSString*)message
                       icon:(UniChar)icon
-                     color:(NSColor*)color
                     action:(TipNoticeViewAction)action {
     self.action = action;
     
     _textField.stringValue = message;
-    _textField.textColor = color;
 
     _iconField.stringValue = [NSString stringWithFormat:@"%C", icon];
-    _iconField.textColor = color;
     
     NSSize size = [_textField.cell cellSizeForBounds:NSMakeRect(0, 0, self.frame.size.width - 40, FLT_MAX)];
     _textField.frame = NSMakeRect(
