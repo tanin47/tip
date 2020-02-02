@@ -19,7 +19,7 @@ typedef NS_ENUM(NSInteger, TipNoticeViewAction) {
 @interface TipNoticeView : NSView
 
 - (instancetype)initWithFrame:(NSRect)frame;
-- (void) updateWithMessage:(NSString*) message icon:(UniChar)icon color:(NSColor*)color action:(TipNoticeViewAction)action;
+- (void) updateWithMessage:(NSString*) message icon:(UniChar)icon action:(TipNoticeViewAction)action;
 
 @property NSTextField* textField;
 @property NSTextField* iconField;
