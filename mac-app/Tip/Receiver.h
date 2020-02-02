@@ -16,6 +16,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property TipTableController* controller;
 @property ExternalTipper* tipper;
+@property (nonatomic, retain, nullable) NSWindow* window;
+@property (nonatomic, retain, nullable) NSPopover* popover;
 
 - (id)initWithTipper:(ExternalTipper *)tipper_;
 - (void)showPopover: (NSString*) input;
