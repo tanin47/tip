@@ -26,7 +26,7 @@ final class TipUITest: XCTestCase {
     XCTAssertEqual("no_provider doesn't exist. Please make a provider script. Click to see instruction.", app.popovers.children(matching: .any).element(boundBy: 1).firstMatch.value as! String)
 
     app.popovers.element.click()
-    sleep(1)
+    usleep(useconds_t(200 * 1000))
     XCTAssertEqual("OpenProviderInstruction", pasteBoard.string(forType: .string))
   }
 
