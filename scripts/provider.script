@@ -1,15 +1,28 @@
 #!/usr/bin/env ruby
 
 require 'json'
-require 'uri'
+require 'cgi'
 
 def main(input)
   items = []
   items += get_time(input)
   items += get_jira_url(input)
+  items += get_google_url(input)
   items += get_definition(input)
 
   puts items.compact.to_json
+end
+
+def get_google_url(input)
+  input = input.strip
+  return [] unless input
+
+
+  [{
+       type: 'url',
+       label: 'Search on Google',
+       value: "https://google.com/search?q=#{CGI.escape(input)}"
+   }]
 end
 
 def get_jira_url(input)

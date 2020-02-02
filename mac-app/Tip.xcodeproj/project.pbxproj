@@ -22,6 +22,7 @@
 		F33EDCFB23DE262600114AFB /* unexecutable_provider.rb in Resources */ = {isa = PBXBuildFile; fileRef = F33EDCFA23DE262600114AFB /* unexecutable_provider.rb */; };
 		F33EDCFD23DE287200114AFB /* error_provider.rb in Resources */ = {isa = PBXBuildFile; fileRef = F33EDCFC23DE287200114AFB /* error_provider.rb */; };
 		F33EDD0223DE99C600114AFB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F33EDD0123DE99C600114AFB /* Assets.xcassets */; };
+		F357936423E66CD600031E09 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F357936323E66CD600031E09 /* AppDelegate.m */; };
 		F37DB94123D428C0002D799E /* FontAwesome-Solid.otf in Resources */ = {isa = PBXBuildFile; fileRef = F3E5B64A23BA846A002BEDD6 /* FontAwesome-Solid.otf */; };
 		F37DB94723D548E7002D799E /* ForTest.m in Sources */ = {isa = PBXBuildFile; fileRef = F37DB94623D548E7002D799E /* ForTest.m */; };
 		F3A35D2D23D6301200982791 /* malformed_json_provider.rb in Resources */ = {isa = PBXBuildFile; fileRef = F3A35D2C23D6301200982791 /* malformed_json_provider.rb */; };
@@ -67,6 +68,8 @@
 		F33EDCFA23DE262600114AFB /* unexecutable_provider.rb */ = {isa = PBXFileReference; lastKnownFileType = text.script.ruby; path = unexecutable_provider.rb; sourceTree = "<group>"; };
 		F33EDCFC23DE287200114AFB /* error_provider.rb */ = {isa = PBXFileReference; lastKnownFileType = text.script.ruby; path = error_provider.rb; sourceTree = "<group>"; };
 		F33EDD0123DE99C600114AFB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F357936223E66CD600031E09 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		F357936323E66CD600031E09 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		F37DB94523D548E7002D799E /* ForTest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ForTest.h; sourceTree = "<group>"; };
 		F37DB94623D548E7002D799E /* ForTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ForTest.m; sourceTree = "<group>"; };
 		F37DB94823D54CA9002D799E /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -140,6 +143,8 @@
 				F37DB94623D548E7002D799E /* ForTest.m */,
 				F3A35D2E23D6344000982791 /* TipNoticeView.h */,
 				F3A35D2F23D6344000982791 /* TipNoticeView.m */,
+				F357936223E66CD600031E09 /* AppDelegate.h */,
+				F357936323E66CD600031E09 /* AppDelegate.m */,
 			);
 			path = Tip;
 			sourceTree = "<group>";
@@ -274,6 +279,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F357936423E66CD600031E09 /* AppDelegate.m in Sources */,
 				F30099B823B872E50000B9E3 /* TipItem.m in Sources */,
 				F30CBFFD23B9E71E008D6B47 /* VeritcallyAlignNSTextFieldCell.m in Sources */,
 				F30CBFEE23B98977008D6B47 /* TipTableController.m in Sources */,
