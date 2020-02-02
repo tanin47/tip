@@ -39,7 +39,7 @@ You can make your own info provider. The possibility is endless!
 Installation
 -------------
 
-1. Download Tip from [Mac App Store](https://apps.apple.com/us/app/universal-tip/id1495732622)
+1. Install Tip from [Mac App Store](https://apps.apple.com/us/app/universal-tip/id1495732622)
     * You can also download it from [the release page](https://github.com/tanin47/tip/releases) and double-click `release.pkg` in order to install.
 2. Download and copy `scripts/provider` to `~/Library/Application\ Scripts/tanin.tip/provider`. Run `chmod 755 ~/Library/Application\ Scripts/tanin.tip/provider`. 
     * Or you can simply run: `curl -o ~/.tip/ --create-dirs  https://raw.githubusercontent.com/tanin47/tip/master/scripts/provider && chmod 755 ~/Library/Application\ Scripts/tanin.tip/provider`
