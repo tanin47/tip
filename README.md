@@ -9,9 +9,7 @@ Universal Tip provides useful info at your fingertip. You can simply select the 
 
 "Useful info" is programmed by you using your fav programming language, and it works with every Mac app.
 
-Universal Tip reduces hand movement when performing menial tasks, reduces the risk of Repetitive Strain Injury (RSI), and enables you to work faster.
-
-Save yourself from the injury. Try it today!
+For me, who is prone to Repetitive Strain Injury (RSI). Tip reduces hand movement and, thus, reduces the risk of the injury. It also makes me work faster. I encourage you to try Tip today.
 
 
 Examples
