@@ -28,9 +28,7 @@ final class TipUITests : XCTestCase {
 
   func testNoProvider() {
     launch(withName: "no_provider", force: true)
-
-    XCTAssertEqual("no_provider doesn't exist. Please make a provider script. Click to see instruction.",
-                   app.popovers.children(matching: .any).element(boundBy: 1).firstMatch.value as! String)
+    XCTAssertEqual("no_provider doesn't exist. Please make a provider script. Click to see instruction.", app.popovers.children(matching: .any).element(boundBy: 1).firstMatch.value as! String)
 
     app.popovers.element.click()
     usleep(useconds_t(200 * 1000))
@@ -39,8 +37,7 @@ final class TipUITests : XCTestCase {
 
   func testNoTip() {
     launch(withName: "empty_provider")
-    XCTAssertEqual("No tips. You can add tips through your provider script. Click to see the instruction.",
-                   app.popovers.children(matching: .any).element(boundBy: 1).firstMatch.value as! String)
+    XCTAssertEqual("No tips. You can add tips through your provider script. Click to see the instruction.", app.popovers.children(matching: .any).element(boundBy: 1).firstMatch.value as! String)
 
     app.popovers.element.click()
     usleep(useconds_t(200 * 1000))
@@ -49,7 +46,6 @@ final class TipUITests : XCTestCase {
 
   func testProviderUnexecutable() {
     launch(withName: "unexecutable_provider")
-
     let value = app.popovers.children(matching: .any).element(boundBy: 1).firstMatch.value as! String
     let firstSlash = value.firstIndex(of: "/") ?? value.endIndex
     XCTAssertEqual("Provider isn't executable. Please chmod 755 ", value[..<firstSlash])
@@ -61,7 +57,6 @@ final class TipUITests : XCTestCase {
 
   func testProvideMalformedJson() {
     launch(withName: "malformed_json_provider")
-
     XCTAssertEqual("Malformed JSON returned from provider. Click to see logs in Console. You'll need to set the filter Process=Tip.", app.popovers.children(matching: .any).element(boundBy: 1).firstMatch.value as! String)
 
     app.popovers.element.click()
@@ -71,9 +66,8 @@ final class TipUITests : XCTestCase {
 
   func testErrorProvider() {
     launch(withName: "error_provider")
+    XCTAssertEqual("Error occurred. Click to see logs in Console. You'll need to set the filter Process=Tip.", app.popovers.children(matching: .any).element(boundBy: 1).firstMatch.value as! String)
 
-    XCTAssertEqual("Error occurred. Click to see logs in Console. You'll need to set the filter Process=Tip.",
-                   app.popovers.children(matching: .any).element(boundBy: 1).firstMatch.value as! String)
     app.popovers.element.click()
     usleep(useconds_t(200 * 1000))
     XCTAssertEqual("OpenConsole", pasteBoard.string(forType: .string))
