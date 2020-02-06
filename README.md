@@ -50,10 +50,10 @@ The sample provider script is in Ruby, so you need Ruby to run it. Otherwise, yo
 See how to develop the provider [here](PROVIDER.md).
 
 
-Security
+Privacy
 ---------
 
-Tip runs in [App Sandbox](https://developer.apple.com/app-sandboxing/), which protects systems and users by limiting the privileges of the app to its intended functionality. App Sandbox gives our users peace of mind.
+Tip runs in [App Sandbox](https://developer.apple.com/app-sandboxing/), which protects users by limiting the privileges of the app to its intended functionality. App Sandbox gives our users peace of mind.
 
 With App Sandbox, Tip can only read/write files from [a few predefined directories](https://developer.apple.com/library/archive/documentation/Security/Conceptual/AppSandboxDesignGuide/AppSandboxInDepth/AppSandboxInDepth.html) and, specifically, can *only* execute files (not write) within `~/Library/Application\ Scripts/tanin.tip`.
 
