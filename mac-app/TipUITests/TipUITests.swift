@@ -27,8 +27,9 @@ final class TipUITests : XCTestCase {
   }
 
   func testNoProvider() {
-    launch(withName: "no_provider", force: true)
-    XCTAssertEqual("no_provider doesn't exist. Please make a provider script. Click to see instruction.", app.popovers.children(matching: .any).element(boundBy: 1).firstMatch.value as! String)
+    app.launchArguments = ["-test", "TestInput", "-provider", "/tmp/something-doesn-exist.rb"]
+    app.launch()
+    XCTAssertEqual("/tmp/something-doesn-exist.rb doesn't exist. Please make a provider script. Click to see instruction.", app.popovers.children(matching: .any).element(boundBy: 1).firstMatch.value as! String)
 
     app.popovers.element.click()
     usleep(useconds_t(200 * 1000))
@@ -83,19 +84,9 @@ final class TipUITests : XCTestCase {
     }
   }
 
-  private func launch(withName: String, force: Bool = false){
+  private func launch(withName: String){
     let file = Bundle(for: type(of: self)).path(forResource: withName, ofType: "rb")
-
-    guard let valid = file else {
-      if (force) {
-        app.launchArguments = ["-test", "TestInput", "-provider", withName]
-        app.launch()
-      }
-      // fail silently, no-op probably not good for app code, but this is test so ... ¯\_(ツ)_/¯
-      return
-    }
-
-    app.launchArguments = ["-test", "TestInput", "-provider", valid]
+    app.launchArguments = ["-test", "TestInput", "-provider", file!]
     app.launch()
   }
 
