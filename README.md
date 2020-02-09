@@ -5,7 +5,7 @@
 
 [![Download from Mac App Store](./download-button.svg)](https://apps.apple.com/us/app/universal-tip/id1495732622)
 
-Universal Tip provides useful info at your fingertip. You can simply select the text and hit the shortkey to activate the tooltip with useful info.
+Universal Tip provides useful info at your fingertip. You can simply select the text and hit the shortcuts to activate the tooltip with useful info.
 
 "Useful info" is programmed by you using your fav programming language, and it works with every Mac app.
 
@@ -43,7 +43,7 @@ Installation
     * Or you can simply run: `curl -o ~/Library/Application\ Scripts/tanin.tip/ --create-dirs  https://raw.githubusercontent.com/tanin47/tip/master/scripts/provider.script && chmod 755 ~/Library/Application\ Scripts/tanin.tip/provider.script`
 3. Go to System Preferences > Keyboard > Shortcuts > Services > Scroll down to the "Text" section. You should see "Tip: open tips" under the "Text" section. 
     * Please make sure to check it.
-    * You can also set the short key here.
+    * You can also set the shortcuts here.
 
 The sample provider script is in Ruby, so you need Ruby to run it. Otherwise, you can simply make your own provider as well.
 
@@ -66,30 +66,30 @@ Usage
 ------
 
 1. Select the text
-2. Hit the configured short key. The default short key is `Cmd + &`.
+2. Hit the configured short key. The default shortcut is `Cmd + &`.
 3. The tooltip with relevant info will show
 4. Use arrow keys to choose an item in the tooltip and hit 'Enter' to perform the appropriate action. Alternatively, you can click an item as well
 
 Currently, Tip supports 2 actions: (1) Copy to clipboard if the item is text, and (2) Open URL if the item is URL.
 
 
-Customize the short key
+Customize the shortcut
 ------------------------
 
-Go to System Preferences > Keyboard > Shortcuts > Services and set the short key for "Tip: open tips".
+Go to System Preferences > Keyboard > Shortcuts > Services and set the shortcut for "Tip: open tips".
 
-If [your short key doesn't include the Command key](https://apple.stackexchange.com/questions/260683/keyboard-shortcut-for-service-only-works-after-i-manually-run-the-service), you will need to activate it manually by:
+If [your shortcut doesn't include the Command key](https://apple.stackexchange.com/questions/260683/keyboard-shortcut-for-service-only-works-after-i-manually-run-the-service), you will need to activate it manually by:
 
 1. Selecting a text
 2. Clicking on the application menu > Services > "Tip: open tips"
 
-Now you'll be able to use the new short key for Tip.
+Now you'll be able to use the new shortcut for Tip.
 
 
 Technical detail
 -----------------
 
-Tip is a [system-wide service on Mac](https://developer.apple.com/design/human-interface-guidelines/macos/extensions/services/). When user selects text and hits the short key, the selected text is sent to Tip. Then, Tip invokes the command-line tool with the selected text as the first argument, i.e `~/Library/Application\ Scripts/tanin.tip/provider.script [selected-text]`.
+Tip is a [system-wide service on Mac](https://developer.apple.com/design/human-interface-guidelines/macos/extensions/services/). When user selects text and hits the shortcut, the selected text is sent to Tip. Then, Tip invokes the command-line tool with the selected text as the first argument, i.e `~/Library/Application\ Scripts/tanin.tip/provider.script [selected-text]`.
 
 The command-line tool processes the input, decides which info to show, and prints the tip items as JSON that looks like below:
 
