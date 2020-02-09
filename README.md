@@ -5,7 +5,7 @@
 
 [![Download from Mac App Store](./download-button.svg)](https://apps.apple.com/us/app/universal-tip/id1495732622)
 
-Universal Tip provides useful info at your fingertip. You can simply select the text and hit the shortcuts to activate the tooltip with useful info.
+Universal Tip provides useful info at your fingertip. You can select the text and hit the shortcuts to activate the tooltip with useful info.
 
 "Useful info" is programmed by you using your fav programming language, and it works with every Mac app.
 
