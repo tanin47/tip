@@ -7,7 +7,7 @@
 
 Universal Tip provides useful info at your fingertip. You can select the text and hit the shortcuts to activate the tooltip with useful info.
 
-"Useful info" is programmed by you using your fav programming language, and it works with every Mac app.
+"Useful info" is programmed by you using your fav programming language, and it can be used with every Mac app.
 
 For me, who is prone to Repetitive Strain Injury (RSI), Tip reduces hand movement and, thus, the risk of the injury. It also makes me work faster. I encourage you to try Tip today!
 
