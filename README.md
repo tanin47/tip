@@ -5,7 +5,7 @@
 
 [![Download from Mac App Store](./download-button.svg)](https://apps.apple.com/us/app/universal-tip/id1495732622)
 
-Universal Tip provides useful info at your fingertip. You can select the text and hit the shortcuts to activate the tooltip with useful info. Tip can be used with every Mac app.
+Universal Tip provides useful info at your fingertip. You can select the text and hit the shortcuts to activate the tooltip with useful info. Tip can be used with any Mac OS app.
 
 "Useful info" is programmed by YOU using your fav programming language. 
 
@@ -17,17 +17,25 @@ Examples
 
 ### Convert the seconds from epoch to the human-readable time and copy it to clipboard
 
+Tip is used within Chrome.
+
 ![Convert seconds from epoch to time and copy](https://media.giphy.com/media/f952ZuRG9kqCoxGt8v/giphy.gif)
 
 ### Open Github code search on the selected text
+
+Tip is used within Sublime.
 
 ![Open Github code search with the selected text](https://media.giphy.com/media/cjif6axsDr7tEaP0EF/giphy.gif)
 
 ### Open a file on Github from an error stacktrace line
 
+Tip is used within Terminal.
+
 ![Open file on Github from an error stacktrace line](https://media.giphy.com/media/JSYWptFElQmDJOXzXO/giphy.gif)
 
 ### Open a JIRA ticket on the selected text
+
+Tip is used within Terminal.
 
 ![Open JIRA with the selected text](https://media.giphy.com/media/H48pYa5PddvEY9MGP6/giphy.gif)
 
