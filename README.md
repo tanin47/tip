@@ -53,7 +53,7 @@ Installation
     * Please make sure to check it.
     * You can also set the shortcuts here.
 
-The sample provider script is in Ruby, so you need Ruby to run it. Otherwise, you can simply make your own provider as well.
+The sample provider script is in Ruby, so you need Ruby to run it. Otherwise, you can make your own provider as well.
 
 See how to develop the provider [here](PROVIDER.md).
 
@@ -63,7 +63,7 @@ Privacy
 
 Tip runs in [App Sandbox](https://developer.apple.com/app-sandboxing/), which protects users by limiting the privileges of the app to its intended functionality. App Sandbox gives our users peace of mind.
 
-With App Sandbox, Tip can only read/write files from [a few predefined directories](https://developer.apple.com/library/archive/documentation/Security/Conceptual/AppSandboxDesignGuide/AppSandboxInDepth/AppSandboxInDepth.html) and, specifically, can *only* execute files (not write) within `~/Library/Application\ Scripts/tanin.tip`.
+With App Sandbox, Tip can only read/write files from [a few predefined directories](https://developer.apple.com/library/archive/documentation/Security/Conceptual/AppSandboxDesignGuide/AppSandboxInDepth/AppSandboxInDepth.html) and, specifically, can *only* execute (not write) files within `~/Library/Application\ Scripts/tanin.tip`.
 
 This is the reason why the provider script is under `~/Library/Application\ Scripts/tanin.tip/`.
 
@@ -117,3 +117,7 @@ FAQ
 ### Why is Tip written in Objective-C instead of Swift?
 
 Because I don't know how to write Swift. I'd like to switch to Swift though.
+
+### What does Tip mean?
+
+Tip is a Thai word that means magical and divine. The word is derived from the word, divya, which exists in both Pali and Sanskrit.
