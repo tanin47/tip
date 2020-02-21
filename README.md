@@ -5,7 +5,7 @@
 
 [![Download from Mac App Store](./download-button.svg)](https://apps.apple.com/us/app/universal-tip/id1495732622)
 
-Universal Tip (or its nickname, Tip) is a programmable tooltip that can be used with any Mac OS app. You can select the text and hit the shortcuts to activate the tooltip with useful info.
+Tip (or its full name, Universal Tip) is a programmable tooltip that can be used with any Mac OS app. You can select the text and hit the shortcuts to activate the tooltip with useful info.
 
 "Useful info" is programmed by YOU using your fav programming language. 
 
