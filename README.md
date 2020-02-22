@@ -9,7 +9,7 @@ Tip (or its full name, Universal Tip) is a programmable tooltip that can be used
 
 "Useful info" is programmed by YOU using your fav programming language. 
 
-For me, who is prone to Repetitive Strain Injury (RSI), Tip reduces hand movement and, thus, the risk of the injury. It also makes me work faster. I encourage you to try Tip today!
+For me, who is prone to Repetitive Strain Injury (RSI), Tip reduces hand movement and the risk of the injury. It also makes me work faster. I encourage you to try Tip today!
 
 
 Examples
