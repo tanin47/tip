@@ -55,7 +55,7 @@ Installation
 
 The sample provider script is in Ruby, so you need Ruby to run it. Otherwise, you can make your own provider as well.
 
-See how to develop the provider [here](PROVIDER.md).
+See how to develop [the provider script here](PROVIDER.md).
 
 
 Privacy
@@ -63,11 +63,13 @@ Privacy
 
 Tip runs in [App Sandbox](https://developer.apple.com/app-sandboxing/), which protects users by limiting the privileges of the app to its intended functionality. App Sandbox gives our users peace of mind.
 
-With App Sandbox, Tip can only read/write files from [a few predefined directories](https://developer.apple.com/library/archive/documentation/Security/Conceptual/AppSandboxDesignGuide/AppSandboxInDepth/AppSandboxInDepth.html) and, specifically, can *only* execute (not write) files within `~/Library/Application\ Scripts/tanin.tip`.
-
-This is the reason why the provider script is under `~/Library/Application\ Scripts/tanin.tip/`.
+With App Sandbox, Tip can only read/write files from [a few predefined directories](https://developer.apple.com/library/archive/documentation/Security/Conceptual/AppSandboxDesignGuide/AppSandboxInDepth/AppSandboxInDepth.html) and, specifically, can *only* execute (not write) files within `~/Library/Application\ Scripts/tanin.tip`. This is the reason why the provider script is under `~/Library/Application\ Scripts/tanin.tip/`.
 
 As a reminder, please always review a downloaded provider script before using it.
+
+Tip is also based on [system-wide service  (or NSServices)](https://developer.apple.com/design/human-interface-guidelines/macos/extensions/services/). Tip cannot see the content of other applications. When you explicit trigger Tip, Mac OS provides Tip with the selected text.
+
+This is a huge win privacy-wise :)
 
 
 Usage
@@ -97,7 +99,7 @@ Now you'll be able to use the new shortcut for Tip.
 Technical detail
 -----------------
 
-Tip is a [system-wide service on Mac](https://developer.apple.com/design/human-interface-guidelines/macos/extensions/services/). When user selects text and hits the shortcut, the selected text is sent to Tip. Then, Tip invokes the command-line tool with the selected text as the first argument, i.e `~/Library/Application\ Scripts/tanin.tip/provider.script [selected-text]`.
+Tip is a [system-wide service (or NSServices) on Mac](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/SysServices/introduction.html#//apple_ref/doc/uid/10000101-SW1). When user selects text and hits the shortcut, the selected text is sent to Tip. Then, Tip invokes the command-line tool with the selected text as the first argument, i.e `~/Library/Application\ Scripts/tanin.tip/provider.script [selected-text]`.
 
 The command-line tool processes the input, decides which info to show, and prints the tip items as JSON that looks like below:
 

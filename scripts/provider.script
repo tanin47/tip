@@ -1,5 +1,7 @@
 #!/usr/bin/env ruby
 
+# Please copy this file to the folder: ~/Library/Application\ Scripts/tanin.tip/
+
 require 'json'
 require 'cgi'
 
