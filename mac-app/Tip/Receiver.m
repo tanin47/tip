@@ -19,11 +19,21 @@
     if (self) {
         self.tipper = tipper_;
         [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(popoverWillClose)
+                                                     name:NSPopoverWillCloseNotification
+                                                   object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(popoverDidClose)
                                                      name:NSPopoverDidCloseNotification
                                                    object:nil];
     }
     return self;
+}
+
+- (void) popoverWillClose {
+    // Trigger hiding in order to give the focus back to the previous app.
+    // Trigger hiding during NSPopoverWillCloseNotification is slicker.
+    [NSApp hide:nil];
 }
 
 - (void) popoverDidClose {
@@ -59,7 +69,6 @@
 }
 
 - (void)showPopover: (NSString*) input {
-    
     NSPoint mouseLoc = [NSEvent mouseLocation];
     
     NSRect frame = NSMakeRect(mouseLoc.x, mouseLoc.y-10, 1, 1);
