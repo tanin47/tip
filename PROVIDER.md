@@ -66,3 +66,13 @@ Debugging Tips
 
 * Try running `~/Library/Application\ Scripts/tanin.tip/provider.script [some-input]` in Terminal to see if it works correctly
 * Open Console.app and set filter Process=Tip. The logs from Tip will show up.
+
+
+Examples of provider scripts
+-----------------------------
+
+* [Ruby](./scripts/provider.script)
+* [Python](./scripts/provider.script.py)
+* [Rust](https://github.com/hobofan/tippytap)
+
+As a reminder, please always inspect the source code of a provider script before using it.
