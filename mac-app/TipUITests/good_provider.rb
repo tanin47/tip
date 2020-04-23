@@ -8,11 +8,16 @@ def main(input)
        type: 'text',
        value: "Return #{input}"
     },
-   {
+    {
+        type: 'text',
+          label: "Label #{input}",
+          value: "Value #{input}",
+    },
+    {
        type: 'url',
        label: "Go to #{input}",
        value: "tanintip://#{input}"
-   }
+    }
   ].to_json
 end
 

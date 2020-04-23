@@ -16,13 +16,22 @@ final class TipUITests : XCTestCase {
 
   func testGoodProviderClickingOnText() {
     launch(withName: "good_provider")
-    popoverElement(withIndex: 0).click()
+    XCTAssertEqual("Return TestInput", getLabel(rowIndex: 0))
+    click(rowIndex: 0)
     XCTAssertEqual("Return TestInput", pasteBoard.string(forType: .string))
+  }
+
+  func testGoodProviderClickingOnTextWithLabel() {
+    launch(withName: "good_provider")
+    XCTAssertEqual("Label TestInput", getLabel(rowIndex: 1))
+    click(rowIndex: 1)
+    XCTAssertEqual("Value TestInput", pasteBoard.string(forType: .string))
   }
 
   func testGoodProviderClickingOnURL() {
     launch(withName: "good_provider")
-    popoverElement(withIndex: 1).click()
+    XCTAssertEqual("Go to TestInput", getLabel(rowIndex: 2))
+    click(rowIndex: 2)
     XCTAssertEqual("tanintip://TestInput", pasteBoard.string(forType: .string))
   }
 
@@ -90,7 +99,12 @@ final class TipUITests : XCTestCase {
     app.launch()
   }
 
-  private func popoverElement(withIndex: Int) -> XCUIElement {
-    return app.popovers.element.tableRows.allElementsBoundByIndex[withIndex].cells.firstMatch
+  private func click(rowIndex: Int)  {
+    app.popovers.element.tableRows.element(boundBy: rowIndex).cells.element(boundBy: 0).firstMatch.click()
   }
+
+  private func getLabel(rowIndex: Int) -> String {
+    return app.popovers.element.tableRows.element(boundBy: rowIndex).cells.element(boundBy: 1).staticTexts.element(boundBy: 0).value as! String
+  }
+
 }
