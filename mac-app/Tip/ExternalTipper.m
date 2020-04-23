@@ -84,7 +84,7 @@
         }
         item.value = value;
         if (item.type == TipItemTypeText) {
-            item.label = value;
+            item.label = label != nil ? label : value;
         } else {
             if (label == nil) {
                 NSLog(@"Malformed JSON: %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
