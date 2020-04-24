@@ -6,6 +6,7 @@ require 'json'
 require 'cgi'
 
 def main(input)
+  input = input.strip
   items = []
   items += get_time(input)
   items += get_jira_url(input)
@@ -16,7 +17,6 @@ def main(input)
 end
 
 def get_google_url(input)
-  input = input.strip
   return [] unless input
 
 
@@ -28,7 +28,6 @@ def get_google_url(input)
 end
 
 def get_jira_url(input)
-  input = input.strip
   return [] unless /\A[A-Za-z]+-[0-9]+\z/.match(input)
 
 
@@ -42,7 +41,7 @@ end
 TIME_FORMAT = '%-d %b %Y %H:%M:%S.%3N'
 
 def get_time(input)
-  input = input.downcase.strip
+  input = input.downcase
   return [] unless /\A"?[0-9,]+(\.[0-9]+)?(e[0-9]+)?"?\z/.match(input)
 
   input = input.gsub(/[",]/, '').to_f
@@ -63,7 +62,6 @@ def get_time(input)
 end
 
 def get_definition(input)
-  input = input.strip
   return [] unless /^[a-zA-Z]+$/.match(input)
   [{
        type: 'url',
