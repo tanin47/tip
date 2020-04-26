@@ -84,8 +84,7 @@ Currently, Tip supports 2 actions: (1) Copy to clipboard if the item is text, an
 
 
 Customize the shortcut
-------------------------
-
+-----------------------
 Go to System Preferences > Keyboard > Shortcuts > Services and set the shortcut for "Tip: open tips".
 
 If [your shortcut doesn't include the Command key](https://apple.stackexchange.com/questions/260683/keyboard-shortcut-for-service-only-works-after-i-manually-run-the-service), you will need to activate it manually by:
@@ -94,6 +93,18 @@ If [your shortcut doesn't include the Command key](https://apple.stackexchange.c
 2. Clicking on the application menu > Services > "Tip: open tips"
 
 Now you'll be able to use the new shortcut for Tip.
+
+Choosing a good shortcut
+-------------------------
+
+I've found that `Cmd + F3` is a good shortcut. I haven't encountered an application that uses this shortcut yet.
+
+My setup, which enables me to use Tip seamlessly, is:
+
+* An extra moust button emits `Cmd + F3`
+* 4-finger touch on the trackpad emits `Cmd + F3`
+
+I'm built an app that can map extra mouse button and 3(or 4)-finger touch to a combination of keys. I'm working to release this app. If you are interested, please open an issue!
 
 
 Technical detail
