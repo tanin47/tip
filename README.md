@@ -46,7 +46,7 @@ Installation
 -------------
 
 1. Install Tip from [Mac App Store](https://apps.apple.com/us/app/universal-tip/id1495732622)
-    * You can also download it from [the release page](https://github.com/tanin47/tip/releases) and move `Tip,app` to under `/Applications`
+    * You can also download it from [the release page](https://github.com/tanin47/tip/releases) and move `Tip.app` to under `/Applications`
 2. Download and copy `scripts/provider.script` to `~/Library/Application\ Scripts/tanin.tip/provider.script`. Run `chmod 755 ~/Library/Application\ Scripts/tanin.tip/provider.script`. 
     * Or you can simply run: `curl -o ~/Library/Application\ Scripts/tanin.tip/ --create-dirs  https://raw.githubusercontent.com/tanin47/tip/master/scripts/provider.script && chmod 755 ~/Library/Application\ Scripts/tanin.tip/provider.script`
 3. Go to System Preferences > Keyboard > Shortcuts > Services > Scroll down to the "Text" section. You should see "Tip: open tips" under the "Text" section. 
@@ -104,7 +104,7 @@ My setup, which enables me to use Tip seamlessly, is:
 * An extra moust button emits `Cmd + F3`
 * 4-finger touch on the trackpad emits `Cmd + F3`
 
-I'm built an app that can map extra mouse button and 3(or 4)-finger touch to a combination of keys. I'm working to release this app. If you are interested, please open an issue!
+I've built an app that can map extra mouse button and 3(or 4)-finger touch to a combination of keys. I'm working to release this app. If you are interested, please open an issue!
 
 
 Technical detail
