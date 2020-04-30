@@ -61,13 +61,13 @@ See how to develop [the provider script here](PROVIDER.md).
 Privacy
 ---------
 
-Tip runs in [App Sandbox](https://developer.apple.com/app-sandboxing/), which protects users by limiting the privileges of the app to its intended functionality. App Sandbox gives our users peace of mind.
+Tip runs in [App Sandbox](https://developer.apple.com/app-sandboxing/) without requesting for any permission additionally. App Sandbox protects users by limiting the privileges of the app to its intended functionality. App Sandbox gives our users peace of mind.
 
 With App Sandbox, Tip can only read/write files from [a few predefined directories](https://developer.apple.com/library/archive/documentation/Security/Conceptual/AppSandboxDesignGuide/AppSandboxInDepth/AppSandboxInDepth.html) and, specifically, can *only* execute (not write) files within `~/Library/Application\ Scripts/tanin.tip`. This is the reason why the provider script is under `~/Library/Application\ Scripts/tanin.tip/`.
 
 As a reminder, please always review a downloaded provider script before using it.
 
-Tip is also based on [system-wide service  (or NSServices)](https://developer.apple.com/design/human-interface-guidelines/macos/extensions/services/). Tip cannot see the content of other applications. When you explicit trigger Tip, Mac OS provides Tip with the selected text.
+Tip is also based on [system-wide service  (or NSServices)](https://developer.apple.com/design/human-interface-guidelines/macos/extensions/services/). Tip doesn't see the content of other applications. When you explicit trigger Tip, Mac OS provides Tip with the selected text.
 
 This is a huge win privacy-wise :)
 
