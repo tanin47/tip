@@ -123,6 +123,14 @@ The command-line tool processes the input, decides which info to show, and print
 
 Tip processes the JSON and renders the tooltip at the mouse location.
 
+Tip on the internet
+----------------------------
+
+* [Nerd-Spielzeug „Universal Tip“: Programmierbarer Tooltip für macOS](https://www.ifun.de/nerd-spielzeug-universal-tip-programmierbarer-tooltip-fuer-macos-152982/)
+* [PopClipのように、macOSのツールチップにRubyでプログラム可能なアクションを表示することが出来る「Universal Tip」がリリース。](https://applech2.com/archives/post-90727.html?amp=1)
+* [Show HN: A programmable tooltip on Mac OS](https://news.ycombinator.com/item?id=22919843) posted by myself
+* [Universal tooltip on Mac OS X for programmers. Hackable. Work with every app](https://www.reddit.com/r/programming/comments/eqcnq9/universal_tooltip_on_mac_os_x_for_programmers/) also posted by myself
+
 
 FAQ
 ----
