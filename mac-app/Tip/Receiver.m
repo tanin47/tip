@@ -65,10 +65,25 @@
         return;
     }
     
-    [self showPopover:input];
+    NSArray<TipItem *> * items;
+    @try {
+         items = [self.tipper makeTip:input];
+    } @catch (NSException* error) {
+        NSLog(@"Error: %@ %@", error, [error userInfo]);
+        _controller.error = error;
+        [self showPopover];
+        return;
+    }
+    _controller.items = items;
+    if (items.count == 1 && items[0].executeIfOnlyOne) {
+        [_controller performAction:0];
+        return;
+    }
+
+    [self showPopover];
 }
 
-- (void)showPopover: (NSString*) input {
+- (void)showPopover {
     NSPoint mouseLoc = [NSEvent mouseLocation];
     
     NSRect frame = NSMakeRect(mouseLoc.x, mouseLoc.y-10, 1, 1);
@@ -80,14 +95,6 @@
     [self.window setBackgroundColor:[NSColor colorWithRed:0 green:0 blue:0 alpha:0]];
     [self.window makeKeyAndOrderFront:NSApp];
     
-    @try {
-        NSArray<TipItem *> * items = [self.tipper makeTip:input];
-        _controller.items = items;
-    }
-    @catch (NSException* error) {
-        NSLog(@"Error: %@ %@", error, [error userInfo]);
-        _controller.error = error;
-    }
     self.popover = [[NSPopover alloc] init];
     self.popover.contentViewController = _controller;
     self.popover.behavior = NSPopoverBehaviorTransient;
