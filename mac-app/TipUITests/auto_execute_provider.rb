@@ -8,7 +8,11 @@ def main(input)
        type: 'text',
        label: "Label Auto #{input}",
        value: "Return Auto #{input}",
-       executeIfOnlyOne: TRUE
+       autoExecuteIfFirst: true
+    },
+    {
+        type: 'text',
+        value: 'second item'
     }
   ].to_json
 end

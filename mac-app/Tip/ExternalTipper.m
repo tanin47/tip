@@ -66,7 +66,7 @@
         NSString* type = [dict objectForKey:@"type"];
         NSString* value = [dict objectForKey:@"value"];
         NSString* label = [dict objectForKey:@"label"];
-        BOOL executeIfOnlyOne = [[dict objectForKey:@"executeIfOnlyOne"] boolValue];
+        BOOL autoExecuteIfFirst = [[dict objectForKey:@"autoExecuteIfFirst"] boolValue];
         
         if (type == nil || value == nil) {
             NSLog(@"Malformed JSON: %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
@@ -93,7 +93,7 @@
             }
             item.label = label;
         }
-        item.executeIfOnlyOne = executeIfOnlyOne;
+        item.autoExecuteIfFirst = autoExecuteIfFirst;
 
         [items addObject:item];
     }

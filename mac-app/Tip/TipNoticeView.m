@@ -53,6 +53,15 @@
                                  size.height);
     _iconField.frame = NSMakeRect(self.frame.origin.x + 5, size.height + 10 - 30, 25, 25);
     self.frame = NSMakeRect(self.frame.origin.x, self.frame.origin.y, self.frame.size.width, size.height + 15);
+    
+    [self removeConstraint:_widthConstraint];
+    [self removeConstraint:_heightConstraint];
+    
+    _widthConstraint = [NSLayoutConstraint constraintWithItem:self attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:self.frame.size.width];
+    _heightConstraint = [NSLayoutConstraint constraintWithItem:self attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:self.frame.size.height];
+    [self addConstraint:_widthConstraint];
+    [self addConstraint:_heightConstraint];
+    self.needsLayout = YES;
 }
 
 - (void)resetCursorRects {

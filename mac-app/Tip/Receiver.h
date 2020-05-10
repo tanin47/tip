@@ -20,7 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, retain, nullable) NSPopover* popover;
 
 - (id)initWithTipper:(ExternalTipper *)tipper_;
-- (void)showPopover: (NSString*) input;
+- (void)showPopover;
 - (void)openTips:(nonnull NSPasteboard *)pboard
         userData:(nonnull NSString *)userData
            error:(NSString * _Nullable * _Nonnull)error;

@@ -10,8 +10,8 @@ def main(input)
     },
     {
         type: 'text',
-          label: "Label #{input}",
-          value: "Value #{input}",
+        label: "{\n  \"input\": \"#{input}\",\n  \"other\": true\n}",
+        value: "Value #{input}",
     },
     {
        type: 'url',
