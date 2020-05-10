@@ -69,6 +69,9 @@
     _error = nil;
     [self update];
     [_table reloadData];
+    if (items.count > 0) {
+        [_table selectRowIndexes:[NSIndexSet indexSetWithIndex:0] byExtendingSelection:NO];
+    }
 }
 
 - (void)update {

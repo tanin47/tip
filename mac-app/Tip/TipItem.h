@@ -20,6 +20,7 @@ typedef enum TipItemType : NSUInteger {
 @property TipItemType type;
 @property NSString *label;
 @property NSString *value;
+@property BOOL executeIfOnlyOne;
 
 @end
 

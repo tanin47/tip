@@ -22,6 +22,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property NSTableColumn* iconColumn;
 @property NSTableColumn* textColumn;
 
+- (void) performAction:(NSUInteger)row;
+
 @end
 
 NS_ASSUME_NONNULL_END

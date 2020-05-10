@@ -35,6 +35,20 @@ final class TipUITests : XCTestCase {
     XCTAssertEqual("tanintip://TestInput", pasteBoard.string(forType: .string))
   }
 
+  func testSingleProviderClickingOnTextWithLabel() {
+    launch(withName: "single_action_provider")
+    usleep(useconds_t(200 * 1000))
+    XCTAssertEqual("Label TestInput", getLabel(rowIndex: 0))
+    click(rowIndex: 0)
+    XCTAssertEqual("Return TestInput", pasteBoard.string(forType: .string))
+  }
+
+  func testSingleProviderAutoAction() {
+    launch(withName: "single_auto_action_provider")
+    XCTAssertEqual(app.popovers.count, 0)
+    XCTAssertEqual("Return Auto TestInput", pasteBoard.string(forType: .string))
+  }
+
   func testNoProvider() {
     app.launchArguments = ["-test", "TestInput", "-provider", "/tmp/something-doesn-exist.rb"]
     app.launch()

@@ -17,6 +17,12 @@ def main(input)
        type: 'url',
        label: "Go to #{input}",
        value: "tanintip://#{input}"
+    },
+    {
+       type: 'text',
+       label: "Label Auto #{input}",
+       value: "Return Auto #{input}",
+       executeIfOnlyOne: true
     }
   ].to_json
 end
