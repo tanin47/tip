@@ -35,6 +35,7 @@
         _table.target = self;
         _table.intercellSpacing = CGSizeMake(0, 0);
         _table.hidden = YES;
+        _table.usesAutomaticRowHeights = YES;
         
         _iconColumn = [[NSTableColumn alloc] initWithIdentifier:@"icon"];
         _iconColumn.width = 18;
@@ -162,10 +163,6 @@
     return textField;
 }
 
-- (CGFloat)tableView:(NSTableView *)tableView heightOfRow:(NSInteger)row {
-    return 22;
-}
-
 - (nullable NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(nullable NSTableColumn *)tableColumn row:(NSInteger)row {
     NSView* result = [tableView makeViewWithIdentifier:tableColumn.identifier owner:self];
     TipItem* item = [_items objectAtIndex:row];
@@ -184,6 +181,7 @@
             iconText.selectable = NO;
             iconText.bezeled = NO;
             iconText.drawsBackground = NO;
+            iconText.autoresizingMask = NSViewHeightSizable;
                     
             [icon addSubview:iconText];
         }
