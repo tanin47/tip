@@ -76,7 +76,7 @@
         if (_controller.items.count > 0 && _controller.items[0].autoExecuteIfFirst) {
             [self performSelector:@selector(autoExecute)
                 withObject:nil
-                afterDelay:0.6];
+                afterDelay:0.4];
         }
     } @catch (NSException* error) {
         NSLog(@"Error: %@ %@", error, [error userInfo]);
