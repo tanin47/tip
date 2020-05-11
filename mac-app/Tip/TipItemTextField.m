@@ -20,6 +20,10 @@
     
     self.frame = NSMakeRect(self.frame.origin.x, self.frame.origin.y, width, height);
     self.bounds = NSMakeRect(0, 0, width, height);
+    
+    [self removeConstraint:_widthConstraint];
+    _widthConstraint = [NSLayoutConstraint constraintWithItem:self attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:width];
+    [self addConstraint:_widthConstraint];
     self.needsLayout = true;
 }
 

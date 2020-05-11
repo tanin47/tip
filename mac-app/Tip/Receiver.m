@@ -31,6 +31,10 @@
 }
 
 - (void) popoverWillClose {
+    [self hide];
+}
+
+- (void) hide {
     // Trigger hiding in order to give the focus back to the previous app.
     // Trigger hiding during NSPopoverWillCloseNotification is slicker.
     [NSApp hide:nil];
@@ -65,22 +69,24 @@
         return;
     }
     
-    NSArray<TipItem *> * items;
     @try {
-         items = [self.tipper makeTip:input];
+        _controller.items = [self.tipper makeTip:input];
+        [self showPopover];
+
+        if (_controller.items.count > 0 && _controller.items[0].autoExecuteIfFirst) {
+            [self performSelector:@selector(autoExecute)
+                withObject:nil
+                afterDelay:0.6];
+        }
     } @catch (NSException* error) {
         NSLog(@"Error: %@ %@", error, [error userInfo]);
         _controller.error = error;
         [self showPopover];
-        return;
     }
-    _controller.items = items;
-    if (items.count == 1 && items[0].executeIfOnlyOne) {
-        [_controller performAction:0];
-        return;
-    }
+}
 
-    [self showPopover];
+- (void) autoExecute {
+    [_controller performAction:0];
 }
 
 - (void)showPopover {
@@ -102,7 +108,7 @@
     
     [self.popover showRelativeToRect:self.window.contentView.bounds
                               ofView:self.window.contentView
-                       preferredEdge:NSMinYEdge];
+                       preferredEdge:NSMinYEdge]; 
 }
 
 @end

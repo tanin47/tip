@@ -20,10 +20,17 @@ final class TipUITests : XCTestCase {
     click(rowIndex: 0)
     XCTAssertEqual("Return TestInput", pasteBoard.string(forType: .string))
   }
+    
+  func testFirstRowIsSelectedAsDefault() {
+    launch(withName: "good_provider")
+    XCTAssertEqual("Return TestInput", getLabel(rowIndex: 0))
+    app.typeKey(XCUIKeyboardKey.`return`, modifierFlags: XCUIElement.KeyModifierFlags.init())
+    XCTAssertEqual("Return TestInput", pasteBoard.string(forType: .string))
+  }
 
   func testGoodProviderClickingOnTextWithLabel() {
     launch(withName: "good_provider")
-    XCTAssertEqual("Label TestInput", getLabel(rowIndex: 1))
+    XCTAssertEqual("{\n  \"input\": \"TestInput\",\n  \"other\": true\n}", getLabel(rowIndex: 1))
     click(rowIndex: 1)
     XCTAssertEqual("Value TestInput", pasteBoard.string(forType: .string))
   }
@@ -35,17 +42,9 @@ final class TipUITests : XCTestCase {
     XCTAssertEqual("tanintip://TestInput", pasteBoard.string(forType: .string))
   }
 
-  func testSingleProviderClickingOnTextWithLabel() {
-    launch(withName: "single_action_provider")
-    usleep(useconds_t(200 * 1000))
-    XCTAssertEqual("Label TestInput", getLabel(rowIndex: 0))
-    click(rowIndex: 0)
-    XCTAssertEqual("Return TestInput", pasteBoard.string(forType: .string))
-  }
-
-  func testSingleProviderAutoAction() {
-    launch(withName: "single_auto_action_provider")
-    XCTAssertEqual(app.popovers.count, 0)
+  func testProviderAutoExecute() {
+    launch(withName: "auto_execute_provider")
+    usleep(useconds_t(1000 * 1000))
     XCTAssertEqual("Return Auto TestInput", pasteBoard.string(forType: .string))
   }
 
@@ -97,28 +96,30 @@ final class TipUITests : XCTestCase {
     XCTAssertEqual("OpenConsole", pasteBoard.string(forType: .string))
   }
 
-  func testPerformance() {
-    if #available(OSX 10.15, *) {
-      measure(metrics: [XCTOSSignpostMetric.applicationLaunch]) {
-        app.launch()
-      }
-    } else {
-      // Fallback on earlier versions
-    }
-  }
-
   private func launch(withName: String){
     let file = Bundle(for: type(of: self)).path(forResource: withName, ofType: "rb")
     app.launchArguments = ["-test", "TestInput", "-provider", file!]
     app.launch()
+    app.activate()
+    XCTAssertEqual(
+        XCTWaiter.wait(for: [XCTKVOExpectation(keyPath:"exists", object: app.popovers.element, expectedValue: true)], timeout: 3),
+        .completed)
   }
 
   private func click(rowIndex: Int)  {
-    app.popovers.element.tableRows.element(boundBy: rowIndex).cells.element(boundBy: 0).firstMatch.click()
+    let button = app.popovers.element.tableRows.element(boundBy: rowIndex).cells.element(boundBy: 0).firstMatch
+    XCTAssertEqual(
+        XCTWaiter.wait(for: [XCTKVOExpectation(keyPath:"isHittable", object: button, expectedValue: true)], timeout: 3),
+        .completed)
+    button.click()
   }
 
   private func getLabel(rowIndex: Int) -> String {
-    return app.popovers.element.tableRows.element(boundBy: rowIndex).cells.element(boundBy: 1).staticTexts.element(boundBy: 0).value as! String
+    let text = app.popovers.element.tableRows.element(boundBy: rowIndex).cells.element(boundBy: 1).staticTexts.element(boundBy: 0)
+    XCTAssertEqual(
+        XCTWaiter.wait(for: [XCTKVOExpectation(keyPath:"exists", object: text, expectedValue: true)], timeout: 3),
+        .completed)
+    return text.value as! String
   }
 
 }

@@ -26,6 +26,10 @@ typedef NS_ENUM(NSInteger, TipNoticeViewAction) {
 
 @property TipNoticeViewAction action;
 
+@property (nonatomic, retain) NSLayoutConstraint* heightConstraint;
+@property (nonatomic, retain) NSLayoutConstraint* widthConstraint;
+
+
 @end
 
 NS_ASSUME_NONNULL_END

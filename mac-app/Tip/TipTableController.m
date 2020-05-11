@@ -17,13 +17,21 @@
 
 - (instancetype)init {
     if (self = [super init]) {
+        _items = [[NSMutableArray alloc] init];
         self.view = [[NSView alloc] init];
+        self.view.translatesAutoresizingMaskIntoConstraints = NO;
 
-        _noticeView = [[TipNoticeView alloc] initWithFrame:CGRectMake(0, 0, 350, 0)];
+        _noticeView = [[TipNoticeView alloc] initWithFrame:CGRectMake(0, 0, 350, 10)];
+        _noticeView.translatesAutoresizingMaskIntoConstraints = NO;
         _noticeView.hidden = YES;
         [self.view addSubview:_noticeView];
         
+        NSDictionary *noticeViewDict = NSDictionaryOfVariableBindings(_noticeView);
+        [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-2-[_noticeView]-2-|" options:0 metrics:nil views:noticeViewDict]];
+        [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-2-[_noticeView]-2-|" options:0 metrics:nil views:noticeViewDict]];
+        
         _table = [[TipTableView alloc] initWithFrame:CGRectMake(0, 0, 10, 10)];
+        _table.translatesAutoresizingMaskIntoConstraints = NO;
         _table.focusRingType = NSFocusRingTypeNone;
         _table.dataSource = self;
         _table.delegate = self;
@@ -44,8 +52,39 @@
         [_table addTableColumn:_iconColumn];
         [_table addTableColumn:_textColumn];
         [self.view addSubview:_table];
+
+        NSDictionary *tableDict = NSDictionaryOfVariableBindings(_table);
+        [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[_table(>=10)]-0-|" options:0 metrics:nil views:tableDict]];
+        [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[_table(>=10)]-(-1)-|" options:0 metrics:nil views:tableDict]];
     }
     return self;
+}
+
+- (void) viewDidAppear {
+    [super viewDidAppear];
+    if (_items.count > 0) {
+        [_table selectRowIndexes:[NSIndexSet indexSetWithIndex:0] byExtendingSelection:NO];
+    }
+}
+
+- (void)viewDidLayout {
+    [super viewDidLayout];
+    
+    if (_table.hidden == YES) {
+        self.preferredContentSize = _noticeView.frame.size;
+        return;
+    }
+    
+    CGFloat rightestPoint = 0;
+    
+    for (int i=0;i<_table.numberOfRows;i++) {
+        NSView* textCol = [_table viewAtColumn:1 row:i makeIfNecessary:false];
+        rightestPoint = MAX(textCol.frame.origin.x + textCol.frame.size.width, rightestPoint);
+    }
+    
+    if (ABS(self.preferredContentSize.width - rightestPoint) >= 0.01) {
+        self.preferredContentSize = CGSizeMake(rightestPoint, 10);
+    }
 }
 
 - (void) clickRow:(id)sender {
@@ -64,14 +103,12 @@
     [self update];
 }
 
+
 - (void)setItems:(NSArray<TipItem *> *)items {
     _items = items;
     _error = nil;
     [self update];
     [_table reloadData];
-    if (items.count > 0) {
-        [_table selectRowIndexes:[NSIndexSet indexSetWithIndex:0] byExtendingSelection:NO];
-    }
 }
 
 - (void)update {
@@ -98,8 +135,6 @@
         [_noticeView updateWithMessage:message
                                   icon:0xf06a
                                 action:action];
-        
-        self.preferredContentSize = _noticeView.frame.size;
     } else if (_items.count == 0) {
         _noticeView.hidden = NO;
         _table.hidden = YES;
@@ -110,18 +145,6 @@
     } else {
         _noticeView.hidden = YES;
         _table.hidden = NO;
-        
-        NSTextField* textField = [self makeTextField];
-        
-        CGFloat textFieldWidth = 0;
-        CGFloat height = 0;
-        for (TipItem* item in _items) {
-            textField.stringValue = item.label;
-            textFieldWidth = MAX(textFieldWidth, textField.frame.size.width);
-            height += textField.frame.size.height;
-        }
-        
-        self.preferredContentSize = CGSizeMake(19 + textFieldWidth, height);
     }
 }
 
@@ -131,12 +154,11 @@
 
 - (void) performAction:(NSUInteger) row {
     TipItem* item = [_items objectAtIndex:row];
-    NSTableRowView* rowView = [_table rowViewAtRow:row makeIfNecessary:false];
-    
     
     if (item.type == TipItemTypeUrl) {
         [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:item.value]];
     } else {
+        NSTableRowView* rowView = [_table rowViewAtRow:row makeIfNecessary:false];
         NSTextField* iconText = ((NSView*)[rowView viewAtColumn:0]).subviews.firstObject;
         
         [NSAnimationContext runAnimationGroup:^(NSAnimationContext *context) {
@@ -155,7 +177,7 @@
 }
 
 - (NSTextField*)makeTextField {
-    NSTextField* textField = [[TipItemTextField alloc] initWithFrame:NSMakeRect(0, 0, 1000, 22)];
+    NSTextField* textField = [[TipItemTextField alloc] initWithFrame:NSMakeRect(0, 0, 1, 1)];
     textField.cell = [VeritcallyAlignNSTextFieldCell new];
     textField.editable = NO;
     textField.selectable = YES;
@@ -168,42 +190,60 @@
 
 - (nullable NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(nullable NSTableColumn *)tableColumn row:(NSInteger)row {
     NSView* result = [tableView makeViewWithIdentifier:tableColumn.identifier owner:self];
+        
     TipItem* item = [_items objectAtIndex:row];
     
     if (!item) { return nil; }
     
+    
     if (tableColumn == _iconColumn) {
-        NSView* icon = (NSTextField*)result;
-        if (icon == nil) {
-            icon = [[NSView alloc] initWithFrame:NSMakeRect(0, 0, 18, 22)];
+        NSView* iconCol = result;
+        if (iconCol == nil) {
+            iconCol = [[NSView alloc] initWithFrame:NSMakeRect(0, 0, 10, 10)];
+            iconCol.translatesAutoresizingMaskIntoConstraints = NO;
             
-            NSTextField* iconText = [[NSTextField alloc] initWithFrame:NSMakeRect(2, 0, 16, 22)];
-            iconText.cell = [VeritcallyAlignNSTextFieldCell new];
-            iconText.cell.font = [NSFont fontWithName:@"Font Awesome 5 Free" size:12];
-            iconText.editable = NO;
-            iconText.selectable = NO;
-            iconText.bezeled = NO;
-            iconText.drawsBackground = NO;
-            iconText.autoresizingMask = NSViewHeightSizable;
-                    
-            [icon addSubview:iconText];
+            NSTextField* icon = [[NSTextField alloc] initWithFrame:NSMakeRect(0, 0, 10, 10)];
+            icon.translatesAutoresizingMaskIntoConstraints = NO;
+            icon.cell = [VeritcallyAlignNSTextFieldCell new];
+            icon.cell.font = [NSFont fontWithName:@"Font Awesome 5 Free" size:11];
+            icon.editable = NO;
+            icon.selectable = NO;
+            icon.bezeled = NO;
+            icon.drawsBackground = NO;
+            
+            [iconCol addSubview:icon];
+            
+            NSDictionary *iconTextDict = NSDictionaryOfVariableBindings(icon);
+            [iconCol addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-3-[icon(>=5)]-0-|" options:0 metrics:nil views:iconTextDict]];
+            [iconCol addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-3-[icon(>=5)]->=2-|" options:0 metrics:nil views:iconTextDict]];
         }
         
-        NSTextField* iconText = icon.subviews.firstObject;
+        NSTextField* iconText = iconCol.subviews.firstObject;
         if (item.type == TipItemTypeUrl) {
             iconText.stringValue = @"\uf35d";
         } else {
             iconText.stringValue = @"\uf0c5";
         }
-        
-        return icon;
+        return iconCol;
     } else if (tableColumn == _textColumn) {
-        NSTextField* textField = (NSTextField*)result;
-        if (textField == nil) {
-            textField = [self makeTextField];
+        NSView* textCol = result;
+        
+        if (textCol == nil) {
+            textCol = [[NSView alloc] initWithFrame:NSMakeRect(0, 0, 10, 10)];
+            textCol.translatesAutoresizingMaskIntoConstraints = NO;
+            
+            NSTextField* text = [self makeTextField];
+            text.translatesAutoresizingMaskIntoConstraints = NO;
+            [textCol addSubview:text];
+            
+            NSDictionary *textDict = NSDictionaryOfVariableBindings(text);
+            [textCol addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[text]-0-|" options:0 metrics:nil views:textDict]];
+            [textCol addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-1-[text]-4-|" options:0 metrics:nil views:textDict]];
         }
+        
+        NSTextField* textField = textCol.subviews.firstObject;
         textField.stringValue = item.label;
-        return textField;
+        return textCol;
     } else {
         @throw [NSException
                 exceptionWithName:@"Exception"
