@@ -17,6 +17,20 @@
 		F30CBFF123B9A154008D6B47 /* TipTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = F30CBFF023B9A154008D6B47 /* TipTableView.m */; };
 		F30CBFF423B9B91F008D6B47 /* TipItemTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = F30CBFF323B9B91F008D6B47 /* TipItemTextField.m */; };
 		F30CBFFD23B9E71E008D6B47 /* VeritcallyAlignNSTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F30CBFFC23B9E71E008D6B47 /* VeritcallyAlignNSTextFieldCell.m */; };
+		F3104FC124690B3000773BE8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F357936323E66CD600031E09 /* AppDelegate.m */; };
+		F3104FC224690B3000773BE8 /* TipItem.m in Sources */ = {isa = PBXBuildFile; fileRef = F30099B723B872E50000B9E3 /* TipItem.m */; };
+		F3104FC324690B3000773BE8 /* VeritcallyAlignNSTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F30CBFFC23B9E71E008D6B47 /* VeritcallyAlignNSTextFieldCell.m */; };
+		F3104FC424690B3000773BE8 /* TipTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = F30CBFED23B98977008D6B47 /* TipTableController.m */; };
+		F3104FC524690B3000773BE8 /* ExternalTipper.m in Sources */ = {isa = PBXBuildFile; fileRef = F30CBFEA23B963F4008D6B47 /* ExternalTipper.m */; };
+		F3104FC624690B3000773BE8 /* TipItemTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = F30CBFF323B9B91F008D6B47 /* TipItemTextField.m */; };
+		F3104FC724690B3000773BE8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F300998023B8159D0000B9E3 /* main.m */; };
+		F3104FC824690B3000773BE8 /* TipTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = F30CBFF023B9A154008D6B47 /* TipTableView.m */; };
+		F3104FC924690B3000773BE8 /* TipNoticeView.m in Sources */ = {isa = PBXBuildFile; fileRef = F3A35D2F23D6344000982791 /* TipNoticeView.m */; };
+		F3104FCA24690B3000773BE8 /* Receiver.m in Sources */ = {isa = PBXBuildFile; fileRef = F30099A523B816AF0000B9E3 /* Receiver.m */; };
+		F3104FCB24690B3000773BE8 /* ForTest.m in Sources */ = {isa = PBXBuildFile; fileRef = F37DB94623D548E7002D799E /* ForTest.m */; };
+		F3104FCE24690B3000773BE8 /* FontAwesome-Solid.otf in Resources */ = {isa = PBXBuildFile; fileRef = F3E5B64A23BA846A002BEDD6 /* FontAwesome-Solid.otf */; };
+		F3104FCF24690B3000773BE8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F33EDD0123DE99C600114AFB /* Assets.xcassets */; };
+		F3104FD024690B3000773BE8 /* RobotoMono-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F30099B123B86DC20000B9E3 /* RobotoMono-Regular.ttf */; };
 		F318018423D417F7000E17A5 /* good_provider.rb in Resources */ = {isa = PBXBuildFile; fileRef = F318018223D415A4000E17A5 /* good_provider.rb */; };
 		F33EDCFB23DE262600114AFB /* unexecutable_provider.rb in Resources */ = {isa = PBXBuildFile; fileRef = F33EDCFA23DE262600114AFB /* unexecutable_provider.rb */; };
 		F33EDCFD23DE287200114AFB /* error_provider.rb in Resources */ = {isa = PBXBuildFile; fileRef = F33EDCFC23DE287200114AFB /* error_provider.rb */; };
@@ -64,6 +78,7 @@
 		F30CBFF323B9B91F008D6B47 /* TipItemTextField.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TipItemTextField.m; sourceTree = "<group>"; };
 		F30CBFFB23B9E71E008D6B47 /* VeritcallyAlignNSTextFieldCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VeritcallyAlignNSTextFieldCell.h; sourceTree = "<group>"; };
 		F30CBFFC23B9E71E008D6B47 /* VeritcallyAlignNSTextFieldCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VeritcallyAlignNSTextFieldCell.m; sourceTree = "<group>"; };
+		F3104FD424690B3000773BE8 /* Tip Beta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tip Beta.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F318018223D415A4000E17A5 /* good_provider.rb */ = {isa = PBXFileReference; lastKnownFileType = text.script.ruby; path = good_provider.rb; sourceTree = "<group>"; };
 		F33EDCFA23DE262600114AFB /* unexecutable_provider.rb */ = {isa = PBXFileReference; lastKnownFileType = text.script.ruby; path = unexecutable_provider.rb; sourceTree = "<group>"; };
 		F33EDCFC23DE287200114AFB /* error_provider.rb */ = {isa = PBXFileReference; lastKnownFileType = text.script.ruby; path = error_provider.rb; sourceTree = "<group>"; };
@@ -98,6 +113,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F3104FCC24690B3000773BE8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -115,6 +137,7 @@
 			children = (
 				F300997423B8159D0000B9E3 /* Tip.app */,
 				F300999223B8159E0000B9E3 /* TipUITests.xctest */,
+				F3104FD424690B3000773BE8 /* Tip Beta.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -215,6 +238,23 @@
 			productReference = F300999223B8159E0000B9E3 /* TipUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		F3104FBF24690B3000773BE8 /* Tip Beta */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F3104FD124690B3000773BE8 /* Build configuration list for PBXNativeTarget "Tip Beta" */;
+			buildPhases = (
+				F3104FC024690B3000773BE8 /* Sources */,
+				F3104FCC24690B3000773BE8 /* Frameworks */,
+				F3104FCD24690B3000773BE8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Tip Beta";
+			productName = test2;
+			productReference = F3104FD424690B3000773BE8 /* Tip Beta.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -249,6 +289,7 @@
 			targets = (
 				F300997323B8159D0000B9E3 /* Tip */,
 				F300999123B8159E0000B9E3 /* TipUITests */,
+				F3104FBF24690B3000773BE8 /* Tip Beta */,
 			);
 		};
 /* End PBXProject section */
@@ -279,6 +320,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F3104FCD24690B3000773BE8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F3104FCE24690B3000773BE8 /* FontAwesome-Solid.otf in Resources */,
+				F3104FCF24690B3000773BE8 /* Assets.xcassets in Resources */,
+				F3104FD024690B3000773BE8 /* RobotoMono-Regular.ttf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -305,6 +356,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA0E180D23E6AD86006B4DD6 /* TipUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F3104FC024690B3000773BE8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F3104FC124690B3000773BE8 /* AppDelegate.m in Sources */,
+				F3104FC224690B3000773BE8 /* TipItem.m in Sources */,
+				F3104FC324690B3000773BE8 /* VeritcallyAlignNSTextFieldCell.m in Sources */,
+				F3104FC424690B3000773BE8 /* TipTableController.m in Sources */,
+				F3104FC524690B3000773BE8 /* ExternalTipper.m in Sources */,
+				F3104FC624690B3000773BE8 /* TipItemTextField.m in Sources */,
+				F3104FC724690B3000773BE8 /* main.m in Sources */,
+				F3104FC824690B3000773BE8 /* TipTableView.m in Sources */,
+				F3104FC924690B3000773BE8 /* TipNoticeView.m in Sources */,
+				F3104FCA24690B3000773BE8 /* Receiver.m in Sources */,
+				F3104FCB24690B3000773BE8 /* ForTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -447,6 +516,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = tanin.tip;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -469,6 +539,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = tanin.tip;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -522,6 +593,54 @@
 			};
 			name = Release;
 		};
+		F3104FD224690B3000773BE8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconBeta;
+				BUNDLE_DISPLAY_NAME = "Tip Beta Debug";
+				BUNDLE_URL_SCHEME = tanintip;
+				CODE_SIGN_ENTITLEMENTS = "";
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 7;
+				DEVELOPMENT_TEAM = S6482XAL5E;
+				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_FILE = "$(SRCROOT)/Tip/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.2.1;
+				PRODUCT_BUNDLE_IDENTIFIER = tanin.beta.tip;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		F3104FD324690B3000773BE8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconBeta;
+				BUNDLE_DISPLAY_NAME = "Tip Beta";
+				BUNDLE_URL_SCHEME = "";
+				CODE_SIGN_ENTITLEMENTS = tip/tip.entitlements;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 7;
+				DEVELOPMENT_TEAM = S6482XAL5E;
+				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_FILE = "$(SRCROOT)/Tip/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.2.1;
+				PRODUCT_BUNDLE_IDENTIFIER = tanin.beta.tip;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -548,6 +667,15 @@
 			buildConfigurations = (
 				F30099A223B8159E0000B9E3 /* Debug */,
 				F30099A323B8159E0000B9E3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F3104FD124690B3000773BE8 /* Build configuration list for PBXNativeTarget "Tip Beta" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F3104FD224690B3000773BE8 /* Debug */,
+				F3104FD324690B3000773BE8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
