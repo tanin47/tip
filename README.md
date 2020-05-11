@@ -48,7 +48,7 @@ Installation
 1. Install Tip from [Mac App Store](https://apps.apple.com/us/app/universal-tip/id1495732622)
     * You can also download it from [the release page](https://github.com/tanin47/tip/releases) and move `Tip.app` to under `/Applications`
 2. Download and copy `scripts/provider.script` to `~/Library/Application\ Scripts/tanin.tip/provider.script`. Run `chmod 755 ~/Library/Application\ Scripts/tanin.tip/provider.script`. 
-    * Or you can simply run: `curl -o ~/Library/Application\ Scripts/tanin.tip/ --create-dirs  https://raw.githubusercontent.com/tanin47/tip/master/scripts/provider.script && chmod 755 ~/Library/Application\ Scripts/tanin.tip/provider.script`
+    * Or you can simply run: `curl -o ~/Library/Application\ Scripts/tanin.tip/provider.script --create-dirs  https://raw.githubusercontent.com/tanin47/tip/master/scripts/provider.script && chmod 755 ~/Library/Application\ Scripts/tanin.tip/provider.script`
 3. Go to System Preferences > Keyboard > Shortcuts > Services > Scroll down to the "Text" section. You should see "Tip: open tips" under the "Text" section. 
     * Please make sure to check it.
     * You can also set the shortcuts here.
