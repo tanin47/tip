@@ -11,6 +11,8 @@ For me, who is prone to Repetitive Strain Injury (RSI), Tip helps reduce hand mo
 
 I'd love for you to try it!
 
+Questions? please don't hesitate to open [a Github issue](https://github.com/tanin47/tip/issues).
+
 
 Examples
 ---------
