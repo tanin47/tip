@@ -46,7 +46,7 @@
     [_statusItem.menu addItemWithTitle:@"How to setup Tip" action:@selector(openInstallationUrl) keyEquivalent:@""];
     [_statusItem.menu addItemWithTitle:@"Help & Documentation" action:@selector(openGithubProject) keyEquivalent:@""];
     [_statusItem.menu addItem:NSMenuItem.separatorItem];
-    [_statusItem.menu addItemWithTitle:@"Hide this menu" action:@selector(hide) keyEquivalent:@""];
+    [_statusItem.menu addItemWithTitle:@"Hide this menu" action:@selector(hideStatusItem) keyEquivalent:@""];
     [_statusItem.menu addItem:NSMenuItem.separatorItem];
     [_statusItem.menu addItemWithTitle:@"Quit" action:@selector(terminate) keyEquivalent:@""];
     
@@ -64,7 +64,7 @@
     [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://github.com/tanin47/tip#installation"]];
 }
 
-- (void) hide {
+- (void) hideStatusItem {
     _statusItem.visible = NO;
 }
 
@@ -74,6 +74,12 @@
 
 - (void)terminate {
     [NSApp terminate:nil];
+}
+
++ (void) hide {
+    // Trigger hiding in order to give the focus back to the previous app.
+    // Trigger hiding during NSPopoverWillCloseNotification is slicker.
+    [NSApp hide:nil];
 }
 
 - (void)applicationDidBecomeActive:(NSNotification *)notification {

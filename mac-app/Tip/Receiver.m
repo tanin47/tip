@@ -6,6 +6,7 @@
 //  Copyright © 2019 Tanin Na Nakorn. All rights reserved.
 //
 
+#import "AppDelegate.h"
 #import "Receiver.h"
 #import <AppKit/NSPasteboard.h>
 #import <Cocoa/Cocoa.h>
@@ -31,13 +32,7 @@
 }
 
 - (void) popoverWillClose {
-    [self hide];
-}
-
-- (void) hide {
-    // Trigger hiding in order to give the focus back to the previous app.
-    // Trigger hiding during NSPopoverWillCloseNotification is slicker.
-    [NSApp hide:nil];
+    [AppDelegate hide];
 }
 
 - (void) popoverDidClose {
@@ -74,9 +69,13 @@
         [self showPopover];
 
         if (_controller.items.count > 0 && _controller.items[0].autoExecuteIfFirst) {
-            [self performSelector:@selector(autoExecute)
-                withObject:nil
-                afterDelay:0.4];
+            if (_controller.items[0].type == TipItemTypeUrl) {
+                [_controller performAction:0];
+            } else {
+                [self performSelector:@selector(autoExecute)
+                    withObject:nil
+                    afterDelay:1];
+            }
         }
     } @catch (NSException* error) {
         NSLog(@"Error: %@ %@", error, [error userInfo]);
