@@ -66,17 +66,19 @@
     
     @try {
         _controller.items = [self.tipper makeTip:input];
-        [self showPopover];
 
         if (_controller.items.count > 0 && _controller.items[0].autoExecuteIfFirst) {
             if (_controller.items[0].type == TipItemTypeUrl) {
-                [_controller performAction:0];
+                [self executeFirst];
+                return;
             } else {
-                [self performSelector:@selector(autoExecute)
+                [self performSelector:@selector(executeFirst)
                     withObject:nil
-                    afterDelay:1];
+                    afterDelay:0.5];
             }
         }
+        
+        [self showPopover];
     } @catch (NSException* error) {
         NSLog(@"Error: %@ %@", error, [error userInfo]);
         _controller.error = error;
@@ -84,7 +86,7 @@
     }
 }
 
-- (void) autoExecute {
+- (void) executeFirst {
     [_controller performAction:0];
 }
 
