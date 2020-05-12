@@ -42,8 +42,9 @@
 		F3A35D3023D6344000982791 /* TipNoticeView.m in Sources */ = {isa = PBXBuildFile; fileRef = F3A35D2F23D6344000982791 /* TipNoticeView.m */; };
 		F3A35D3223D636ED00982791 /* empty_provider.rb in Resources */ = {isa = PBXBuildFile; fileRef = F3A35D3123D636EC00982791 /* empty_provider.rb */; };
 		F3E5B64B23BA846A002BEDD6 /* FontAwesome-Solid.otf in Resources */ = {isa = PBXBuildFile; fileRef = F3E5B64A23BA846A002BEDD6 /* FontAwesome-Solid.otf */; };
+		F3EA2538246A528000B21837 /* auto_execute_url_provider.rb in Resources */ = {isa = PBXBuildFile; fileRef = F3EA2537246A528000B21837 /* auto_execute_url_provider.rb */; };
 		FA0E180D23E6AD86006B4DD6 /* TipUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0E180C23E6AD86006B4DD6 /* TipUITests.swift */; };
-		FE22B0F2246678C3008657DA /* auto_execute_provider.rb in Resources */ = {isa = PBXBuildFile; fileRef = FE22B0F1246678C3008657DA /* auto_execute_provider.rb */; };
+		FE22B0F2246678C3008657DA /* auto_execute_text_provider.rb in Resources */ = {isa = PBXBuildFile; fileRef = FE22B0F1246678C3008657DA /* auto_execute_text_provider.rb */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,9 +94,10 @@
 		F3A35D2F23D6344000982791 /* TipNoticeView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TipNoticeView.m; sourceTree = "<group>"; };
 		F3A35D3123D636EC00982791 /* empty_provider.rb */ = {isa = PBXFileReference; lastKnownFileType = text.script.ruby; path = empty_provider.rb; sourceTree = "<group>"; };
 		F3E5B64A23BA846A002BEDD6 /* FontAwesome-Solid.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FontAwesome-Solid.otf"; sourceTree = "<group>"; };
+		F3EA2537246A528000B21837 /* auto_execute_url_provider.rb */ = {isa = PBXFileReference; lastKnownFileType = text.script.ruby; path = auto_execute_url_provider.rb; sourceTree = "<group>"; };
 		FA0E180723E6A7D3006B4DD6 /* TipUITests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TipUITests-Bridging-Header.h"; sourceTree = "<group>"; };
 		FA0E180C23E6AD86006B4DD6 /* TipUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipUITests.swift; sourceTree = "<group>"; };
-		FE22B0F1246678C3008657DA /* auto_execute_provider.rb */ = {isa = PBXFileReference; lastKnownFileType = text.script.ruby; path = auto_execute_provider.rb; sourceTree = "<group>"; };
+		FE22B0F1246678C3008657DA /* auto_execute_text_provider.rb */ = {isa = PBXFileReference; lastKnownFileType = text.script.ruby; path = auto_execute_text_provider.rb; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -186,7 +188,8 @@
 				FA0E180C23E6AD86006B4DD6 /* TipUITests.swift */,
 				FA0E180723E6A7D3006B4DD6 /* TipUITests-Bridging-Header.h */,
 				F33EDCFA23DE262600114AFB /* unexecutable_provider.rb */,
-				FE22B0F1246678C3008657DA /* auto_execute_provider.rb */,
+				FE22B0F1246678C3008657DA /* auto_execute_text_provider.rb */,
+				F3EA2537246A528000B21837 /* auto_execute_url_provider.rb */,
 			);
 			path = TipUITests;
 			sourceTree = "<group>";
@@ -309,13 +312,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F3EA2538246A528000B21837 /* auto_execute_url_provider.rb in Resources */,
 				F37DB94123D428C0002D799E /* FontAwesome-Solid.otf in Resources */,
 				F3A35D3223D636ED00982791 /* empty_provider.rb in Resources */,
 				F318018423D417F7000E17A5 /* good_provider.rb in Resources */,
 				F30099B523B8707B0000B9E3 /* RobotoMono-Regular.ttf in Resources */,
 				F33EDCFD23DE287200114AFB /* error_provider.rb in Resources */,
 				F3A35D2D23D6301200982791 /* malformed_json_provider.rb in Resources */,
-				FE22B0F2246678C3008657DA /* auto_execute_provider.rb in Resources */,
+				FE22B0F2246678C3008657DA /* auto_execute_text_provider.rb in Resources */,
 				F33EDCFB23DE262600114AFB /* unexecutable_provider.rb in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

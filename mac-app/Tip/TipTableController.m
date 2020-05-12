@@ -158,12 +158,31 @@
     
     if (item.type == TipItemTypeUrl) {
         [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:item.value]];
+        [self hide];
     } else {
         NSPasteboard *pasteboard = [NSPasteboard generalPasteboard];
         [pasteboard clearContents];
         [pasteboard setString:item.value forType:NSPasteboardTypeString];
-    }
+        
+        NSTableRowView* rowView = [_table rowViewAtRow:row makeIfNecessary:false];
+        NSTextField* iconText = ((NSView*)[rowView viewAtColumn:0]).subviews.firstObject;
 
+        [NSAnimationContext runAnimationGroup:^(NSAnimationContext *context) {
+            context.duration = 0.1;
+            iconText.animator.alphaValue = 0;
+        }
+        completionHandler:^{
+            iconText.alphaValue = 1;
+            iconText.stringValue = @"\uf46c";
+
+            [self performSelector:@selector(hide)
+                       withObject:nil
+                       afterDelay:0.3];
+        }];
+    }
+}
+
+- (void) hide {
     [AppDelegate hide];
 }
 
