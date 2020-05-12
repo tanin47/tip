@@ -516,7 +516,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.2;
+				MARKETING_VERSION = "1.3.0-rc1";
 				PRODUCT_BUNDLE_IDENTIFIER = tanin.tip;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -539,7 +539,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.2;
+				MARKETING_VERSION = "1.3.0-rc1";
 				PRODUCT_BUNDLE_IDENTIFIER = tanin.tip;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

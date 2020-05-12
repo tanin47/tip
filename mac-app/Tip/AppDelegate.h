@@ -24,6 +24,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property ExternalTipper* tipper;
 @property Receiver* receiver;
 
++ (void) hide;
+
 @end
 
 NS_ASSUME_NONNULL_END

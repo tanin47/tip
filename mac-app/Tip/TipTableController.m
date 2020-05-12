@@ -6,6 +6,7 @@
 //  Copyright © 2019 Tanin Na Nakorn. All rights reserved.
 //
 
+#import "AppDelegate.h"
 #import "TipTableController.h"
 #import "TipTableView.h"
 #import "TipItemTextField.h"
@@ -158,22 +159,12 @@
     if (item.type == TipItemTypeUrl) {
         [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:item.value]];
     } else {
-        NSTableRowView* rowView = [_table rowViewAtRow:row makeIfNecessary:false];
-        NSTextField* iconText = ((NSView*)[rowView viewAtColumn:0]).subviews.firstObject;
-        
-        [NSAnimationContext runAnimationGroup:^(NSAnimationContext *context) {
-            context.duration = 0.1;
-            iconText.animator.alphaValue = 0;
-        }
-        completionHandler:^{
-            iconText.alphaValue = 1;
-            iconText.stringValue = @"\uf46c";
-        }];
-        
         NSPasteboard *pasteboard = [NSPasteboard generalPasteboard];
         [pasteboard clearContents];
         [pasteboard setString:item.value forType:NSPasteboardTypeString];
     }
+
+    [AppDelegate hide];
 }
 
 - (NSTextField*)makeTextField {
