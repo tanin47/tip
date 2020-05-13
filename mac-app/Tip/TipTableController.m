@@ -68,26 +68,6 @@
     }
 }
 
-- (void)viewDidLayout {
-    [super viewDidLayout];
-    
-    if (_table.hidden == YES) {
-        self.preferredContentSize = _noticeView.frame.size;
-        return;
-    }
-    
-    CGFloat rightestPoint = 0;
-    
-    for (int i=0;i<_table.numberOfRows;i++) {
-        NSView* textCol = [_table viewAtColumn:1 row:i makeIfNecessary:false];
-        rightestPoint = MAX(textCol.frame.origin.x + textCol.frame.size.width, rightestPoint);
-    }
-    
-    if (ABS(self.preferredContentSize.width - rightestPoint) >= 0.01) {
-        self.preferredContentSize = CGSizeMake(rightestPoint, 10);
-    }
-}
-
 - (void) clickRow:(id)sender {
     [self performAction:_table.clickedRow];
 }
@@ -136,6 +116,7 @@
         [_noticeView updateWithMessage:message
                                   icon:0xf06a
                                 action:action];
+        self.preferredContentSize = _noticeView.frame.size;
     } else if (_items.count == 0) {
         _noticeView.hidden = NO;
         _table.hidden = YES;
@@ -146,6 +127,18 @@
     } else {
         _noticeView.hidden = YES;
         _table.hidden = NO;
+        
+        NSTextField* textField = [self makeTextField];
+        
+        CGFloat textFieldWidth = 0;
+        CGFloat height = 0;
+        for (TipItem* item in _items) {
+            textField.stringValue = item.label;
+            textFieldWidth = MAX(textFieldWidth, textField.frame.size.width);
+            height += textField.frame.size.height;
+        }
+        
+        self.preferredContentSize = CGSizeMake(17 + textFieldWidth, height);
     }
 }
 
@@ -160,10 +153,6 @@
         [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:item.value]];
         [self hide];
     } else {
-        NSPasteboard *pasteboard = [NSPasteboard generalPasteboard];
-        [pasteboard clearContents];
-        [pasteboard setString:item.value forType:NSPasteboardTypeString];
-        
         NSTableRowView* rowView = [_table rowViewAtRow:row makeIfNecessary:false];
         NSTextField* iconText = ((NSView*)[rowView viewAtColumn:0]).subviews.firstObject;
 
@@ -177,8 +166,12 @@
 
             [self performSelector:@selector(hide)
                        withObject:nil
-                       afterDelay:0.3];
+                       afterDelay:0.15];
         }];
+        
+        NSPasteboard *pasteboard = [NSPasteboard generalPasteboard];
+        [pasteboard clearContents];
+        [pasteboard setString:item.value forType:NSPasteboardTypeString];
     }
 }
 
@@ -209,10 +202,10 @@
     if (tableColumn == _iconColumn) {
         NSView* iconCol = result;
         if (iconCol == nil) {
-            iconCol = [[NSView alloc] initWithFrame:NSMakeRect(0, 0, 10, 10)];
+            iconCol = [[NSView alloc] initWithFrame:NSMakeRect(0, 0, 14, 14)];
             iconCol.translatesAutoresizingMaskIntoConstraints = NO;
             
-            NSTextField* icon = [[NSTextField alloc] initWithFrame:NSMakeRect(0, 0, 10, 10)];
+            NSTextField* icon = [[NSTextField alloc] initWithFrame:NSMakeRect(0, 0, 14, 14)];
             icon.translatesAutoresizingMaskIntoConstraints = NO;
             icon.cell = [VeritcallyAlignNSTextFieldCell new];
             icon.cell.font = [NSFont fontWithName:@"Font Awesome 5 Free" size:11];
@@ -224,8 +217,8 @@
             [iconCol addSubview:icon];
             
             NSDictionary *iconTextDict = NSDictionaryOfVariableBindings(icon);
-            [iconCol addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-3-[icon(>=5)]-0-|" options:0 metrics:nil views:iconTextDict]];
-            [iconCol addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-3-[icon(>=5)]->=2-|" options:0 metrics:nil views:iconTextDict]];
+            [iconCol addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-3-[icon]-0-|" options:0 metrics:nil views:iconTextDict]];
+            [iconCol addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-3-[icon]->=2-|" options:0 metrics:nil views:iconTextDict]];
         }
         
         NSTextField* iconText = iconCol.subviews.firstObject;
