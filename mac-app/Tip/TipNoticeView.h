@@ -7,6 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "TipItem.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -18,17 +19,15 @@ typedef NS_ENUM(NSInteger, TipNoticeViewAction) {
 
 @interface TipNoticeView : NSView
 
-- (instancetype)initWithFrame:(NSRect)frame;
-- (void) updateWithMessage:(NSString*) message icon:(UniChar)icon action:(TipNoticeViewAction)action;
 
-@property NSTextField* textField;
+@property NSTextView* textField;
 @property NSTextField* iconField;
 
 @property TipNoticeViewAction action;
+ 
+- (void) updateWithItems:(nonnull NSArray<TipItem *> *)items andError:(NSException *) error;
 
-@property (nonatomic, retain) NSLayoutConstraint* heightConstraint;
-@property (nonatomic, retain) NSLayoutConstraint* widthConstraint;
-
+@property CGSize preferredSize;
 
 @end
 

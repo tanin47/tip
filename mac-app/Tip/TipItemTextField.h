@@ -12,9 +12,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface TipItemTextField : NSTextField
 
-@property (nonatomic, retain) NSLayoutConstraint* widthConstraint;
-@property (nonatomic, retain) NSLayoutConstraint* heightConstraint;
-
 @end
 
 NS_ASSUME_NONNULL_END

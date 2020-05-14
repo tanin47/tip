@@ -8,32 +8,80 @@
 
 #import "TipNoticeView.h"
 #import "VeritcallyAlignNSTextFieldCell.h"
+#import "WrappedTextView.h"
 
 @implementation TipNoticeView
 
-- (instancetype)initWithFrame:(NSRect)frame{
-    if (self = [super initWithFrame:frame]) {
-        _iconField = [[NSTextField alloc] initWithFrame:frame];
-        _iconField.cell.font = [NSFont fontWithName:@"Font Awesome 5 Free" size:14];
+- (instancetype)init{
+    if (self = [super init]) {
+        self.translatesAutoresizingMaskIntoConstraints = NO;
+        
+        _iconField = [[NSTextField alloc] init];
+        _iconField.identifier = @"iconField";
+        _iconField.translatesAutoresizingMaskIntoConstraints = NO;
+        _iconField.cell.font = [NSFont fontWithName:@"Font Awesome 5 Free" size:16];
         _iconField.editable = NO;
         _iconField.selectable = NO;
         _iconField.bezeled = NO;
         _iconField.drawsBackground = NO;
         _iconField.alignment = NSTextAlignmentCenter;
         [self addSubview:_iconField];
-
-        _textField = [[NSTextField alloc] init];
-        _textField.cell = [VeritcallyAlignNSTextFieldCell new];
-        _textField.cell.font = [NSFont fontWithName:@"RobotoMono-Regular" size:13];
+        
+        _textField = [[WrappedTextView alloc] init];
+        _textField.identifier = @"textField";
+        _textField.translatesAutoresizingMaskIntoConstraints = NO;
+        _textField.font = [NSFont fontWithName:@"RobotoMono-Regular" size:13];
         _textField.editable = NO;
         _textField.selectable = NO;
-        _textField.bezeled = NO;
         _textField.drawsBackground = NO;
         _textField.alignment = NSTextAlignmentLeft;
         [self addSubview:_textField];
+        
+        NSDictionary *viewDict = NSDictionaryOfVariableBindings(_iconField, _textField);
+        [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-3-[_iconField]-1-[_textField]-2-|" options:0 metrics:nil views:viewDict]];
+        [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-5-[_iconField]-(>=0)-|" options:0 metrics:nil views:viewDict]];
+        [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-2-[_textField]-5-|" options:0 metrics:nil views:viewDict]];
+        
+        [_iconField setContentCompressionResistancePriority:NSLayoutPriorityRequired forOrientation:NSLayoutConstraintOrientationVertical];
+        [_iconField setContentCompressionResistancePriority:NSLayoutPriorityRequired forOrientation:NSLayoutConstraintOrientationHorizontal];
+
+        [_textField setContentCompressionResistancePriority:NSLayoutPriorityRequired forOrientation:NSLayoutConstraintOrientationVertical];
+        [_textField setContentCompressionResistancePriority:NSLayoutPriorityRequired forOrientation:NSLayoutConstraintOrientationHorizontal];
     }
     
     return self;
+}
+
+- (void) updateWithItems:(NSArray *)items andError:(NSException *)error {
+    if (error) {
+        NSString *message = nil;
+        TipNoticeViewAction action = TipNoticeViewActionNone;
+        
+        if ([error.name isEqualToString:@"MalformedJsonException"]) {
+            message = @"Malformed JSON returned from provider. Click to see logs in Console. You'll need to set the filter Process=Tip.";
+            action = TipNoticeViewActionOpenConsole;
+        } else if ([error.name isEqualToString:@"ProviderNotExistException"]) {
+            message = [NSString stringWithFormat:@"%@ doesn't exist. Please make a provider script. Click to see instruction.", [error.userInfo objectForKey:@"provider"]];
+            action = TipNoticeViewActionOpenProviderInstruction;
+        } else if ([error.name isEqualToString:@"ProviderNotExecutableException"]) {
+            message = [NSString stringWithFormat:@"Provider isn't executable. Please chmod 755 %@", [error.userInfo objectForKey:@"provider"]];
+        } else {
+            message = @"Error occurred. Click to see logs in Console. You'll need to set the filter Process=Tip.";
+            action = TipNoticeViewActionOpenConsole;
+        }
+        
+        [self updateWithMessage:message
+                           icon:0xf06a
+                         action:action];
+    } else if (items.count == 0) {
+        [self updateWithMessage:@"No tips. You can add tips through your provider script. Click to see the instruction."
+                           icon:0xf59a
+                         action:TipNoticeViewActionOpenProviderInstruction];
+    } else {
+        [self updateWithMessage:@"No error."
+                           icon:0xf06a
+                         action:TipNoticeViewActionOpenConsole];
+    }
 }
 
 - (void) updateWithMessage:(NSString*)message
@@ -41,27 +89,14 @@
                     action:(TipNoticeViewAction)action {
     self.action = action;
     
-    _textField.stringValue = message;
-
+    _textField.string = message;
     _iconField.stringValue = [NSString stringWithFormat:@"%C", icon];
-    
-    NSSize size = [_textField.cell cellSizeForBounds:NSMakeRect(0, 0, self.frame.size.width - 40, FLT_MAX)];
-    _textField.frame = NSMakeRect(
-                                 self.frame.origin.x + 30,
-                                 self.frame.origin.y + 8,
-                                 size.width,
-                                 size.height);
-    _iconField.frame = NSMakeRect(self.frame.origin.x + 5, size.height + 10 - 30, 25, 25);
-    self.frame = NSMakeRect(self.frame.origin.x, self.frame.origin.y, self.frame.size.width, size.height + 15);
-    
-    [self removeConstraint:_widthConstraint];
-    [self removeConstraint:_heightConstraint];
-    
-    _widthConstraint = [NSLayoutConstraint constraintWithItem:self attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:self.frame.size.width];
-    _heightConstraint = [NSLayoutConstraint constraintWithItem:self attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:self.frame.size.height];
-    [self addConstraint:_widthConstraint];
-    [self addConstraint:_heightConstraint];
-    self.needsLayout = YES;
+  
+    _preferredSize = CGSizeMake(3 + _iconField.intrinsicContentSize.width + 1 + _textField.intrinsicContentSize.width + 2,  2 + _textField.intrinsicContentSize.height + 5);
+}
+
+- (NSSize)intrinsicContentSize {
+    return _preferredSize;
 }
 
 - (void)resetCursorRects {
