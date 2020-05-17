@@ -15,6 +15,10 @@
 - (instancetype)init{
     if (self = [super init]) {
         self.translatesAutoresizingMaskIntoConstraints = NO;
+        [self setContentCompressionResistancePriority:NSLayoutPriorityRequired forOrientation:NSLayoutConstraintOrientationVertical];
+        [self setContentCompressionResistancePriority:NSLayoutPriorityRequired forOrientation:NSLayoutConstraintOrientationHorizontal];
+        [self setContentHuggingPriority:NSLayoutPriorityRequired forOrientation:NSLayoutConstraintOrientationVertical];
+        [self setContentHuggingPriority:NSLayoutPriorityRequired forOrientation:NSLayoutConstraintOrientationHorizontal];
         
         _iconField = [[NSTextField alloc] init];
         _iconField.identifier = @"iconField";

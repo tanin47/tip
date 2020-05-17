@@ -20,6 +20,11 @@
         self.drawsBackground = NO;
         self.font = [NSFont fontWithName:@"RobotoMono-Regular" size:12];
         self.lineBreakMode = NSLineBreakByTruncatingTail;
+        
+        [self setContentCompressionResistancePriority:NSLayoutPriorityRequired forOrientation:NSLayoutConstraintOrientationVertical];
+        [self setContentCompressionResistancePriority:NSLayoutPriorityRequired forOrientation:NSLayoutConstraintOrientationHorizontal];
+        [self setContentHuggingPriority:NSLayoutPriorityRequired forOrientation:NSLayoutConstraintOrientationVertical];
+        [self setContentHuggingPriority:NSLayoutPriorityRequired forOrientation:NSLayoutConstraintOrientationHorizontal];
     }
     return self;
 }

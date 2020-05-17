@@ -24,10 +24,6 @@
         NSDictionary *noticeViewDict = NSDictionaryOfVariableBindings(_noticeView);
         [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(>=2)-[_noticeView]-(>=2)-|" options:0 metrics:nil views:noticeViewDict]];
         [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(>=2)-[_noticeView]-(>=2)-|" options:0 metrics:nil views:noticeViewDict]];
-        [_noticeView setContentCompressionResistancePriority:NSLayoutPriorityRequired forOrientation:NSLayoutConstraintOrientationVertical];
-        [_noticeView setContentCompressionResistancePriority:NSLayoutPriorityRequired forOrientation:NSLayoutConstraintOrientationHorizontal];
-        [_noticeView setContentHuggingPriority:NSLayoutPriorityRequired forOrientation:NSLayoutConstraintOrientationVertical];
-        [_noticeView setContentHuggingPriority:NSLayoutPriorityRequired forOrientation:NSLayoutConstraintOrientationHorizontal];
         
         _table = [[TipTableView alloc] init];
         [self.view addSubview:_table];
@@ -35,10 +31,6 @@
         NSDictionary *tableDict = NSDictionaryOfVariableBindings(_table);
         [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[_table]-0-|" options:0 metrics:nil views:tableDict]];
         [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[_table]-0-|" options:0 metrics:nil views:tableDict]];
-        [_table setContentCompressionResistancePriority:NSLayoutPriorityRequired forOrientation:NSLayoutConstraintOrientationVertical];
-        [_table setContentCompressionResistancePriority:NSLayoutPriorityRequired forOrientation:NSLayoutConstraintOrientationHorizontal];
-        [_table setContentHuggingPriority:NSLayoutPriorityRequired forOrientation:NSLayoutConstraintOrientationVertical];
-        [_table setContentHuggingPriority:NSLayoutPriorityRequired forOrientation:NSLayoutConstraintOrientationHorizontal];
     }
     return self;
 }

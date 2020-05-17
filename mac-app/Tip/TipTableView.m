@@ -35,6 +35,11 @@ NSTextField *textFieldForSizing;
         self.target = self;
         self.action = @selector(clickRow:);
         
+        [self setContentCompressionResistancePriority:NSLayoutPriorityRequired forOrientation:NSLayoutConstraintOrientationVertical];
+        [self setContentCompressionResistancePriority:NSLayoutPriorityRequired forOrientation:NSLayoutConstraintOrientationHorizontal];
+        [self setContentHuggingPriority:NSLayoutPriorityRequired forOrientation:NSLayoutConstraintOrientationVertical];
+        [self setContentHuggingPriority:NSLayoutPriorityRequired forOrientation:NSLayoutConstraintOrientationHorizontal];
+        
         _iconColumn = [[NSTableColumn alloc] initWithIdentifier:@"icon"];
         _iconColumn.width = 18;
         _textColumn = [[NSTableColumn alloc] initWithIdentifier:@"text"];
@@ -184,10 +189,6 @@ NSTextField *textFieldForSizing;
             NSDictionary *textDict = NSDictionaryOfVariableBindings(text);
             [textCol addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[text]-0-|" options:0 metrics:nil views:textDict]];
             [textCol addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-1-[text]-4-|" options:0 metrics:nil views:textDict]];
-            [text setContentCompressionResistancePriority:NSLayoutPriorityRequired forOrientation:NSLayoutConstraintOrientationVertical];
-            [text setContentCompressionResistancePriority:NSLayoutPriorityRequired forOrientation:NSLayoutConstraintOrientationHorizontal];
-            [text setContentHuggingPriority:NSLayoutPriorityRequired forOrientation:NSLayoutConstraintOrientationVertical];
-            [text setContentHuggingPriority:NSLayoutPriorityRequired forOrientation:NSLayoutConstraintOrientationHorizontal];
         }
         
         NSTextField* textField = textCol.subviews.firstObject;
