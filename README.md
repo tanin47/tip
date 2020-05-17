@@ -63,7 +63,7 @@ See how to develop [the provider script here](PROVIDER.md).
 Privacy
 ---------
 
-There are 3 aspects that enhance privacy: [App Sandbox](https://developer.apple.com/app-sandboxing/), [NSService](https://developer.apple.com/design/human-interface-guidelines/macos/extensions/services/), and [NSUserUnixTask](https://developer.apple.com/documentation/foundation/nsuserunixtask?language=objc)
+There are 3 components that enables Tip to maintain a high degree of privacy: [App Sandbox](https://developer.apple.com/app-sandboxing/), [NSService](https://developer.apple.com/design/human-interface-guidelines/macos/extensions/services/), and [NSUserUnixTask](https://developer.apple.com/documentation/foundation/nsuserunixtask?language=objc)
 
 1. Tip runs in [App Sandbox](https://developer.apple.com/app-sandboxing/) without requesting for any permission additionally. App Sandbox protects users by limiting the privileges of the app to its intended functionality. App Sandbox gives our users peace of mind.
 
@@ -114,7 +114,7 @@ I've built an app that can map extra mouse button and 3(or 4)-finger touch to a 
 Technical detail
 -----------------
 
-Tip is a [system-wide service (or NSServices) on Mac](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/SysServices/introduction.html#//apple_ref/doc/uid/10000101-SW1). When user selects text and hits the shortcut, the selected text is sent to Tip. Then, Tip invokes the command-line tool with the selected text as the first argument, i.e `~/Library/Application\ Scripts/tanin.tip/provider.script [selected-text]`.
+Tip is an [NSServices](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/SysServices/introduction.html#//apple_ref/doc/uid/10000101-SW1). When user selects text and hits the shortcut, the selected text is sent to Tip. Then, Tip invokes the command-line tool with the selected text as the first argument, i.e `~/Library/Application\ Scripts/tanin.tip/provider.script [selected-text]`.
 
 The command-line tool processes the input, decides which info to show, and prints the tip items as JSON that looks like below:
 
