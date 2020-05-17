@@ -65,7 +65,7 @@ Privacy
 
 There are 3 components that enables Tip to maintain a high degree of privacy: [App Sandbox](https://developer.apple.com/app-sandboxing/), [NSService](https://developer.apple.com/design/human-interface-guidelines/macos/extensions/services/), and [NSUserUnixTask](https://developer.apple.com/documentation/foundation/nsuserunixtask?language=objc)
 
-1. Tip runs in [App Sandbox](https://developer.apple.com/app-sandboxing/) without requesting for any permission additionally. With App Sandbox, Tip can only read/write files from [a few predefined directories](https://developer.apple.com/library/archive/documentation/Security/Conceptual/AppSandboxDesignGuide/AppSandboxInDepth/AppSandboxInDepth.html) and, specifically, can *only* execute (not write) the files within `~/Library/Application\ Scripts/tanin.tip`. This is the reason why the provider script is under `~/Library/Application\ Scripts/tanin.tip/`.
+1. Tip runs in [App Sandbox](https://developer.apple.com/app-sandboxing/) without requesting for an additional permission. With App Sandbox, Tip can only read/write files from [a few predefined directories](https://developer.apple.com/library/archive/documentation/Security/Conceptual/AppSandboxDesignGuide/AppSandboxInDepth/AppSandboxInDepth.html) and, specifically, can *only* execute (not write) the files within `~/Library/Application\ Scripts/tanin.tip`. This is the reason why the provider script is under `~/Library/Application\ Scripts/tanin.tip/`.
 
 2. Tip is based on [NSServices](https://developer.apple.com/design/human-interface-guidelines/macos/extensions/services/). Tip doesn't (and cannot) see the content of other applications. When you explicit trigger Tip, Mac OS gives Tip with the selected text.
 
