@@ -69,7 +69,7 @@ There are 3 components that enables Tip to maintain a high degree of privacy: [A
 
 2. Tip is based on [NSServices](https://developer.apple.com/design/human-interface-guidelines/macos/extensions/services/). Tip doesn't (and cannot) see the content of other applications. When you explicit trigger Tip, Mac OS gives Tip with the selected text.
 
-3. Tip uses [NSUserUnixTask], which is intended to execute user-supplied scripts, and will execute them outside of the application's sandbox, if any. This enables `provider.script` (a user-supplied script) many more use cases because it runs outside of the sandbox.
+3. Tip uses [NSUserUnixTask](https://developer.apple.com/documentation/foundation/nsuserunixtask?language=objc), which is intended to execute user-supplied scripts, and will execute them outside of the application's sandbox, if any. This enables `provider.script` (a user-supplied script) many more use cases because it runs outside of the sandbox.
 
 Great design by Apple. It is a huge win in terms of privacy.
 
