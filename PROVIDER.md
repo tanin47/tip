@@ -56,7 +56,7 @@ The JSON must be an array that looks like below:
 ```json
 [
   {"type": "text", "value": "Some text"},
-  {"type": "url", "label": "Go to JIRA", "value": "https://your-jira-url/JIRA-0001", autoExecuteIfFirst: true},
+  {"type": "url", "label": "Go to JIRA", "value": "https://your-jira-url/JIRA-0001", "autoExecuteIfFirst": true},
 ]
 ```
 
