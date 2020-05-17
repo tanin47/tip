@@ -7,12 +7,24 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "TipItem.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface TipTableView : NSTableView
+@interface TipTableView : NSTableView<NSTableViewDataSource, NSTableViewDelegate>
 
-@property (nullable) SEL enterPressedAction;
+@property (nonatomic) NSArray<TipItem*>* items;
+
+@property NSTableColumn* iconColumn;
+@property NSTableColumn* textColumn;
+
+@property CGSize preferredSize;
+
+- (void) selectFirstRow;
+
+- (void) performAction:(NSUInteger)row;
+
+- (void) recomputePreferredSize;
 
 @end
 
