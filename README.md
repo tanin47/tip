@@ -63,15 +63,17 @@ See how to develop [the provider script here](PROVIDER.md).
 Privacy
 ---------
 
-Tip runs in [App Sandbox](https://developer.apple.com/app-sandboxing/) without requesting for any permission additionally. App Sandbox protects users by limiting the privileges of the app to its intended functionality. App Sandbox gives our users peace of mind.
+There are 3 aspects that enhance privacy: [App Sandbox](https://developer.apple.com/app-sandboxing/), [NSService](https://developer.apple.com/design/human-interface-guidelines/macos/extensions/services/), and [NSUserUnixTask](https://developer.apple.com/documentation/foundation/nsuserunixtask?language=objc)
+
+1. Tip runs in [App Sandbox](https://developer.apple.com/app-sandboxing/) without requesting for any permission additionally. App Sandbox protects users by limiting the privileges of the app to its intended functionality. App Sandbox gives our users peace of mind.
 
 With App Sandbox, Tip can only read/write files from [a few predefined directories](https://developer.apple.com/library/archive/documentation/Security/Conceptual/AppSandboxDesignGuide/AppSandboxInDepth/AppSandboxInDepth.html) and, specifically, can *only* execute (not write) files within `~/Library/Application\ Scripts/tanin.tip`. This is the reason why the provider script is under `~/Library/Application\ Scripts/tanin.tip/`.
 
-As a reminder, please always review a downloaded provider script before using it.
+2. Tip is based on [NSServices](https://developer.apple.com/design/human-interface-guidelines/macos/extensions/services/). Tip doesn't (and cannot) see the content of other applications. When you explicit trigger Tip, Mac OS gives Tip with the selected text.
 
-Tip is also based on [system-wide service  (or NSServices)](https://developer.apple.com/design/human-interface-guidelines/macos/extensions/services/). Tip doesn't see the content of other applications. When you explicit trigger Tip, Mac OS provides Tip with the selected text.
+3. Tip uses [NSUserUnixTask], which is intended to execute user-supplied scripts, and will execute them outside of the application's sandbox, if any. This enables `provider.script` (a user-supplied script) many more use cases because it runs outside of the sandbox.
 
-This is a huge win privacy-wise :)
+Great design by Apple. It is a huge win in terms of privacy.
 
 
 Usage
