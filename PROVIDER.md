@@ -26,7 +26,7 @@ require 'json'
 def main(input)
   items = [
     {type: 'text', value:'Some text'},
-    {type: 'url', label:'Open Google', value: "https://google.com/search?q=#{input}"}
+    {type: 'url', label:'Open Google', value: "https://google.com/search?q=#{input}", autoExecuteIfFirst: true}
   ]
 
   puts items.to_json
@@ -49,12 +49,14 @@ For text, it must contains `"type": "text"` and the field `value`.
 
 For URL, it must contains `"type": "url"` and the fields `label` and `value`.
 
+`autoExecuteIfFirst` is an optional field. If the value is `true` and the item is the first one, we execute the action immediately.
+
 The JSON must be an array that looks like below:
 
 ```json
 [
   {"type": "text", "value": "Some text"},
-  {"type": "url", "label": "Go to JIRA", "value": "https://your-jira-url/JIRA-0001"},
+  {"type": "url", "label": "Go to JIRA", "value": "https://your-jira-url/JIRA-0001", autoExecuteIfFirst: true},
 ]
 ```
 
