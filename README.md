@@ -3,11 +3,11 @@
 
 [![Download from Mac App Store](./download-button.svg)](https://apps.apple.com/us/app/universal-tip/id1495732622)
 
-Tip (or its full name, Universal Tip) is a programmable tooltip that can be used with any Mac OS app. You can select the text and hit the shortcuts to activate the tooltip with useful info.
+Tip (or its full name, Universal Tip) is a programmable tooltip that can be used with any Mac OS app. You can select the text and hit the shortcuts to activate a tooltip with useful info.
 
-"Useful info" is programmed by YOU using your favourite programming language. 
+"Useful info" is programmed by you using your favourite programming language. 
 
-For me, who is prone to Repetitive Strain Injury (RSI), Tip helps reduce hand movement and the risk of the injury.
+For me, who is prone to [Repetitive strain injury](https://www.nhs.uk/conditions/repetitive-strain-injury-rsi/) and [Carpal tunnel syndrome](https://www.webmd.com/pain-management/carpal-tunnel/carpal-tunnel-syndrome), Tip reduces hand movement which helps reduce the risk of the injury.
 
 I'd love for you to try it!
 
@@ -103,7 +103,7 @@ I've found that `Cmd + F3` is a good shortcut. I haven't encountered an applicat
 
 My setup, which enables me to use Tip seamlessly, is:
 
-* An extra moust button emits `Cmd + F3`
+* An extra mouse button emits `Cmd + F3`
 * 4-finger touch on the trackpad emits `Cmd + F3`
 
 I've built an app that can map extra mouse button and 3(or 4)-finger touch to a combination of keys. I'm working to release this app. If you are interested, please open an issue!
