@@ -106,7 +106,7 @@ My setup, which enables me to use Tip seamlessly, is:
 * An extra mouse button emits `Cmd + F3`
 * 4-finger touch on the trackpad emits `Cmd + F3`
 
-I've built an app that can map extra mouse button and 3(or 4)-finger touch to a combination of keys. I'm working to release this app. If you are interested, please open an issue!
+I use [Noo.app](https://gumroad.com/l/tqqlk) to configure my mouse buttons and trackpad.
 
 
 Technical detail
