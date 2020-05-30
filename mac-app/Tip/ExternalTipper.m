@@ -16,7 +16,7 @@
 
 @implementation ExternalTipper
 
--(id)initWithProvider:(NSString *)provider_ 
+-(instancetype)initWithProvider:(NSString *)provider_
 {
     self = [super init];
     if (self) {
@@ -25,8 +25,8 @@
     return self;
 }
 
-- (NSArray<TipItem *> *) makeTip: (NSString*) input {
-    NSData* output = [self execute:input];
+- (NSArray<TipItem *> *) makeTip: (NSArray<NSString*>*) args {
+    NSData* output = [self execute:args];
     return [self convert:output];
 }
 
@@ -41,7 +41,8 @@
                               exceptionWithName:@"MalformedJsonException"
                               reason:@"JSON is malformed"
                               userInfo:[NSDictionary
-                                        dictionaryWithObject:[[NSString alloc] initWithData:data                                encoding:NSUTF8StringEncoding]
+                                        dictionaryWithObject:[[NSString alloc] initWithData:data
+                                                                                   encoding:NSUTF8StringEncoding]
                                         forKey:@"json"]
                               ];
     
@@ -65,12 +66,12 @@
         NSDictionary* dict = (NSDictionary*)maybeDict;
         
         NSString* type = [dict objectForKey:@"type"];
-        NSString* value = [dict objectForKey:@"value"];
         NSString* label = [dict objectForKey:@"label"];
+        NSString* value = [dict objectForKey:@"value"];
         BOOL autoExecuteIfFirst = [[dict objectForKey:@"autoExecuteIfFirst"] boolValue];
         
-        if (type == nil || value == nil) {
-            NSLog(@"Malformed JSON: %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+        if (type == nil) {
+            NSLog(@"Malformed JSON: `type` doesn't exist: %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
             @throw exception;
         }
         
@@ -80,19 +81,32 @@
             item.type = TipItemTypeUrl;
         } else if ([type isEqualToString:@"text"]) {
             item.type = TipItemTypeText;
+        } else if ([type isEqualToString:@"execute"]) {
+            item.type = TipItemTypeExecute;
         } else {
-            NSLog(@"Malformed JSON: %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+            NSLog(@"Malformed JSON: `type` cannot be '%@': %@", type, [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
             @throw exception;
         }
-        item.value = value;
-        if (item.type == TipItemTypeText) {
-            item.label = label != nil ? label : value;
-        } else {
-            if (label == nil) {
-                NSLog(@"Malformed JSON: %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+        if (item.type == TipItemTypeExecute) {
+            if (value != nil) {
+                NSLog(@"Malformed JSON: `value` must not exist when `type` is 'execute': %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
                 @throw exception;
             }
+            
+            if (label == nil) {
+                NSLog(@"Malformed JSON: `label` is required when `type` is 'execute': %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+                @throw exception;
+            }
+            
             item.label = label;
+            item.args = [dict mutableArrayValueForKey:@"args"];
+        } else {
+            if (value == nil) {
+                NSLog(@"Malformed JSON: `value` is required when `type` is 'url' or 'text': %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+                @throw exception;
+            }
+            item.value = value;
+            item.label = label != nil ? label : value;
         }
         item.autoExecuteIfFirst = autoExecuteIfFirst;
 
@@ -102,7 +116,7 @@
     return items;
 }
 
-- (NSData*) execute: (NSString*) input {
+- (NSData*) execute: (NSArray<NSString*>*) args {
     NSPipe* outputPipe = [NSPipe pipe];
     NSPipe* errorPipe = [NSPipe pipe];
     
@@ -138,15 +152,6 @@
                                                forKey:@"provider"]];
     }
     
-    NSMutableArray<NSString*>* args = [NSMutableArray arrayWithObject:input];
-    
-    NSRunningApplication* currentApplication = [AppDelegate getCurrentApplication];
-    
-    if (currentApplication != nil) {
-        [args addObject:@"--bundle-identifier"];
-        [args addObject:currentApplication.bundleIdentifier];
-    }
-    
     NSLog(@"Run: %@ with args: %@", task.scriptURL.path, args);
     
     __block BOOL completed = NO;
@@ -173,7 +178,7 @@
     while (!completed) {
         [NSThread sleepForTimeInterval:0.05f];
     }
-   
+    
     if (error) {
         @throw [NSException
                 exceptionWithName:@"ProviderErrorException"
@@ -195,6 +200,6 @@
     NSUInteger permissions = [[[NSFileManager defaultManager] attributesOfItemAtPath:path error:nil] filePosixPermissions];
     
     return (permissions & 0111) > 0;
-   
+    
 }
 @end

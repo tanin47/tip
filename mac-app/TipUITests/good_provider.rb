@@ -2,7 +2,23 @@
 
 require 'json'
 
-def main(input)
+def main(args)
+  if args[0] == '--execute'
+    puts [
+      {
+        type: 'text',
+        value: "Result #{args.join(' ')}"
+      },
+      {
+        type: 'execute',
+        label: "Reexecute #{args.join(' ')}",
+        args: ['--execute', 'reexecute']
+      }
+    ].to_json
+    return
+  end
+    
+  input = args[0]
   puts [
     {
        type: 'text',
@@ -19,6 +35,11 @@ def main(input)
        value: "tanintip://#{input}"
     },
     {
+       type: 'execute',
+       label: "Execute #{input}",
+       args: ['--execute', 'test', 'test2']
+    },
+    {
        type: 'text',
        label: "Label Auto #{input}",
        value: "Return Auto #{input}",
@@ -29,5 +50,5 @@ end
 
 
 if __FILE__ == $0
-  main(ARGV[0])
+  main(ARGV)
 end

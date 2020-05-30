@@ -1,19 +1,21 @@
 //
 //  Tipper.h
-//  tip
+//  Tip
 //
-//  Created by Tanin Na Nakorn on 12/29/19.
-//  Copyright © 2019 Tanin Na Nakorn. All rights reserved.
+//  Created by Tanin Na Nakorn on 5/30/20.
+//  Copyright © 2020 Tanin Na Nakorn. All rights reserved.
 //
-
-#import <Foundation/Foundation.h>
-#import "TipItem.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @protocol Tipper
+
 @required
-- (NSArray<TipItem *> *) makeTip: (NSString*) input;
+- (void) activateTip:(NSArray<NSString*>*) args;
+
+@required
+- (void) setContinuous:(BOOL) continuous;
+
 @end
 
 NS_ASSUME_NONNULL_END

@@ -10,7 +10,7 @@
 #import "Receiver.h"
 #import <AppKit/NSPasteboard.h>
 #import <Cocoa/Cocoa.h>
-#import "Tipper.h"
+#import "BaseTipper.h"
 #import "ExternalTipper.h"
 
 @implementation Receiver
@@ -19,26 +19,8 @@
     self = [super init];
     if (self) {
         self.tipper = tipper_;
-        [[NSNotificationCenter defaultCenter] addObserver:self
-                                                 selector:@selector(popoverWillClose)
-                                                     name:NSPopoverWillCloseNotification
-                                                   object:nil];
-        [[NSNotificationCenter defaultCenter] addObserver:self
-                                                 selector:@selector(popoverDidClose)
-                                                     name:NSPopoverDidCloseNotification
-                                                   object:nil];
     }
     return self;
-}
-
-- (void) popoverWillClose {
-    [AppDelegate hide];
-}
-
-- (void) popoverDidClose {
-    [self.window close];
-    self.window = nil;
-    self.popover = nil;
 }
 
 - (NSString*) readInput:(NSPasteboard*)pboard
@@ -63,53 +45,15 @@
     if (!input) {
         return;
     }
-    
-    @try {
-        _controller.items = [self.tipper makeTip:input];
 
-        if (_controller.items.count > 0 && _controller.items[0].autoExecuteIfFirst) {
-            if (_controller.items[0].type == TipItemTypeUrl) {
-                [self executeFirst];
-                return;
-            } else {
-                [self performSelector:@selector(executeFirst)
-                    withObject:nil
-                    afterDelay:0.5];
-            }
-        }
-        
-        [self showPopover];
-    } @catch (NSException* error) {
-        NSLog(@"Error: %@ %@", error, [error userInfo]);
-        _controller.error = error;
-        [self showPopover];
+    NSMutableArray<NSString*>* args = [NSMutableArray arrayWithObject:input];
+    NSRunningApplication* currentApplication = [AppDelegate getCurrentApplication];
+    
+    if (currentApplication != nil) {
+        [args addObject:@"--bundle-identifier"];
+        [args addObject:currentApplication.bundleIdentifier];
     }
-}
-
-- (void) executeFirst {
-    [_controller performAction:0];
-}
-
-- (void)showPopover {
-    NSPoint mouseLoc = [NSEvent mouseLocation];
-    
-    NSRect frame = NSMakeRect(mouseLoc.x, mouseLoc.y-10, 1, 1);
-    self.window  = [[NSWindow alloc] initWithContentRect:frame
-                                                    styleMask:NSWindowStyleMaskBorderless
-                                                      backing:NSBackingStoreBuffered
-                                                        defer:NO];
-    [self.window setReleasedWhenClosed:false];
-    [self.window setBackgroundColor:[NSColor colorWithRed:0 green:0 blue:0 alpha:0]];
-    [self.window makeKeyAndOrderFront:NSApp];
-    
-    self.popover = [[NSPopover alloc] init];
-    self.popover.contentViewController = _controller;
-    self.popover.behavior = NSPopoverBehaviorTransient;
-    self.popover.animates = YES;
-    
-    [self.popover showRelativeToRect:self.window.contentView.bounds
-                              ofView:self.window.contentView
-                       preferredEdge:NSMinYEdge]; 
+    [self.tipper activateTip:args];
 }
 
 @end

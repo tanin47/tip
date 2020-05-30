@@ -10,6 +10,7 @@
 #import "TipItemTextField.h"
 #import "AppDelegate.h"
 #import "VeritcallyAlignNSTextFieldCell.h"
+#import <QuartzCore/QuartzCore.h>
 
 @implementation TipTableView
 
@@ -67,6 +68,27 @@ NSTextField *textFieldForSizing;
     if (item.type == TipItemTypeUrl) {
         [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:item.value]];
         [self hide];
+    } else if (item.type == TipItemTypeExecute) {
+        [_tipper setContinuous:true];
+        
+        NSTableRowView* rowView = [self rowViewAtRow:row makeIfNecessary:false];
+        NSTextField* iconText = ((NSView*)[rowView viewAtColumn:0]).subviews.firstObject;
+        iconText.stringValue = @"\uf110";
+    
+        CABasicAnimation *rotation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
+        rotation.fromValue = [NSNumber numberWithFloat:0];
+        rotation.toValue = [NSNumber numberWithFloat:(M_PI * 2)];
+        rotation.duration = 0.7; // Speed
+        rotation.repeatCount = INFINITY;
+        rotation.removedOnCompletion = true;
+        [iconText.layer addAnimation:rotation forKey:@"Spin"];
+        iconText.layer.position = NSMakePoint(iconText.layer.frame.origin.x + iconText.layer.frame.size.width / 2, iconText.layer.frame.origin.y + iconText.layer.frame.size.height / 2);
+        iconText.layer.anchorPoint = NSMakePoint(0.5, 0.5);
+        iconText.layer.transform = CATransform3DIdentity;
+
+        dispatch_async(dispatch_get_global_queue(0, 0), ^{
+            [self.tipper activateTip:item.args];
+        });
     } else {
         NSTableRowView* rowView = [self rowViewAtRow:row makeIfNecessary:false];
         NSTextField* iconText = ((NSView*)[rowView viewAtColumn:0]).subviews.firstObject;
@@ -151,7 +173,7 @@ NSTextField *textFieldForSizing;
             icon.identifier = @"iconText";
             icon.translatesAutoresizingMaskIntoConstraints = NO;
             icon.cell = [VeritcallyAlignNSTextFieldCell new];
-            icon.cell.font = [NSFont fontWithName:@"Font Awesome 5 Free" size:11];
+            icon.cell.font = [NSFont fontWithName:@"Font Awesome 5 Free" size:12];
             icon.editable = NO;
             icon.selectable = NO;
             icon.bezeled = NO;
@@ -161,7 +183,7 @@ NSTextField *textFieldForSizing;
             
             NSDictionary *iconTextDict = NSDictionaryOfVariableBindings(icon);
             [iconCol addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-3-[icon]-3-|" options:0 metrics:nil views:iconTextDict]];
-            [iconCol addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-3-[icon]->=2-|" options:0 metrics:nil views:iconTextDict]];
+            [iconCol addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-4-[icon]->=4-|" options:0 metrics:nil views:iconTextDict]];
             [icon setContentCompressionResistancePriority:NSLayoutPriorityRequired forOrientation:NSLayoutConstraintOrientationVertical];
             [icon setContentCompressionResistancePriority:NSLayoutPriorityRequired forOrientation:NSLayoutConstraintOrientationHorizontal];
             [icon setContentHuggingPriority:NSLayoutPriorityRequired forOrientation:NSLayoutConstraintOrientationVertical];
@@ -169,8 +191,11 @@ NSTextField *textFieldForSizing;
         }
         
         NSTextField* iconText = iconCol.subviews.firstObject;
+        [iconText.layer removeAllAnimations];
         if (item.type == TipItemTypeUrl) {
             iconText.stringValue = @"\uf35d";
+        } else if (item.type == TipItemTypeExecute) {
+            iconText.stringValue = @"\uf144";
         } else {
             iconText.stringValue = @"\uf0c5";
         }
@@ -188,7 +213,7 @@ NSTextField *textFieldForSizing;
             
             NSDictionary *textDict = NSDictionaryOfVariableBindings(text);
             [textCol addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[text]-0-|" options:0 metrics:nil views:textDict]];
-            [textCol addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-1-[text]-4-|" options:0 metrics:nil views:textDict]];
+            [textCol addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-2-[text]-3-|" options:0 metrics:nil views:textDict]];
         }
         
         NSTextField* textField = textCol.subviews.firstObject;

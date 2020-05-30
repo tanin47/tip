@@ -14,7 +14,7 @@
 
 @implementation TipTableController
 
-- (instancetype)init {
+- (instancetype) initWithReceiver:(id<Tipper>)tipper {
     if (self = [super init]) {
         self.view = [[NSView alloc] init];
         
@@ -26,6 +26,7 @@
         [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(>=2)-[_noticeView]-(>=2)-|" options:0 metrics:nil views:noticeViewDict]];
         
         _table = [[TipTableView alloc] init];
+        _table.tipper = tipper;
         [self.view addSubview:_table];
 
         NSDictionary *tableDict = NSDictionaryOfVariableBindings(_table);
