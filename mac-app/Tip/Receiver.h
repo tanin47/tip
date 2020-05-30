@@ -7,20 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "TipTableController.h"
 #import "ExternalTipper.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface Receiver : NSObject
 
-@property TipTableController* controller;
 @property ExternalTipper* tipper;
-@property (nonatomic, retain, nullable) NSWindow* window;
-@property (nonatomic, retain, nullable) NSPopover* popover;
 
 - (id)initWithTipper:(ExternalTipper *)tipper_;
-- (void)showPopover;
 - (void)openTips:(nonnull NSPasteboard *)pboard
         userData:(nonnull NSString *)userData
            error:(NSString * _Nullable * _Nonnull)error;

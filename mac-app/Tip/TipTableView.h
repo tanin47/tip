@@ -8,6 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 #import "TipItem.h"
+#import "Tipper.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -17,6 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property NSTableColumn* iconColumn;
 @property NSTableColumn* textColumn;
+@property id<Tipper> tipper;
 
 @property CGSize preferredSize;
 

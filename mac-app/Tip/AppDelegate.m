@@ -27,8 +27,8 @@
         }
         
         _tipper = [[ExternalTipper alloc] initWithProvider:providerPath];
+        _tipper.controller = [[TipTableController alloc] initWithReceiver:_tipper];
         _receiver = [[Receiver alloc] initWithTipper:_tipper];
-        _receiver.controller = [[TipTableController alloc] init];
         [NSApp setServicesProvider:_receiver];
         
         currentApplication = [NSWorkspace.sharedWorkspace frontmostApplication];

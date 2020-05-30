@@ -10,6 +10,7 @@
 #import "TipItem.h"
 #import "TipTableView.h"
 #import "TipNoticeView.h"
+#import "Tipper.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -20,6 +21,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic) NSException* error;
 @property (nonatomic) NSArray<TipItem*>* items;
+
+- (instancetype) initWithReceiver:(id<Tipper>) tipper;
 
 - (void) performAction:(NSUInteger)row;
 

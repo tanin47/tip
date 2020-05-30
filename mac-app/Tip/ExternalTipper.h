@@ -7,15 +7,15 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "Tipper.h"
+#import "BaseTipper.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ExternalTipper : NSObject<Tipper>
+@interface ExternalTipper : BaseTipper
 
 @property NSString* provider;
 
--(id)initWithProvider:(NSString *)provider_;
+-(instancetype)initWithProvider:(NSString *)provider_;
 
 @end
 

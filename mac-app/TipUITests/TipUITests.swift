@@ -52,6 +52,24 @@ final class TipUITests : XCTestCase {
         XCTAssertEqual("tanintip://TestInput", pasteBoard.string(forType: .string))
     }
     
+    func testGoodProviderClickingOnExecute() {
+        launch(withName: "good_provider")
+        
+        XCTAssertEqual("Execute TestInput", getLabel(rowIndex: 3))
+        click(rowIndex: 3)
+        
+        Thread.sleep(forTimeInterval: 0.1)
+        
+        XCTAssertEqual("Reexecute --execute test test2", getLabel(rowIndex: 1))
+        click(rowIndex: 1)
+        
+        Thread.sleep(forTimeInterval: 0.1)
+        
+        XCTAssertEqual("Result --execute reexecute", getLabel(rowIndex: 0))
+        click(rowIndex: 0)
+        XCTAssertEqual("Result --execute reexecute", pasteBoard.string(forType: .string))
+    }
+    
     func testProviderAutoExecuteOnText() {
         launch(withName: "auto_execute_text_provider")
         usleep(useconds_t(1000 * 1000))

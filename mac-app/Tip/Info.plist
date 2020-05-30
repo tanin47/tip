@@ -48,6 +48,8 @@
 	<key>NSServices</key>
 	<array>
 		<dict>
+			<key>NSRequiredContext</key>
+			<dict/>
 			<key>NSKeyEquivalent</key>
 			<dict>
 				<key>default</key>

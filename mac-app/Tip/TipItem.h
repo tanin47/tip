@@ -12,7 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 typedef enum TipItemType : NSUInteger {
     TipItemTypeText,
-    TipItemTypeUrl
+    TipItemTypeUrl,
+    TipItemTypeExecute
 } TipItemType;
 
 @interface TipItem : NSObject
@@ -20,6 +21,7 @@ typedef enum TipItemType : NSUInteger {
 @property TipItemType type;
 @property NSString *label;
 @property NSString *value;
+@property NSArray<NSString*>* args;
 @property BOOL autoExecuteIfFirst;
 
 @end
