@@ -22,16 +22,20 @@
         [self.view addSubview:_noticeView];
         
         NSDictionary *noticeViewDict = NSDictionaryOfVariableBindings(_noticeView);
-        [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(>=2)-[_noticeView]-(>=2)-|" options:0 metrics:nil views:noticeViewDict]];
-        [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(>=2)-[_noticeView]-(>=2)-|" options:0 metrics:nil views:noticeViewDict]];
+        _noticeViewConstraints = [[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(>=2)-[_noticeView]-(>=2)-|" options:0 metrics:nil views:noticeViewDict]
+                                  arrayByAddingObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(>=2)-[_noticeView]-(>=2)-|" options:0 metrics:nil views:noticeViewDict]
+                                  ];
+        [self.view addConstraints:_noticeViewConstraints];
         
         _table = [[TipTableView alloc] init];
         _table.tipper = tipper;
         [self.view addSubview:_table];
-
+        
         NSDictionary *tableDict = NSDictionaryOfVariableBindings(_table);
-        [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[_table]-0-|" options:0 metrics:nil views:tableDict]];
-        [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[_table]-0-|" options:0 metrics:nil views:tableDict]];
+        _tableConstraints = [[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[_table]-0-|" options:0 metrics:nil views:tableDict]
+                             arrayByAddingObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[_table]-0-|" options:0 metrics:nil views:tableDict]
+                             ];
+        [self.view addConstraints:_tableConstraints];
     }
     return self;
 }
@@ -68,6 +72,13 @@
     } else {
         _noticeView.hidden = YES;
         _table.hidden = NO;
+    }
+
+    for (NSLayoutConstraint* c in _tableConstraints) {
+        c.active = !_table.hidden;
+    }
+    for (NSLayoutConstraint* c in _noticeViewConstraints) {
+        c.active = !_noticeView.hidden;
     }
 }
 
