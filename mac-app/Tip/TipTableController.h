@@ -19,6 +19,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property TipNoticeView* noticeView;
 @property TipTableView* table;
 
+@property NSArray<NSLayoutConstraint*>* noticeViewConstraints;
+@property NSArray<NSLayoutConstraint*>* tableConstraints;
+
 @property (nonatomic) NSException* error;
 @property (nonatomic) NSArray<TipItem*>* items;
 

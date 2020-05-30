@@ -58,12 +58,11 @@ final class TipUITests : XCTestCase {
         XCTAssertEqual("Execute TestInput", getLabel(rowIndex: 3))
         click(rowIndex: 3)
         
-        Thread.sleep(forTimeInterval: 0.1)
-        
+        Thread.sleep(forTimeInterval: 1)
         XCTAssertEqual("Reexecute --execute test test2", getLabel(rowIndex: 1))
         click(rowIndex: 1)
         
-        Thread.sleep(forTimeInterval: 0.1)
+        Thread.sleep(forTimeInterval: 1)
         
         XCTAssertEqual("Result --execute reexecute", getLabel(rowIndex: 0))
         click(rowIndex: 0)
