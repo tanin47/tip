@@ -15,14 +15,17 @@
 #import "ForTest.h"
 #endif
 
-
 NS_ASSUME_NONNULL_BEGIN
+
+static NSRunningApplication* currentApplication = nil;
 
 @interface AppDelegate : NSObject<NSApplicationDelegate, NSMenuDelegate>
 
 @property NSStatusItem* statusItem;
 @property ExternalTipper* tipper;
 @property Receiver* receiver;
+
++ (NSRunningApplication*) getCurrentApplication;
 
 + (void) hide;
 

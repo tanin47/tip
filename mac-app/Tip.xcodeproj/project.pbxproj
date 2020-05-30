@@ -24,6 +24,7 @@
 		F357936423E66CD600031E09 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F357936323E66CD600031E09 /* AppDelegate.m */; };
 		F37DB94123D428C0002D799E /* FontAwesome-Solid.otf in Resources */ = {isa = PBXBuildFile; fileRef = F3E5B64A23BA846A002BEDD6 /* FontAwesome-Solid.otf */; };
 		F37DB94723D548E7002D799E /* ForTest.m in Sources */ = {isa = PBXBuildFile; fileRef = F37DB94623D548E7002D799E /* ForTest.m */; };
+		F39D98B92481FF8A00BE2191 /* bundle_id_provider.rb in Resources */ = {isa = PBXBuildFile; fileRef = F39D98B82481FF8A00BE2191 /* bundle_id_provider.rb */; };
 		F3A35D2D23D6301200982791 /* malformed_json_provider.rb in Resources */ = {isa = PBXBuildFile; fileRef = F3A35D2C23D6301200982791 /* malformed_json_provider.rb */; };
 		F3A35D3023D6344000982791 /* TipNoticeView.m in Sources */ = {isa = PBXBuildFile; fileRef = F3A35D2F23D6344000982791 /* TipNoticeView.m */; };
 		F3A35D3223D636ED00982791 /* empty_provider.rb in Resources */ = {isa = PBXBuildFile; fileRef = F3A35D3123D636EC00982791 /* empty_provider.rb */; };
@@ -75,6 +76,7 @@
 		F37DB94523D548E7002D799E /* ForTest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ForTest.h; sourceTree = "<group>"; };
 		F37DB94623D548E7002D799E /* ForTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ForTest.m; sourceTree = "<group>"; };
 		F37DB94823D54CA9002D799E /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F39D98B82481FF8A00BE2191 /* bundle_id_provider.rb */ = {isa = PBXFileReference; lastKnownFileType = text.script.ruby; path = bundle_id_provider.rb; sourceTree = "<group>"; };
 		F3A35D2C23D6301200982791 /* malformed_json_provider.rb */ = {isa = PBXFileReference; lastKnownFileType = text.script.ruby; path = malformed_json_provider.rb; sourceTree = "<group>"; };
 		F3A35D2E23D6344000982791 /* TipNoticeView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TipNoticeView.h; sourceTree = "<group>"; };
 		F3A35D2F23D6344000982791 /* TipNoticeView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TipNoticeView.m; sourceTree = "<group>"; };
@@ -172,6 +174,7 @@
 				F33EDCFA23DE262600114AFB /* unexecutable_provider.rb */,
 				FE22B0F1246678C3008657DA /* auto_execute_text_provider.rb */,
 				F3EA2537246A528000B21837 /* auto_execute_url_provider.rb */,
+				F39D98B82481FF8A00BE2191 /* bundle_id_provider.rb */,
 			);
 			path = TipUITests;
 			sourceTree = "<group>";
@@ -283,6 +286,7 @@
 				F30099B523B8707B0000B9E3 /* RobotoMono-Regular.ttf in Resources */,
 				F33EDCFD23DE287200114AFB /* error_provider.rb in Resources */,
 				F3A35D2D23D6301200982791 /* malformed_json_provider.rb in Resources */,
+				F39D98B92481FF8A00BE2191 /* bundle_id_provider.rb in Resources */,
 				FE22B0F2246678C3008657DA /* auto_execute_text_provider.rb in Resources */,
 				F33EDCFB23DE262600114AFB /* unexecutable_provider.rb in Resources */,
 			);

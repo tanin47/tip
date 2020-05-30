@@ -14,6 +14,16 @@ final class TipUITests : XCTestCase {
         app.terminate()
     }
     
+    func testBundleId() {
+        launch(withName: "bundle_id_provider")
+        
+        let components = getLabel(rowIndex: 0).split(separator: " ")
+        XCTAssertEqual("Return", components[0])
+        XCTAssertEqual("TestInput", components[1])
+        XCTAssertEqual("--bundle-identifier", components[2])
+        XCTAssertNotNil(components[3].range(of: "^[a-zA-Z0-9]+(\\.[a-zA-Z0-9]+)+$", options: .regularExpression))
+    }
+    
     func testGoodProviderClickingOnText() {
         launch(withName: "good_provider")
         XCTAssertEqual("Return TestInput", getLabel(rowIndex: 0))

@@ -8,6 +8,7 @@
 
 #import "ExternalTipper.h"
 #import "TipItem.h"
+#import "AppDelegate.h"
 #include <unistd.h>
 #include <sys/types.h>
 #include <pwd.h>
@@ -137,7 +138,16 @@
                                                forKey:@"provider"]];
     }
     
-    NSLog(@"Run: %@ with args: %@", task.scriptURL.path, @[input]);
+    NSMutableArray<NSString*>* args = [NSMutableArray arrayWithObject:input];
+    
+    NSRunningApplication* currentApplication = [AppDelegate getCurrentApplication];
+    
+    if (currentApplication != nil) {
+        [args addObject:@"--bundle-identifier"];
+        [args addObject:currentApplication.bundleIdentifier];
+    }
+    
+    NSLog(@"Run: %@ with args: %@", task.scriptURL.path, args);
     
     __block BOOL completed = NO;
     __block NSError* error = nil;
@@ -145,7 +155,7 @@
     __block NSData *stderr = nil;
     
     [task
-     executeWithArguments:@[input]
+     executeWithArguments:args
      completionHandler:^(NSError * _Nullable e) {
         error = e;
         

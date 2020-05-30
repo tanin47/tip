@@ -30,8 +30,19 @@
         _receiver = [[Receiver alloc] initWithTipper:_tipper];
         _receiver.controller = [[TipTableController alloc] init];
         [NSApp setServicesProvider:_receiver];
+        
+        currentApplication = [NSWorkspace.sharedWorkspace frontmostApplication];
+        [NSWorkspace.sharedWorkspace.notificationCenter addObserver:self selector:@selector(setCurrentApplication:) name:NSWorkspaceDidActivateApplicationNotification object:nil];
     }
     return self;
+}
+
+- (void) setCurrentApplication:(NSNotification*) notif {
+    currentApplication = [notif.userInfo objectForKey:NSWorkspaceApplicationKey];
+}
+
++ (NSRunningApplication*) getCurrentApplication {
+    return currentApplication;
 }
 
 - (void) applicationDidFinishLaunching:(NSNotification *)notification {
