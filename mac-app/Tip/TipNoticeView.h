@@ -24,8 +24,9 @@ typedef NS_ENUM(NSInteger, TipNoticeViewAction) {
 @property NSTextField* iconField;
 
 @property TipNoticeViewAction action;
+@property BOOL shouldShowNotice;
  
-- (void) updateWithItems:(nonnull NSArray<TipItem *> *)items andError:(NSException *) error;
+- (void) updateWithItems:(nullable NSArray<TipItem *> *)items andError:(nullable NSException *) error;
 
 @property CGSize preferredSize;
 

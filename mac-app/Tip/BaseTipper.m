@@ -19,6 +19,7 @@
                                                  selector:@selector(popoverWillClose:)
                                                      name:NSPopoverWillCloseNotification
                                                    object:nil];
+        self.noticeController = [[NoticeController alloc] init];
     }
     return self;
 }
@@ -39,7 +40,7 @@
     } @catch (NSException* error) {
         dispatch_async(dispatch_get_main_queue(), ^{
             NSLog(@"Error: %@ %@", error, [error userInfo]);
-            self.controller.error = error;
+            [self.noticeController updateWithItems:nil andError:error];
             [self showPopover];
         });
         return;
@@ -47,7 +48,8 @@
     
     dispatch_async(dispatch_get_main_queue(), ^{
         @try {
-            self.controller.items = items;
+            [self.tipTableController updateItems:items];
+            [self.noticeController updateWithItems:items andError:nil];
             
             if (items.count == 0 && self.continuous == true) {
                 self.continuous = false;
@@ -55,8 +57,8 @@
                 return;
             }
 
-            if (self.controller.items.count > 0 && self.controller.items[0].autoExecuteIfFirst) {
-                if (self.controller.items[0].type == TipItemTypeUrl) {
+            if (self.tipTableController.items.count > 0 && self.tipTableController.items[0].autoExecuteIfFirst) {
+                if (self.tipTableController.items[0].type == TipItemTypeUrl) {
                     [self executeFirst];
                     return;
                 } else {
@@ -70,7 +72,7 @@
             [self showPopover];
         } @catch (NSException* error) {
             NSLog(@"Error: %@ %@", error, [error userInfo]);
-            self.controller.error = error;
+            [self.noticeController updateWithItems:nil andError:error];
             [self showPopover];
         }
     });
@@ -82,7 +84,7 @@
 }
 
 - (void) executeFirst {
-    [_controller performAction:0];
+    [_tipTableController performAction:0];
 }
 
 - (void)showPopover {
@@ -105,11 +107,14 @@
     self.popover = [[NSPopover alloc] init];
     self.popover.behavior = NSPopoverBehaviorTransient;
     self.popover.animates = YES;
-    self.popover.contentViewController = self.controller;
+    if (self.noticeController.shouldShowNotice) {
+        self.popover.contentViewController = self.noticeController;
+    } else {
+        self.popover.contentViewController = self.tipTableController;
+    }
     [self.popover showRelativeToRect:self.window.contentView.bounds
                               ofView:self.window.contentView
                        preferredEdge:NSMinYEdge];
-    // TODO: the size of the notice view is also wrong if the table was previously bigger. I think we need to separate the controller now.
 }
 
 @end

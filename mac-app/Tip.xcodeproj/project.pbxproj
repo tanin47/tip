@@ -33,6 +33,7 @@
 		F3C248222470A6D3003EA099 /* WrappedTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = F3C248212470A6D3003EA099 /* WrappedTextView.m */; };
 		F3E5B64B23BA846A002BEDD6 /* FontAwesome-Solid.otf in Resources */ = {isa = PBXBuildFile; fileRef = F3E5B64A23BA846A002BEDD6 /* FontAwesome-Solid.otf */; };
 		F3EA2538246A528000B21837 /* auto_execute_url_provider.rb in Resources */ = {isa = PBXBuildFile; fileRef = F3EA2537246A528000B21837 /* auto_execute_url_provider.rb */; };
+		F3EC9020248416A10050F3DE /* NoticeController.m in Sources */ = {isa = PBXBuildFile; fileRef = F3EC901F248416A10050F3DE /* NoticeController.m */; };
 		FA0E180D23E6AD86006B4DD6 /* TipUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0E180C23E6AD86006B4DD6 /* TipUITests.swift */; };
 		FE22B0F2246678C3008657DA /* auto_execute_text_provider.rb in Resources */ = {isa = PBXBuildFile; fileRef = FE22B0F1246678C3008657DA /* auto_execute_text_provider.rb */; };
 /* End PBXBuildFile section */
@@ -90,6 +91,8 @@
 		F3C248212470A6D3003EA099 /* WrappedTextView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WrappedTextView.m; sourceTree = "<group>"; };
 		F3E5B64A23BA846A002BEDD6 /* FontAwesome-Solid.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FontAwesome-Solid.otf"; sourceTree = "<group>"; };
 		F3EA2537246A528000B21837 /* auto_execute_url_provider.rb */ = {isa = PBXFileReference; lastKnownFileType = text.script.ruby; path = auto_execute_url_provider.rb; sourceTree = "<group>"; };
+		F3EC901E248416A10050F3DE /* NoticeController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NoticeController.h; sourceTree = "<group>"; };
+		F3EC901F248416A10050F3DE /* NoticeController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NoticeController.m; sourceTree = "<group>"; };
 		FA0E180723E6A7D3006B4DD6 /* TipUITests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TipUITests-Bridging-Header.h"; sourceTree = "<group>"; };
 		FA0E180C23E6AD86006B4DD6 /* TipUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipUITests.swift; sourceTree = "<group>"; };
 		FE22B0F1246678C3008657DA /* auto_execute_text_provider.rb */ = {isa = PBXFileReference; lastKnownFileType = text.script.ruby; path = auto_execute_text_provider.rb; sourceTree = "<group>"; };
@@ -164,6 +167,8 @@
 				F357936323E66CD600031E09 /* AppDelegate.m */,
 				F3C248202470A6D3003EA099 /* WrappedTextView.h */,
 				F3C248212470A6D3003EA099 /* WrappedTextView.m */,
+				F3EC901E248416A10050F3DE /* NoticeController.h */,
+				F3EC901F248416A10050F3DE /* NoticeController.m */,
 			);
 			path = Tip;
 			sourceTree = "<group>";
@@ -321,6 +326,7 @@
 				F3C248222470A6D3003EA099 /* WrappedTextView.m in Sources */,
 				F30099A623B816AF0000B9E3 /* Receiver.m in Sources */,
 				F37DB94723D548E7002D799E /* ForTest.m in Sources */,
+				F3EC9020248416A10050F3DE /* NoticeController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

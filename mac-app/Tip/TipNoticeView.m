@@ -56,7 +56,8 @@
     return self;
 }
 
-- (void) updateWithItems:(NSArray *)items andError:(NSException *)error {
+- (void) updateWithItems:(nullable NSArray *)items andError:(nullable NSException *)error {
+    _shouldShowNotice = true;
     if (error) {
         NSString *message = nil;
         TipNoticeViewAction action = TipNoticeViewActionNone;
@@ -77,11 +78,12 @@
         [self updateWithMessage:message
                            icon:0xf06a
                          action:action];
-    } else if (items.count == 0) {
+    } else if (items != nil && items.count == 0) {
         [self updateWithMessage:@"No tips. You can add tips through your provider script. Click to see the instruction."
                            icon:0xf59a
                          action:TipNoticeViewActionOpenProviderInstruction];
     } else {
+        _shouldShowNotice = false;
         [self updateWithMessage:@"No error."
                            icon:0xf06a
                          action:TipNoticeViewActionOpenConsole];

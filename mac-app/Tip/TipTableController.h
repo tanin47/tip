@@ -16,20 +16,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface TipTableController : NSViewController<NSTableViewDataSource, NSTableViewDelegate>
 
-@property TipNoticeView* noticeView;
 @property TipTableView* table;
 
-@property NSArray<NSLayoutConstraint*>* noticeViewConstraints;
-@property NSArray<NSLayoutConstraint*>* tableConstraints;
-
-@property (nonatomic) NSException* error;
 @property (nonatomic) NSArray<TipItem*>* items;
 
 - (instancetype) initWithReceiver:(id<Tipper>) tipper;
 
 - (void) performAction:(NSUInteger)row;
 
-- (void)setItems:(nonnull NSArray<TipItem *> *)items;
+- (void)updateItems:(nonnull NSArray<TipItem *> *)items;
 
 @end
 
