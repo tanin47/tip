@@ -27,7 +27,7 @@
         }
         
         _tipper = [[ExternalTipper alloc] initWithProvider:providerPath];
-        _tipper.controller = [[TipTableController alloc] initWithReceiver:_tipper];
+        _tipper.tipTableController = [[TipTableController alloc] initWithReceiver:_tipper];
         _receiver = [[Receiver alloc] initWithTipper:_tipper];
         [NSApp setServicesProvider:_receiver];
         

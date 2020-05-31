@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "TipTableController.h"
+#import "NoticeController.h"
 #import "TipItem.h"
 #import "Tipper.h"
 
@@ -15,7 +16,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface BaseTipper: NSObject<Tipper>
 
-@property (nonatomic) TipTableController* controller;
+@property (nonatomic) TipTableController* tipTableController;
+@property (nonatomic) NoticeController* noticeController;
 @property (nonatomic, retain, nullable) NSWindow* window;
 @property (nonatomic, retain, nullable) NSPopover* popover;
 

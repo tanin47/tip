@@ -26,7 +26,6 @@ NSTextField *textFieldForSizing;
         self.allowsColumnResizing = NO;
         self.cell.bezeled = NO;
         self.intercellSpacing = CGSizeMake(0, 0);
-        self.hidden = YES;
         self.usesAutomaticRowHeights = YES;
         self.headerView = nil;
         self.cornerView = nil;
