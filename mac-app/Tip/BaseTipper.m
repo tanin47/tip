@@ -43,10 +43,17 @@
         });
         return;
     }
+
     
     dispatch_async(dispatch_get_main_queue(), ^{
         @try {
             self.controller.items = items;
+            
+            if (items.count == 0 && self.continuous == true) {
+                self.continuous = false;
+                [AppDelegate hide];
+                return;
+            }
 
             if (self.controller.items.count > 0 && self.controller.items[0].autoExecuteIfFirst) {
                 if (self.controller.items[0].type == TipItemTypeUrl) {
