@@ -36,7 +36,7 @@
         _textField.translatesAutoresizingMaskIntoConstraints = NO;
         _textField.font = [NSFont fontWithName:@"RobotoMono-Regular" size:13];
         _textField.editable = NO;
-        _textField.selectable = NO;
+        _textField.selectable = YES; // This is critical as it makes the notice view focusable; this triggers the popover closing when it loses focus because it was previously focused.
         _textField.drawsBackground = NO;
         _textField.alignment = NSTextAlignmentLeft;
         [self addSubview:_textField];
