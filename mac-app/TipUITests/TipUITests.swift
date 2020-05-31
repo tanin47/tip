@@ -69,6 +69,20 @@ final class TipUITests : XCTestCase {
         XCTAssertEqual("Result --execute reexecute", pasteBoard.string(forType: .string))
     }
     
+    func testGoodProviderClickingOnExecuteEmpty() {
+        launch(withName: "execute_empty_provider")
+        
+        XCTAssertEqual("Execute TestInput", getLabel(rowIndex: 0))
+        click(rowIndex: 0)
+        
+        Thread.sleep(forTimeInterval: 1)
+        XCTAssertEqual("from_execute:--execute_testempty", pasteBoard.string(forType: .string))
+        
+        XCTAssertEqual(
+            XCTWaiter.wait(for: [XCTKVOExpectation(keyPath:"exists", object: app.popovers.element, expectedValue: false)], timeout: 1),
+            .completed)
+    }
+    
     func testProviderAutoExecuteOnText() {
         launch(withName: "auto_execute_text_provider")
         usleep(useconds_t(1000 * 1000))
