@@ -16,16 +16,17 @@
     self = [super init];
     if (self) {
         [[NSNotificationCenter defaultCenter] addObserver:self
-                                                 selector:@selector(popoverWillClose)
+                                                 selector:@selector(popoverWillClose:)
                                                      name:NSPopoverWillCloseNotification
                                                    object:nil];
     }
     return self;
 }
 
-- (void) popoverWillClose {
+- (void) popoverWillClose:(NSNotification *)notification {
     if (_continuous == false) {
         [AppDelegate hide];
+        [self.window close];
     }
     _continuous = false;
 }
@@ -43,7 +44,6 @@
         });
         return;
     }
-
     
     dispatch_async(dispatch_get_main_queue(), ^{
         @try {
@@ -65,6 +65,7 @@
                         afterDelay:0.5];
                 }
             }
+
             
             [self showPopover];
         } @catch (NSException* error) {
@@ -92,16 +93,8 @@
         loc = [NSEvent mouseLocation];
         loc = NSMakePoint(loc.x, loc.y - 10);
     }
-    
-    if (self.popover != nil) {
-        self.popover.animates = NO;
-        [self.popover close];
-    }
-    if (self.window != nil) {
-        [self.window close];
-    }
-    
-    self.window  = [[NSWindow alloc] initWithContentRect:NSMakeRect(loc.x, loc.y, 1, 1)
+
+    self.window = [[NSWindow alloc] initWithContentRect:NSMakeRect(loc.x, loc.y, 1, 1)
                                                     styleMask:NSWindowStyleMaskBorderless
                                                       backing:NSBackingStoreBuffered
                                                         defer:NO];
@@ -116,6 +109,7 @@
     [self.popover showRelativeToRect:self.window.contentView.bounds
                               ofView:self.window.contentView
                        preferredEdge:NSMinYEdge];
+    // TODO: the size of the notice view is also wrong if the table was previously bigger. I think we need to separate the controller now.
 }
 
 @end
