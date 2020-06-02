@@ -49,6 +49,8 @@ For text, it must contains `"type": "text"` and the field `value`.
 
 For URL, it must contains `"type": "url"` and the fields `label` and `value`.
 
+For execute, it must contains `"type": "execute"`, the field `label`, and the array `args`. When the item is selected, Tip will execute `./provider.script [args]`.
+
 `autoExecuteIfFirst` is an optional field. If the value is `true` and the item is the first one, we execute the action immediately.
 
 The JSON must be an array that looks like below:
@@ -57,6 +59,7 @@ The JSON must be an array that looks like below:
 [
   {"type": "text", "value": "Some text"},
   {"type": "url", "label": "Go to JIRA", "value": "https://your-jira-url/JIRA-0001", "autoExecuteIfFirst": true},
+  {"type": "execute", "label": "Run something", "args": ["--execute", "some-more-arg"]},
 ]
 ```
 
