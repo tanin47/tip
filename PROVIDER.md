@@ -69,7 +69,7 @@ Happy programming!
 Debugging Tips
 ---------------
 
-* Try running `~/Library/Application\ Scripts/tanin.tip/provider.script [some-input]` in Terminal to see if it works correctly
+* Try running `~/Library/Application\ Scripts/tanin.tip/provider.script [some-input] --bundle-id [some-bundle-id]` in Terminal to see if it works correctly
 * Open Console.app and set filter Process=Tip. The logs from Tip will show up.
 
 
