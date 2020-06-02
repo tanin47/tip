@@ -60,20 +60,6 @@ The sample provider script is in Ruby, so you need Ruby to run it. Otherwise, yo
 See how to develop [the provider script here](PROVIDER.md).
 
 
-Privacy
----------
-
-There are 3 components that enables Tip to maintain a high degree of privacy: [App Sandbox](https://developer.apple.com/app-sandboxing/), [NSService](https://developer.apple.com/design/human-interface-guidelines/macos/extensions/services/), and [NSUserUnixTask](https://developer.apple.com/documentation/foundation/nsuserunixtask?language=objc)
-
-1. Tip runs in [App Sandbox](https://developer.apple.com/app-sandboxing/) without requesting for an additional permission. With App Sandbox, Tip can only read/write files from [a few predefined directories](https://developer.apple.com/library/archive/documentation/Security/Conceptual/AppSandboxDesignGuide/AppSandboxInDepth/AppSandboxInDepth.html) and, specifically, can *only* execute (not write) the files within `~/Library/Application\ Scripts/tanin.tip`. This is the reason why the provider script is under `~/Library/Application\ Scripts/tanin.tip/`.
-
-2. Tip is based on [NSServices](https://developer.apple.com/design/human-interface-guidelines/macos/extensions/services/). Tip doesn't (and cannot) see the content of other applications. When you explicit trigger Tip, Mac OS gives Tip the selected text.
-
-3. Tip uses [NSUserUnixTask](https://developer.apple.com/documentation/foundation/nsuserunixtask?language=objc), which is intended to execute user-supplied scripts, and will execute them outside of the application's sandbox, if any. This enables `provider.script` (a user-supplied script) many more use cases because it runs outside of the sandbox.
-
-Great design by Apple. It is a huge win in terms of privacy.
-
-
 Usage
 ------
 
@@ -82,7 +68,9 @@ Usage
 3. The tooltip with relevant info will show
 4. Use arrow keys to choose an item in the tooltip and hit 'Enter' to perform the appropriate action. Alternatively, you can click an item as well
 
-Currently, Tip supports 2 actions: (1) Copy to clipboard if the item is text, and (2) Open URL if the item is URL.
+Currently, Tip supports 3 actions: (1) Copy to clipboard if the item is text, (2) Open URL if the item is URL, and (3) Execute a command.
+
+See how to develop [the provider script here](PROVIDER.md).
 
 
 Customize the shortcut
@@ -107,6 +95,20 @@ My setup, which enables me to use Tip seamlessly, is:
 * 4-finger touch on the trackpad emits `Cmd + F3`
 
 I use [Noo.app](https://gumroad.com/l/tqqlk) to configure my mouse buttons and trackpad.
+
+
+Privacy
+---------
+
+There are 3 components that enables Tip to maintain a high degree of privacy: [App Sandbox](https://developer.apple.com/app-sandboxing/), [NSService](https://developer.apple.com/design/human-interface-guidelines/macos/extensions/services/), and [NSUserUnixTask](https://developer.apple.com/documentation/foundation/nsuserunixtask?language=objc)
+
+1. Tip runs in [App Sandbox](https://developer.apple.com/app-sandboxing/) without requesting for an additional permission. With App Sandbox, Tip can only read/write files from [a few predefined directories](https://developer.apple.com/library/archive/documentation/Security/Conceptual/AppSandboxDesignGuide/AppSandboxInDepth/AppSandboxInDepth.html) and, specifically, can *only* execute (not write) the files within `~/Library/Application\ Scripts/tanin.tip`. This is the reason why the provider script is under `~/Library/Application\ Scripts/tanin.tip/`.
+
+2. Tip is based on [NSServices](https://developer.apple.com/design/human-interface-guidelines/macos/extensions/services/). Tip doesn't (and cannot) see the content of other applications. When you explicit trigger Tip, Mac OS gives Tip the selected text.
+
+3. Tip uses [NSUserUnixTask](https://developer.apple.com/documentation/foundation/nsuserunixtask?language=objc), which is intended to execute user-supplied scripts, and will execute them outside of the application's sandbox, if any. This enables `provider.script` (a user-supplied script) many more use cases because it runs outside of the sandbox.
+
+Great design by Apple. It is a huge win in terms of privacy.
 
 
 Technical detail
