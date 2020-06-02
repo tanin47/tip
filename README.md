@@ -114,7 +114,7 @@ Great design by Apple. It is a huge win in terms of privacy.
 Technical detail
 -----------------
 
-Tip is an [NSServices](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/SysServices/introduction.html#//apple_ref/doc/uid/10000101-SW1). When user selects text and hits the shortcut, the selected text is sent to Tip. Then, Tip invokes the command-line tool with the selected text as the first argument, i.e `~/Library/Application\ Scripts/tanin.tip/provider.script [selected-text]`.
+Tip is an [NSServices](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/SysServices/introduction.html#//apple_ref/doc/uid/10000101-SW1). When user selects text and hits the shortcut, the selected text is sent to Tip. Then, Tip invokes the command-line tool with the selected text as the first argument, i.e `~/Library/Application\ Scripts/tanin.tip/provider.script [selected-text] --bundle-id [the-app-that-you-activate-tip-on]`.
 
 The command-line tool processes the input, decides which info to show, and prints the tip items as JSON that looks like below:
 
