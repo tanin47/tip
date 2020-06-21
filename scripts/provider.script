@@ -95,13 +95,11 @@ def get_from_base64(input)
 end
 
 def get_text_length(input)
-  begin
-    [{
-       type: 'text',
-       label: 'Text length: ' + input.length.to_s,
-       value: input.length.to_s
-    }]
-  end
+  [{
+     type: 'text',
+     label: 'Text length: ' + input.length.to_s,
+     value: input.length.to_s
+  }]
 end
 
 if __FILE__ == $0
