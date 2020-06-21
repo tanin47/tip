@@ -4,6 +4,7 @@
 
 require 'json'
 require 'cgi'
+require 'base64'
 
 def main(input)
   input = input.strip
@@ -12,6 +13,9 @@ def main(input)
   items += get_jira_url(input)
   items += get_google_url(input)
   items += get_definition(input)
+  items += get_to_base64(input)
+  items += get_from_base64(input)
+  items += get_text_length(input)
 
   puts items.compact.to_json
 end
@@ -67,6 +71,34 @@ def get_definition(input)
        type: 'url',
        label: 'Open Dictionary',
        value: "https://www.dictionary.com/browse/#{input}"
+  }]
+end
+
+def get_to_base64(input)
+  base64 = Base64.strict_encode64(input)
+  return [{
+       type: 'text',
+       label: 'Convert to BASE64',
+       value: base64
+  }]
+end
+
+def get_from_base64(input)
+  return [] unless /^[a-zA-Z0-9\/=]+$/.match(input)
+  base64 = Base64.strict_decode64(input)
+  return [] unless Base64.strict_encode64(base64) == input
+  [{
+     type: 'text',
+     label: 'Convert from BASE64',
+     value: base64
+  }]
+end
+
+def get_text_length(input)
+  [{
+     type: 'text',
+     label: 'Text length: ' + input.length.to_s,
+     value: input.length.to_s
   }]
 end
 
