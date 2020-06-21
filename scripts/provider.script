@@ -84,16 +84,14 @@ def get_to_base64(input)
 end
 
 def get_from_base64(input)
-  begin
-    return [] unless /^[a-zA-Z0-9\/=]+$/.match(input)
-    base64 = Base64.strict_decode64(input)
-    return [] unless Base64.strict_encode64(base64) == input
-    [{
-       type: 'text',
-       label: 'Convert from BASE64',
-       value: base64
-    }]
-  end
+  return [] unless /^[a-zA-Z0-9\/=]+$/.match(input)
+  base64 = Base64.strict_decode64(input)
+  return [] unless Base64.strict_encode64(base64) == input
+  [{
+     type: 'text',
+     label: 'Convert from BASE64',
+     value: base64
+  }]
 end
 
 def get_text_length(input)
