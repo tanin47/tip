@@ -78,7 +78,7 @@ def get_to_base64(input)
   base64 = Base64.strict_encode64(input)
   return [{
        type: 'text',
-       label: 'Convert to BASE64',
+       label: 'Copy BASE64 to clipboard',
        value: base64
   }]
 end
@@ -89,9 +89,11 @@ def get_from_base64(input)
   return [] unless Base64.strict_encode64(base64) == input
   [{
      type: 'text',
-     label: 'Convert from BASE64',
+     label: 'Decode BASE64 and copy to clipboard',
      value: base64
   }]
+rescue
+  []
 end
 
 def get_text_length(input)
