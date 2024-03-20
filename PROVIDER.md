@@ -39,7 +39,7 @@ end
 
 From the script above, when activating Tip, we'll see:
 
-![Example](example.png)
+![Example](./readme/example.png)
 
 
 Output JSON Spec

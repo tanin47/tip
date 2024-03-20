@@ -1,7 +1,7 @@
-![Universal Tip icon](./app-icon.png) Universal Tip
+![Universal Tip icon](./readme/app-icon.png) Universal Tip
 ==============
 
-[![Download from Mac App Store](./download-button.svg)](https://apps.apple.com/us/app/universal-tip/id1495732622)
+[![Download from Mac App Store](./readme/download-button.svg)](https://apps.apple.com/us/app/universal-tip/id1495732622)
 
 Tip (or its full name, Universal Tip) is a programmable tooltip that can be used with any Mac OS app. You can select the text and hit the shortcuts to activate a tooltip with useful info.
 
