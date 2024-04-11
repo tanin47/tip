@@ -1,0 +1,109 @@
+#!/usr/bin/env ruby
+
+# Please copy this file to the folder: ~/Library/Application\ Scripts/tanin.tip/
+
+require 'json'
+require 'cgi'
+require 'base64'
+
+def main(input)
+  input = input.strip
+  items = []
+  items += get_time(input)
+  items += get_jira_url(input)
+  items += get_google_url(input)
+  items += get_definition(input)
+  items += get_to_base64(input)
+  items += get_from_base64(input)
+  items += get_text_length(input)
+
+  puts items.compact.to_json
+end
+
+def get_google_url(input)
+  return [] unless input
+
+
+  [{
+       type: 'url',
+       label: 'Search on Google',
+       value: "https://google.com/search?q=#{CGI.escape(input)}"
+   }]
+end
+
+def get_jira_url(input)
+  return [] unless /\A[A-Za-z]+-[0-9]+\z/.match(input)
+
+
+  [{
+       type: 'url',
+       label: 'Open JIRA',
+       value: "https://youtrack.jetbrains.com/issue/#{input}"
+   }]
+end
+
+TIME_FORMAT = '%-d %b %Y %H:%M:%S.%3N'
+
+def get_time(input)
+  input = input.downcase
+  return [] unless /\A"?[0-9,]+(\.[0-9]+)?(e[0-9]+)?"?\z/.match(input)
+
+  input = input.gsub(/[",]/, '').to_f
+  input /= 1000 if input >= 1000_000_000_000
+
+  time = Time.at(input)
+  
+  [
+    {
+      type: 'text',
+      value: "#{time.utc.strftime(TIME_FORMAT)} UTC"
+    },
+    {
+      type: 'text',
+      value: "#{time.localtime.strftime(TIME_FORMAT)} #{Time.now.zone} (#{Time.now.strftime('%z')})"
+    }
+  ]
+end
+
+def get_definition(input)
+  return [] unless /^[a-zA-Z]+$/.match(input)
+  [{
+       type: 'url',
+       label: 'Open Dictionary',
+       value: "https://www.dictionary.com/browse/#{input}"
+  }]
+end
+
+def get_to_base64(input)
+  base64 = Base64.strict_encode64(input)
+  return [{
+       type: 'text',
+       label: 'Copy BASE64 to clipboard',
+       value: base64
+  }]
+end
+
+def get_from_base64(input)
+  return [] unless /^[a-zA-Z0-9\/=]+$/.match(input)
+  base64 = Base64.strict_decode64(input)
+  return [] unless Base64.strict_encode64(base64) == input
+  [{
+     type: 'text',
+     label: 'Decode BASE64 and copy to clipboard',
+     value: base64
+  }]
+rescue
+  []
+end
+
+def get_text_length(input)
+  [{
+     type: 'text',
+     label: 'Text length: ' + input.length.to_s,
+     value: input.length.to_s
+  }]
+end
+
+if __FILE__ == $0
+  main(ARGV[0])
+end
