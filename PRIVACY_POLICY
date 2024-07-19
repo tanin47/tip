@@ -1,0 +1,20 @@
+Privacy policy
+===============
+
+Programmable Tooltip doesn't collect any information about you.
+
+
+What this policy covers
+------------------------
+
+* The executable binary: Tip.app
+
+
+What this policy doesn't cover
+-------------------------------
+
+* The provider script. 
+  * Because the provider script is owned by the users. By default, Programmable Tooltip cannot write to the provider script.
+  * Please always review a downloaded provider script before using it.
+* Apple may collect usage and crash statistics, which are provided through [App Store Connect](https://developer.apple.com/app-store-connect/analytics/). 
+
